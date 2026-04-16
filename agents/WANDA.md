@@ -129,3 +129,37 @@
 - **Sources that worked best:** med.unc.edu directly (admissions FAQ, Charlotte campus profile, scholarly concentrations list, faculty directory), medcmp.com (Class of 2029 stats), Accepted.com (secondary essay breakdown), UNC Health News (dean announcements), SDN 2025-2026 UNC thread
 - **What was hard to find:** Exact international/F-1 matriculation counts — not public, requires direct email or MSAR lookup. Individual faculty email verification took cross-referencing (UNC convention is firstname_lastname@med.unc.edu but many faculty use different variants)
 - **What to improve next time:** The 3-parallel-agent pattern (stats/timeline, people, programs/strategy) was very high-leverage — each returned ~1500-2000 words of structured findings with sources in under 6 minutes total. Do this for every Wanda school going forward, not just sequential research. Also: always verify every fact from the previous run against the school's current website — Run 1 had the office hours day wrong and the essay word count wrong.
+
+### Run 3 — 2026-04-16 (Michigan State CHM — Home State Priority)
+- **What:** Full deep dive on MSU College of Human Medicine as a top-priority reapplication target. Queued from Cosmo as "MD — Promoted" because (1) Srishti grew up in Farmington Hills / Oakland County, MI, (2) MSU CHM explicitly accepts Canadian citizens, (3) MSU CHM community-based model has a campus in Southeast Michigan <15 miles from her hometown. Used the 3-parallel-agent pattern established in Run 2.
+- **Result:** 10-accordion plan matching UNC's depth. Sections: Overview banner, Why You Belong (6 cards), Southeast Michigan Campus Deep Dive, Programs That Fit (SDC + LMU Flint + dual degrees), People (admissions leadership + 6 ranked faculty + Dr. Godbole unlock), Secondary Essay Prompts (3 verbatim prompts + reapp framework), Outreach Templates (7 copy-paste messages), Interview Format (4-station MMI), 2026-27 Timeline, Action Items This Week (8 items), Sources (20 URLs).
+- **Key findings:**
+  - **HUGE news (6 days old):** MSU + MSUCOM merged into "MSU Medicine" on **2026-04-10**. CHM remains the MD school but the institutional org chart just changed. 2026-27 cycle still runs as CHM per MSU's post-announcement statement. Flagged prominently on the plan so essays don't reference the pre-merger structure incorrectly.
+  - **Interim Dean (since Oct 2025):** Dr. Rayamajhi replaced Dr. Aron Sousa. Use Rayamajhi's name in any "Why MSU leadership excites me" language — NOT Sousa (who departed).
+  - **Canadian citizen policy is explicit:** CHM treats Canadian citizens identically to US citizens for admissions eligibility. Canadian PRs, DACA-only, and other non-citizens are NOT eligible. This is a near-unicorn policy for a state school.
+  - **Community campus geography is the play:** CHM has 7 community campuses. Southeast Michigan (Henry Ford Providence Southfield + Novi) is <15mi from Farmington Hills — a better fit than Grand Rapids, East Lansing, or Midland for her essay narrative. Students are assigned to campuses after matriculation based on preference + fit. The "Why SE Michigan" essay writes itself.
+  - **86% Michigan residents** in entering class — but Srishti has REAL Michigan roots (grew up there, family still there). That ratio is a filter against out-of-state applicants with no MI connection, not against people like her. Her Canadian citizenship doesn't block her from the "Michigan connection" pathway.
+  - **Stats context:** Matriculant median ~3.7-3.9 GPA / 509 MCAT. Srishti's 3.88 / 517 is at/above median on GPA, +8 above median on MCAT. Like UNC, cycle 1 rejection was structural (no paid clinical hours, no clinical LOR), not academic.
+  - **Dr. Mona Hanna (née Hanna-Attisha) is the priority outreach target:** Flint water crisis pediatrician, MSU faculty, nationally recognized, actively public-facing. Her RxKids program = direct alignment with Srishti's social medicine interest. High-ROI cold email — she responds to students.
+  - **Dr. Leonard Fleck = Bioethics chair** — direct academic home for Srishti's Med Anth / cultural humility background. Under-researched target; few pre-meds think to reach out to bioethics faculty.
+  - **The Dr. Godbole unlock:** Srishti's childhood pediatrician in Farmington Hills is the highest-ROI ask in the entire plan. A letter or intro from a practicing MI physician who's known Srishti since childhood is rare and powerful for MSU's community-based model. Built into Action Items as #2 behind "read MSU feedback when it arrives."
+  - **Secondary prompt structure:** Three prompts, 400 words each. Prompt 3 asks "what have you done since your last application" — effectively a reapplicant essay without calling it one. Use Before → Pivot → What Changed → Why MSU CHM.
+  - **Interview format:** 4-station MMI (~8 min each) + 30-min student 1-on-1 + admissions info session. Virtual. Decisions rolling from Oct 15.
+  - **LMU Flint primary care certificate:** Free certificate for M3/M4s interested in primary care + underserved work. Not widely publicized; excellent "why us" detail.
+  - **Pre-screen:** No secondary screen — everyone who submits AMCAS primary gets the secondary. Submit primary EARLY (June) to be at front of rolling review.
+- **Sources that worked best:**
+  - MSU CHM admissions site (pre-req FAQ, Canadian citizen policy, community campus explainer) — authoritative on eligibility
+  - MSU CHM program pages (SDC, LMU Flint, MD-PH, Bioethics/BHS) — for program details
+  - MSU Today 2026-04-10 press release on MSU Medicine merger — freshest institutional news
+  - SDN 2025-2026 MSU CHM thread — essay prompts, interview format, applicant experiences
+  - MSU faculty directory (chm.msu.edu/directory) — for Hanna, Fleck, Roman, Stahl, Gold, Vos names and emails
+  - RxKids program page + Dr. Hanna's public profile — to calibrate outreach tone
+- **What was hard to find:**
+  - Exact Canadian citizen matriculation count — not public. CHM publishes aggregate data but doesn't break out citizenship. Had to rely on the "explicitly eligible, treated identically" policy statement.
+  - Dr. Rayamajhi's first name — MSU's interim dean announcement used initials in most press coverage. Cross-referenced with MSU Medicine org page.
+  - 2026-27 specific secondary prompts — had to use 2025-26 prompts from SDN as the best available proxy. Flagged Action Item #8 to re-verify once MSU opens 2026-27 secondaries in May.
+- **What to improve next time:**
+  - The 3-parallel-agent pattern held up — again ~6 minutes to 3 structured research docs. Keep using it.
+  - For Michigan schools specifically, always verify whether the community-campus-assignment model applies (CHM does; Wayne State doesn't; CMU has a single regional campus). Campus geography is often the essay angle.
+  - When a school has just merged / restructured (like MSU Medicine on 2026-04-10), surface that news at the TOP of the plan and tell the applicant explicitly NOT to reference the old structure in essays. This was a near-miss — old sources still describe the separate colleges.
+  - Always find the "existing MI doctor" unlock for Michigan schools (Dr. Godbole pattern). Every Michigan school plan should ask: "who's the existing MI physician contact?" and build it into Action Items.

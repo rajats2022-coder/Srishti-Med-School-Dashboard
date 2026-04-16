@@ -221,6 +221,19 @@
         summary: 'Your alma mater. New dean (Dr. Cristy Page). Charlotte campus = home turf. Deep outreach strategy.',
         canadian: 'Accepts F-1/OPT as out-of-state. No federal loans/grants. 83.4% of class is NC residents — OOS acceptance ~0.74% (~38 seats from 5,130 OOS apps).',
         realityCheck: 'OOS acceptance ~0.74%. F-1/OPT cannot establish NC residency. Stats above matriculant median (3.82 / 516) — C1 rejection was narrative + paid clinical hours + international filtering, NOT academics. C2 fixes all three.',
+      },
+      {
+        id: 'msu-chm',
+        name: 'Michigan State CHM',
+        loc: 'East Lansing, MI',
+        color: 'from-[#18453B] to-[#2E7D6D]',
+        borderColor: 'border-[#18453B]/20',
+        tags: ['MD — Promoted', 'Home State', 'Canadian-Eligible'],
+        tagColors: ['bg-blue-50 text-blue-500', 'bg-green-50 text-green-600', 'bg-lavender-50 text-lavender-300'],
+        stats: { classSize: '190', inState: '86%', theirGPA: '3.7-3.9', theirMCAT: '509', yourGPA: '3.88', yourMCAT: '517' },
+        summary: 'Home state. Canadian citizens explicitly eligible. Southeast Michigan campus is 15 min from Farmington Hills. Feedback pending from 2026-04-15.',
+        canadian: 'Canadian CITIZENS explicitly eligible — treated identically to US citizens in eligibility. Canadian PRs (non-citizens), DACA-only, and other international applicants are NOT eligible. You qualify on citizenship alone, no visa status needed.',
+        realityCheck: 'Target, not safety. Stats well above average (MCAT +8, GPA at/above). 86% Michigan residents — but you have real Michigan roots (Farmington Hills, Dr. Godbole, Oakland County). MSU + MSUCOM merger announced 2026-04-10 — 2026-27 cycle still runs as CHM.',
       }
     ];
 
@@ -1198,6 +1211,650 @@ srishti.gadbail@gmail.com</div>
         </div>
       `
     };
+
+    // MSU CHM plan (added Run 3 — 2026-04-16)
+    schoolPlanContent['msu-chm'] = `
+        <!-- Overview Banner -->
+        <div class="bg-gradient-to-br from-[#18453B]/10 to-green-50 rounded-2xl p-5 mb-6 border border-[#18453B]/20">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
+            <div class="bg-white/80 rounded-xl p-3 text-center">
+              <div class="text-xs text-gray-400">Class of 2028</div>
+              <div class="font-bold text-gray-700">190 matric</div>
+              <div class="text-[10px] text-gray-400">from 7,582 apps (2.5%)</div>
+            </div>
+            <div class="bg-white/80 rounded-xl p-3 text-center">
+              <div class="text-xs text-gray-400">MI Residents</div>
+              <div class="font-bold text-gray-700">86%</div>
+              <div class="text-[10px] text-gray-400">~27 OOS seats</div>
+            </div>
+            <div class="bg-white/80 rounded-xl p-3 text-center">
+              <div class="text-xs text-gray-400">Avg GPA / MCAT</div>
+              <div class="font-bold text-gray-700">3.7-3.9 / 509</div>
+              <div class="text-[10px] text-gray-400">enrolled students</div>
+            </div>
+            <div class="bg-white/80 rounded-xl p-3 text-center">
+              <div class="text-xs text-gray-400">Your Stats</div>
+              <div class="font-bold text-green-500">3.88 / 517</div>
+              <div class="text-[10px] text-green-500">MCAT +8 above avg &#10003;</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+            <div class="bg-white/80 rounded-xl p-3">
+              <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Canadian policy</div>
+              <div class="text-sm text-gray-700"><strong>Eligible on citizenship alone.</strong> You don't need a green card or a particular visa status. Canadian PRs (non-citizens) are NOT eligible — the difference matters.</div>
+            </div>
+            <div class="bg-white/80 rounded-xl p-3">
+              <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">2024 matriculant profile</div>
+              <div class="text-sm text-gray-700"><strong>61.5% women &middot; 11% URM &middot; 24% rural &middot; 49% disadvantaged/first-gen.</strong> CHM's brand IS underserved and community-based — your Medi-Weightloss year lands squarely here.</div>
+            </div>
+          </div>
+          <div class="p-3 bg-gradient-to-r from-green-50 to-lavender-50 rounded-xl border border-green-200 mb-2">
+            <p class="text-xs text-green-800"><strong>&#9989; Reality check:</strong> This is a <em>target</em>, not a safety. Your stats exceed CHM averages by a meaningful margin. Your C1 zero-interview at MSU CHM was a narrative + clinical-hours issue, not stats. You have two unusual OOS retention signals: Oakland County roots (Farmington Hills, Dr. Godbole) + a Southeast Michigan community campus that literally sits 15 minutes from your childhood home.</p>
+          </div>
+          <div class="p-3 bg-gradient-to-r from-[#18453B]/10 to-green-50 rounded-xl border border-[#18453B]/30">
+            <div class="flex items-start gap-2">
+              <span class="text-base leading-none">&#9881;&#65039;</span>
+              <div>
+                <p class="text-xs text-gray-700"><strong>MSU Medicine Merger (Apr 10, 2026):</strong> MSU Board of Trustees unanimously voted to merge CHM (MD) + MSUCOM (DO) into a single "MSU Medicine" college. ~2-year implementation. Both LCME and COCA accreditations remain separate. The 2026-27 cycle still runs as "MSU CHM" for MD — the merger is institutional branding, not an admissions change.</p>
+                <p class="text-[10px] text-gray-500 mt-1 italic">Don't over-lean into "MSU Medicine" language in essays — the name isn't live yet. Do signal awareness that CHM is part of a broader institutional moment if Prompt 1 asks about the future.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion sections -->
+        <div class="space-y-3">
+
+          <!-- Why You Belong -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head expanded w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#127793;</span> Why You Belong at MSU CHM</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body open px-5 pb-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#127968;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Oakland County Roots</h4>
+                  <p class="text-xs text-gray-500">Farmington Hills childhood. Dr. Godbole as your pediatrician. Math Olympiad. YMCA swimming. Bollywood dance. This is your home state in every sense except legal residency.</p>
+                </div>
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#127981;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Southeast Michigan Campus</h4>
+                  <p class="text-xs text-gray-500">CHM's SE Michigan clerkship campus = Henry Ford Providence Southfield + Novi. Both &lt;15 miles from Farmington Hills. LCE (Years 3-4) here = training where you grew up.</p>
+                </div>
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#128218;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Med Anth &rarr; Bioethics &amp; Social Justice</h4>
+                  <p class="text-xs text-gray-500">CHM's Center for Bioethics &amp; Social Justice is the institutional home for your UNC Medical Anthropology minor. Fleck, Tomlinson, Stahl &mdash; three faculty whose work directly extends your academic voice.</p>
+                </div>
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#128100;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Canadian-Eligible</h4>
+                  <p class="text-xs text-gray-500">MSU CHM is one of ~10 US MD schools that accept Canadian citizens as equivalent to US citizens. Your international status doesn't filter you out here — it's baked into policy.</p>
+                </div>
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#129489;&#8205;&#9877;&#65039;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Community-Based Pedagogy</h4>
+                  <p class="text-xs text-gray-500">Shared Discovery Curriculum (SDC): 24 weeks of Early Clinical Experience in primary care in M1. Not lectures &mdash; patients. Your Medi-Weightloss MA year maps directly to this pedagogy.</p>
+                </div>
+                <div class="bg-green-50/60 rounded-xl p-4">
+                  <div class="text-xl mb-1">&#128293;</div>
+                  <h4 class="font-bold text-gray-800 text-sm mb-1">Stats Well Above Average</h4>
+                  <p class="text-xs text-gray-500">Enrolled avg: ~3.7-3.9 GPA / 509 MCAT. Your 3.88/517 is at/above on GPA, +8 on MCAT. You're not a stretch &mdash; you're a strong fit who didn't tell her story last cycle.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Southeast Michigan Campus Deep Dive -->
+          <div class="border-2 border-green-200 rounded-2xl overflow-hidden bg-gradient-to-br from-green-50/30 to-lavender-50/30">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#127979;</span> Southeast Michigan Campus &mdash; Your Geographic Trump Card</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-3 mt-1">
+                <div class="bg-white rounded-xl p-4 border border-green-100 shadow-soft">
+                  <h4 class="font-bold text-gray-800 text-sm mb-2">&#128205; Where it is</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">The Southeast Michigan community campus covers <strong>Henry Ford Providence Hospital &mdash; Southfield</strong> and <strong>Henry Ford Providence Hospital &mdash; Novi</strong>. Both sit in Oakland County. Farmington Hills to Southfield is ~7 miles. Farmington Hills to Novi is ~10 miles. This is your <em>actual</em> neighborhood.</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-green-100 shadow-soft">
+                  <h4 class="font-bold text-gray-800 text-sm mb-2">&#127891; How campus assignment works</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">Pre-clinical M1-M2 runs in <strong>East Lansing OR Grand Rapids</strong>. For LCE (M3-M4), students are assigned to one of 8 community campuses. The precise mechanism (preference-rank vs directed match) isn't publicly documented &mdash; assignments are handled internally with capacity limits per campus. Southeast Michigan ~40 students/cohort. <strong>Ask current SE Michigan students how much say they had in placement.</strong></p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-green-100 shadow-soft">
+                  <h4 class="font-bold text-gray-800 text-sm mb-2">&#129488; Why this matters for your essays</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">Most OOS applicants don't name specific campuses &mdash; they generic-write "I want to serve Michigan." Naming Southeast Michigan by campus in Prompt 3 is a concrete retention signal: CHM sees a Canadian applicant with Oakland County ties who plans to train AND practice in Oakland County. That's unusual enough to flag her file.</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-green-100 shadow-soft">
+                  <h4 class="font-bold text-gray-800 text-sm mb-2">&#127968; Alternative campus: Grand Rapids</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">If your focus tilts pediatric-heavy, <strong>Grand Rapids</strong> is MSU CHM's pediatrics HQ &mdash; the Dept. of Pediatrics &amp; Human Development is chaired at Helen DeVos Children's Hospital (Corewell Health West Michigan). Consider mentioning both campuses: SE Michigan for Oakland County roots, GR for pediatrics depth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Programs That Fit -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#10024;</span> Programs That Fit Your Profile</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-2 mt-1">
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">Shared Discovery Curriculum (SDC)</h4>
+                  <p class="text-xs text-gray-500 mt-1">Launched 2016, still current. M1 opens with <strong>24 weeks of Early Clinical Experience</strong> in a primary care clinic &mdash; patient care before the first board exam. This IS the pedagogy, not an elective. Your Medi-Weightloss year is the exact preparation this curriculum assumes.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">&#11088; Leadership in Medicine for the Underserved (LMU) Certificate &mdash; Flint</h4>
+                  <p class="text-xs text-gray-500 mt-1">4-year longitudinal certificate: community-engaged research + underserved partnerships + <strong>international rotations (recent cohort: India)</strong>. Flint-based. The LMU India rotation is an unusually direct fit for your Surat/grandfather story. Apply separately after CHM admission.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">Medical Partners in Public Health (MD-PH) Certificate</h4>
+                  <p class="text-xs text-gray-500 mt-1">Through the C.S. Mott Department of Public Health (Flint). Formal public health curriculum + Flint-based community research layered onto the MD. Extends your Marsico lung-research story into a structural-determinants frame that fits CHM's identity.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">Center for Bioethics and Social Justice (BHS pathway)</h4>
+                  <p class="text-xs text-gray-500 mt-1">CHM's intellectual home for your Medical Anthropology minor. Bioethics, Humanities, and Society (BHS) joint-degree pathway offers humanities coursework + joint degree with CHM. The word "Social Justice" in the center's name is deliberate &mdash; mirror it in essays.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">MD/MPH Dual Degree</h4>
+                  <p class="text-xs text-gray-500 mt-1">Realistic add on top of the MD via the Mott Dept. of Public Health. Apply during M1/M2. Pairs cleanly with pediatric/women's-health population work. Far more achievable than MD/PhD given your 340-hr research profile.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">Early Assurance Program (EAP) &mdash; not applicable</h4>
+                  <p class="text-xs text-gray-500 mt-1">EAP is for current MSU undergrads only (admits ~25/year). <strong>Not a pathway for you.</strong> Mention only if asked &mdash; don't reference in essays.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
+                  <h4 class="font-bold text-gray-800 text-sm">Rural Physician Program (RPP) / Leadership in Rural Medicine &mdash; weak fit</h4>
+                  <p class="text-xs text-gray-500 mt-1">UP-based, ~12 students/year. You're urban/suburban &mdash; do NOT anchor essays here. Mention only if you want to signal you've read the full portfolio.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- People to Reach Out To -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#128101;</span> People to Reach Out To</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="mt-1 space-y-4">
+
+                <!-- Admissions Leadership -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Admissions Leadership (Current, 2026)</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Joel Maurer, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Assistant Dean for Admissions</div>
+                      <p class="text-xs text-gray-500 mt-1">11+ years in role. OB/GYN faculty. Public-facing admissions voice &mdash; podcast guest, applicant videos. Publicly has said Prompt 3 is the unofficial reapplicant vehicle. <strong>chm.mdadmissions@msu.edu</strong> / 517-353-9620.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Wanda Lipscomb, PhD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Sr. Assoc. Dean for Access &amp; Inclusive Engagement</div>
+                      <p class="text-xs text-gray-500 mt-1">Directs ABLE post-bac. $22M+ HRSA diversity grants. URM/access admissions lead. <strong>lipscom3@msu.edu</strong> (verified).</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Supratik Rayamajhi, MD, FACP</div>
+                      <div class="text-xs text-rose-400 font-semibold">Interim Dean, CHM (Oct 2025&ndash;)</div>
+                      <p class="text-xs text-gray-500 mt-1">Replaced Dr. Aron Sousa (now at Rosalind Franklin Univ. as CEO). Internal medicine / hypertension. Accessible, clinically-oriented. <strong>Do NOT address mail to "Dean Sousa."</strong></p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Andrea Wendling, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Sr. Assoc. Dean for Academic Affairs</div>
+                      <p class="text-xs text-gray-500 mt-1">Family medicine, rural workforce research. 2020 NRHA Outstanding Educator. Reviews academic affairs &mdash; thoughtful notes travel.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Highest-Leverage Faculty -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Top Faculty to Email (Ranked by Fit)</h4>
+                  <div class="space-y-2">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">1</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Mona Hanna, MD, MPH, FAAP</div>
+                        <div class="text-xs text-lavender-300 font-semibold">Assoc. Dean for Public Health &middot; C.S. Mott Endowed Prof. of Public Health &middot; CHM '02 alum</div>
+                        <p class="text-xs text-gray-500 mt-1">Founder of <strong>Rx Kids</strong> (cash-prescription for infant poverty, Flint). 2x TIME100 Health. <strong>Highest-leverage match:</strong> pediatrics + cultural humility + Michigan roots + advocacy for immigrant families = your Dr. Godbole story at dean level. Highly accessible publicly.</p>
+                      </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">2</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Lee Anne Roman, PhD, MSN, RN</div>
+                        <div class="text-xs text-lavender-300 font-semibold">Prof. OB/GYN &middot; Director/Co-Founder, Maternal Health Lab</div>
+                        <p class="text-xs text-gray-500 mt-1">Maternal health disparities, Medicaid populations. Direct overlap with cultural humility + women's health + SDoH. The pattern-match for your Med Anth minor applied to women's health.</p>
+                      </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">3</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Devan Stahl, PhD</div>
+                        <div class="text-xs text-lavender-300 font-semibold">Asst. Prof., Center for Bioethics &amp; Social Justice + Dept. of Pediatrics</div>
+                        <p class="text-xs text-gray-500 mt-1">Bridges pediatrics + medical humanities + disability theology. Nearly identical to your intended intersection (peds + humanities + cultural humility).</p>
+                      </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">4</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Leonard Fleck, PhD</div>
+                        <div class="text-xs text-lavender-300 font-semibold">University Distinguished Prof. &middot; Center for Bioethics &amp; Social Justice</div>
+                        <p class="text-xs text-gray-500 mt-1">160+ publications on health care justice &amp; rationing. Single strongest intellectual match for your UNC Medical Anthropology voice. CHM's social-justice-in-medicine DNA runs through him.</p>
+                      </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">5</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Jonathan Gold, MD</div>
+                        <div class="text-xs text-lavender-300 font-semibold">Assoc. Prof. Pediatrics &middot; Faculty Advisor, East Lansing PIG</div>
+                        <p class="text-xs text-gray-500 mt-1">The student-facing peds advisor at East Lansing. Easy entry point &mdash; email as a prospective applicant interested in PIG.</p>
+                      </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft flex items-start gap-3">
+                      <div class="shrink-0 w-6 h-6 rounded-full bg-lavender-300 text-white flex items-center justify-center text-[10px] font-bold">6</div>
+                      <div class="flex-1">
+                        <div class="text-sm font-bold text-gray-800">Dr. Miriam Vos, MD, MSPH</div>
+                        <div class="text-xs text-lavender-300 font-semibold">Prof. &amp; Vice Chair for Translational Research, Dept. of Pediatrics (Grand Rapids, joined 2025)</div>
+                        <p class="text-xs text-gray-500 mt-1">Childhood liver disease. Pivot your Marsico lung-research <em>methods</em> (bench work, cell/tissue) toward pediatric translational research &mdash; same model, different organ.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Student Orgs -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Student Organizations (Contact Points)</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">PIG (East Lansing) &mdash; pedsigmsu@gmail.com / <strong>@msuchmpigs</strong></span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">OBWHIG &mdash; whig.msu@gmail.com / <strong>@msuchm_obwhig</strong></span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">FMIG &mdash; msufmig@gmail.com / <strong>@msu_fmig_el</strong></span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">SNMA &mdash; <strong>@msuchm_snma</strong> (625+ IG followers)</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">APAMSA CHM chapter</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">AMWA (EL + GR)</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">Gold Humanism Honor Society &mdash; <strong>@msu_chm_ghhs</strong></span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">Spartan Street Medicine (homeless outreach, Ingham Cty)</span>
+                  </div>
+                </div>
+
+                <!-- Hidden-Unlock: Dr. Godbole -->
+                <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-4 border border-rose-200">
+                  <h4 class="font-bold text-rose-500 text-xs uppercase tracking-wide mb-2">&#128276; Hidden Unlock: Your Network Already Has Ties</h4>
+                  <p class="text-xs text-gray-700"><strong>Dr. Godbole (your childhood pediatrician in Farmington Hills)</strong> is almost certainly connected to MSU CHM alumni via the Indian physician network in metro Detroit. Oakland County &rarr; Beaumont/Corewell &rarr; MSU CHM rotation overlap. <strong>Ask him directly</strong> if he knows any CHM alumni or current faculty. This is your single highest-ROI ask &mdash; warmer than any cold email to an admissions dean.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Essay Prompts -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#9997;</span> Secondary Essay Prompts (3 &times; 400 words, all required)</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-3 mt-1">
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="text-xs font-bold text-rose-400 mb-1">Prompt 1 &mdash; Career Vision (400 words)</div>
+                  <p class="text-sm text-gray-700 italic">"Imagine your professional life 15 years from now and briefly detail where you envision yourself and what you hope to be doing. Describe your most meaningful career accomplishment by that time. Explain why it is significant."</p>
+                  <div class="mt-2 p-3 bg-gray-50 rounded-lg">
+                    <p class="text-xs text-gray-600"><strong>Strategy:</strong> Anchor on <em>Dr. Godbole + mother's ectopic pregnancy / Ayurveda negotiation.</em></p>
+                    <ul class="text-xs text-gray-600 mt-1 space-y-0.5">
+                      <li>&#8226; Open in scene: 15 years out, you're a pediatrician or OB at a Southeast Michigan community clinic, speaking Hindi with an immigrant family the way Dr. Godbole once did with your mother.</li>
+                      <li>&#8226; Most meaningful accomplishment: building a <strong>culturally-responsive pediatric + women's health clinic</strong> that holds space for both evidence-based medicine and families' healing traditions (Ayurveda, traditional foodways).</li>
+                      <li>&#8226; Why significant: closes the loop your mother's ectopic pregnancy opened &mdash; where Western medicine dismissed a cultural framework your family trusted.</li>
+                      <li>&#8226; Close on LMU + MD-PH trajectory making that clinic possible.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="text-xs font-bold text-rose-400 mb-1">Prompt 2 &mdash; Systemic Injustices (400 words)</div>
+                  <p class="text-sm text-gray-700 italic">"Considering your life experiences and the lens through which you view the world, share your thoughts and perspectives about how systemic injustices and inequities have 1) affected you directly, and/or 2) shaped your perspective on your future role as a physician?"</p>
+                  <div class="mt-2 p-3 bg-gray-50 rounded-lg">
+                    <p class="text-xs text-gray-600"><strong>Strategy:</strong> Anchor on <em>Detroit studio apartments + visa/"Alien" moment + Medi-Weightloss MA patients.</em></p>
+                    <ul class="text-xs text-gray-600 mt-1 space-y-0.5">
+                      <li>&#8226; <strong>Direct impact (Part 1):</strong> Father's Detroit master's. Studio apartments. Being classed as "Alien" on USCIS paperwork despite growing up in Farmington Hills.</li>
+                      <li>&#8226; <strong>Lens shift (Part 2):</strong> At Medi-Weightloss Ballantyne, you saw patients whose "obesity" was structural &mdash; food deserts, shift work, uninsured gaps.</li>
+                      <li>&#8226; <strong>Physician frame:</strong> Medical Anthropology gave you the vocabulary (structural violence, cultural humility); MA year gave you the clinical proof.</li>
+                      <li>&#8226; <strong>Close:</strong> Name Flint's water-crisis legacy, Dr. Hanna's Rx Kids, and LMU as where you want to train this framework.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-4 border border-rose-200">
+                  <div class="text-xs font-bold text-rose-500 mb-1">Prompt 3 &mdash; "Know About You" / Unofficial Reapplicant Essay (400 words)</div>
+                  <p class="text-sm text-gray-700 italic font-medium">"Each year, medical schools review thousands of applications. What do you want to make sure the MSU CHM Admissions Committee knows about you?"</p>
+                  <div class="mt-2 p-3 bg-white/80 rounded-lg">
+                    <p class="text-xs text-gray-600"><strong>This is where Dr. Maurer publicly expects reapplicants to address what's changed. Use Before &rarr; Pivot &rarr; What Changed &rarr; Why MSU CHM.</strong></p>
+                    <ul class="text-xs text-gray-600 mt-1 space-y-0.5">
+                      <li>&#8226; <strong>Before (~70 words):</strong> Cycle 1: 21 applications, 0 interviews. Strong stats, no paid clinical hours, recycled essays, no clinical letter.</li>
+                      <li>&#8226; <strong>Pivot (~60 words):</strong> Fall 2025 &mdash; took a paid Medical Assistant role at Medi-Weightloss Ballantyne. Chose clinical immersion over comfort.</li>
+                      <li>&#8226; <strong>What Changed (~170 words):</strong> Specific scene (Hindi-speaking patient whose A1c dropped when you translated the meal plan into familiar foods) + 1,000+ hours + PA/NP clinical letter + rewritten PS + rebuilt school list.</li>
+                      <li>&#8226; <strong>Why MSU CHM (~90 words):</strong> "I grew up in Farmington Hills. Dr. Godbole was the first physician who treated my family like people, not visa statuses. CHM's Shared Discovery Curriculum, the LMU certificate in Flint, and the Southeast Michigan community campus make CHM the only school where I can train as the physician Dr. Godbole was."</li>
+                      <li>&#8226; <strong>Close (~10 words):</strong> "I'm not applying again. I'm coming home."</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Outreach Templates -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#128236;</span> Outreach Templates</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-3 mt-1">
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">A &mdash; Dr. Maurer (Admissions) cold email</h4>
+                    <button onclick="copyEl('tpl-msu-maurer')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">To: chm.mdadmissions@msu.edu &middot; Subject: Reapplicant from Farmington Hills &mdash; one question about CHM fit</div>
+                  <div id="tpl-msu-maurer" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Dr. Maurer,
+
+My name is Srishti Gadbail. I grew up in Farmington Hills and I'm applying to CHM this cycle as a reapplicant. My childhood pediatrician, Dr. Godbole, practiced in Oakland County and shaped why I want to train in Michigan.
+
+Last cycle I applied with strong stats but weak clinical depth. Since then I've completed over 1,000 paid hours as a Medical Assistant at a primary care clinic, earned a PA clinical letter, and rebuilt my application around community-based medicine.
+
+I've spent real time with CHM's Shared Discovery Curriculum materials and the LMU certificate. My quick question: for Canadian-citizen reapplicants with strong Michigan ties, does CHM weigh geographic roots meaningfully in the Southeast Michigan community campus pipeline?
+
+I'd be grateful for a one-line response, or a pointer to the right person.
+
+Thank you for your time,
+Srishti Gadbail</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">B &mdash; Dr. Mona Hanna (Pediatrics / Rx Kids) &mdash; PRIORITY</h4>
+                    <button onclick="copyEl('tpl-msu-hanna')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">Via CHM directory form &middot; Subject: Farmington Hills applicant &mdash; Rx Kids + Dr. Godbole story</div>
+                  <div id="tpl-msu-hanna" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Dr. Hanna,
+
+I grew up in Farmington Hills &mdash; my childhood pediatrician was Dr. Godbole, an Indian immigrant who was the first physician my mother felt understood her family across a cultural gap. I'm a UNC Chapel Hill graduate (Medical Anthropology minor) applying to CHM this cycle.
+
+I've been following Rx Kids since your Congressional testimony. What strikes me is that you framed infant poverty as a medical prescription, not a sidebar &mdash; which is how my Med Anth thesis work on Hmong and Azande healing systems taught me to think about disease. Past year I've been working full-time as a Medical Assistant in a Charlotte clinic, mostly with immigrant women on semaglutide. Their "obesity" is structural.
+
+I know you don't owe me time. But if there's a student pathway connected to Rx Kids or your pediatrics advocacy work at CHM that you'd recommend I read about, I'd be grateful for the pointer.
+
+With admiration,
+Srishti Gadbail</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">C &mdash; Dr. Lee Anne Roman (Maternal Health Lab)</h4>
+                    <button onclick="copyEl('tpl-msu-roman')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">Subject: UNC alum + prospective CHM applicant &mdash; question about Maternal Health Lab</div>
+                  <div id="tpl-msu-roman" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Dr. Roman,
+
+I came across the Maternal Health Lab while researching CHM and your work on Medicaid maternal disparities connected directly to research I did at UNC's Marsico Lung Institute (mucus/asthma in vulnerable populations) and to my Medical Anthropology thesis.
+
+I'm a Canadian citizen who grew up in Farmington Hills and I'm applying to CHM this cycle. Past year I've been working as a Medical Assistant in Charlotte &mdash; the gap I see in my clinic is exactly the one your lab names: women whose clinical story isn't legible until you read the social frame.
+
+If you have 15 minutes for a virtual conversation, I'd love to learn how students connect to the lab, and whether the MD-PH certificate is the usual path in.
+
+Thank you for considering,
+Srishti Gadbail</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">D &mdash; Dr. Leonard Fleck (Bioethics &amp; Social Justice)</h4>
+                    <button onclick="copyEl('tpl-msu-fleck')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">Subject: Medical Anthropology &rarr; CHM Bioethics &mdash; prospective applicant question</div>
+                  <div id="tpl-msu-fleck" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Dr. Fleck,
+
+I'm a UNC Chapel Hill graduate with a Medical Anthropology minor, applying to CHM this cycle. Your writing on health care justice has been on my reading list since undergrad &mdash; the framing of rationing as an ethical obligation rather than a pragmatic failure is something my anthropology coursework gestured at but never named cleanly.
+
+I noticed CHM's Center for Bioethics and Social Justice renamed itself in the last few years to explicitly foreground "Social Justice." I'd love to understand whether CHM students can take structured coursework through the Center during the MD, and whether the BHS joint-degree path is realistic for a student committed to community-based primary care.
+
+If you're willing, I'd be grateful for 15 minutes by video.
+
+Thank you,
+Srishti Gadbail</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">E &mdash; Current SE Michigan campus student (LinkedIn DM)</h4>
+                    <button onclick="copyEl('tpl-msu-student')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">LinkedIn: filter by "Michigan State College of Human Medicine" + "Henry Ford Providence"</div>
+                  <div id="tpl-msu-student" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Hi [NAME],
+
+I'm Srishti &mdash; I grew up in Farmington Hills, did my undergrad at UNC Chapel Hill, and I'm applying to CHM this cycle as a reapplicant. Saw your profile and your path really resonated.
+
+Three quick questions when you have a second:
+
+1. How real is the "community-based" feel in M1 ECE? Does it actually shift how you think about patients, or is it a branding line?
+
+2. What's the culture like around reapplicants and non-traditional paths in your cohort?
+
+3. For someone with Oakland County roots interested in peds / women's health, would you aim Southeast Michigan or Grand Rapids for LCE? How much say did you have in placement?
+
+Even a few bullet points would mean a lot. Happy to buy you coffee next time I'm back in Michigan.
+
+Thanks,
+Srishti</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">F &mdash; SNMA / APAMSA chapter cold DM</h4>
+                    <button onclick="copyEl('tpl-msu-snma')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">Instagram: @msuchm_snma (and search @msuchm_apamsa)</div>
+                  <div id="tpl-msu-snma" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Hi! I'm Srishti &mdash; Canadian citizen, UNC '25 grad, reapplicant. Grew up in Farmington Hills. Hoping to connect with a current SNMA / APAMSA member willing to chat for 15 min about the culture at CHM and what stood out about your interview day. I'd be grateful for a pointer to anyone open to a prospective-student conversation. Thank you!</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">G &mdash; Ask Dr. Godbole for MSU CHM intros</h4>
+                    <button onclick="copyEl('tpl-msu-godbole')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div class="text-[10px] text-gray-400 mb-1">Highest-ROI ask in your network &mdash; warmer than any cold email</div>
+                  <div id="tpl-msu-godbole" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Hi Dr. Godbole,
+
+I hope you and the family are well. I'm writing because I'm applying to medical school again this cycle, and Michigan State College of Human Medicine is a priority for me &mdash; partly because growing up as your patient in Farmington Hills is part of why I'm doing this at all.
+
+I know you've practiced in Oakland County for a long time and probably know physicians who either trained at MSU CHM or currently teach/rotate with students there (Beaumont/Corewell, Henry Ford Providence in Southfield or Novi). If anyone comes to mind whose path crossed CHM's, I'd be grateful for an introduction &mdash; even a quick "I know this student, she'd appreciate 15 minutes of your time" would mean a lot.
+
+Thank you for being the first doctor who saw my family as people.
+
+With gratitude,
+Srishti</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Interview Format -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#127919;</span> Interview Format</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-1">
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Format</div>
+                  <p class="text-xs text-gray-500">Hybrid: <strong>4-station MMI + 30-min 1-on-1</strong> with a current MSU CHM medical student. NDA required on MMI content.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Structure</div>
+                  <p class="text-xs text-gray-500">MMI: 6 classic scenarios (1 acting, 1 activity). Student interview lead question: "How do you connect with MSU CHM's mission?"</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Delivery</div>
+                  <p class="text-xs text-gray-500"><strong>Virtual.</strong> Post-COVID CHM did not return to in-person as of 2024-25 cycle.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Blinded?</div>
+                  <p class="text-xs text-gray-500">MMI stations typically blinded by design. Student 1-on-1 likely semi-blinded (basic file, not full app). &#10067; verify on interview day.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Season</div>
+                  <p class="text-xs text-gray-500">September through March. Peak Oct-Jan. 2024-25 first invites 8/12-8/20; 2025-26 earliest reported 9/10.</p>
+                </div>
+                <div class="bg-lavender-50/50 rounded-xl p-3">
+                  <div class="font-bold text-gray-700 text-sm mb-1">Decisions</div>
+                  <p class="text-xs text-gray-500">Rolling from <strong>October 15</strong>. Alternate (waitlist) list maintained; movement not publicly tracked.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2026-27 Timeline -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#128197;</span> 2026-27 Application Timeline</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-2 mt-1">
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-20 text-xs font-bold text-rose-400">Early May</div>
+                  <div class="text-xs text-gray-600">AMCAS opens. Submit in <strong>first week of June 2026</strong> (CHM rolls; submission timing matters).</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-20 text-xs font-bold text-rose-400">Jul&ndash;Dec</div>
+                  <div class="text-xs text-gray-600">Secondary invitations sent. <strong>CHM does NOT pre-screen</strong> &mdash; secondaries go to all verified applicants. Turnaround target: &lt;14 days to stay in first interview wave.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-20 text-xs font-bold text-rose-400">Aug&ndash;Sep</div>
+                  <div class="text-xs text-gray-600">First interview invite waves. Earliest reported in recent cycles: 8/12 (2024-25) and 9/10 (2025-26).</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-20 text-xs font-bold text-rose-400">Oct 15</div>
+                  <div class="text-xs text-gray-600"><strong>Rolling decisions begin.</strong> Interviewed applicants start hearing back.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-20 text-xs font-bold text-rose-400">Sep&ndash;Mar</div>
+                  <div class="text-xs text-gray-600">Interview season continues monthly. Waitlist/alternate movement runs through spring 2027.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Items -->
+          <div class="border-2 border-rose-200 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50/30 to-lavender-50/30">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#9889;</span> Action Items This Week</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-2 mt-1">
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">1</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Read MSU post-cycle feedback the moment it arrives</div>
+                    <p class="text-xs text-gray-500 mt-1">Submitted morning of 2026-04-15. Single highest-value diagnostic &mdash; may rewrite this entire plan. Currently open as Q#1 in CLAUDE.md.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">2</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email Dr. Godbole to ask about MSU CHM intros</div>
+                    <p class="text-xs text-gray-500 mt-1">Highest-ROI single outreach in this plan. Indian physician network in Oakland County overlaps heavily with CHM rotation hospitals. Use Template G.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">3</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email Dr. Mona Hanna via CHM directory form</div>
+                    <p class="text-xs text-gray-500 mt-1">Use Template B. Highest-leverage single faculty email at CHM &mdash; pediatrics + cultural humility + Michigan roots + advocacy for immigrant families.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">4</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Follow MSU MD Admissions on Facebook</div>
+                    <p class="text-xs text-gray-500 mt-1">facebook.com/MSUMDadmissions &mdash; where Dr. Maurer posts applicant videos. No fixed weekly virtual office hours; email admissions to ask when the next prospective/reapplicant webinar runs.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">5</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Find 2-3 SE Michigan campus students on LinkedIn</div>
+                    <p class="text-xs text-gray-500 mt-1">Filter: "Michigan State College of Human Medicine" + "Henry Ford Providence" (Southfield or Novi). Send Template E. Ask specifically about LCE placement mechanics.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">6</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">DM @msuchm_snma and @msuchm_apamsa</div>
+                    <p class="text-xs text-gray-500 mt-1">Use Template F. SNMA Region V is 625+ IG followers &mdash; active. SDN users <em>Premedandpanicking</em> and <em>14zip</em> are both waitlisted-then-accepted reapplicants at CHM &mdash; message via SDN PM too.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">7</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Draft Prompt 3 (reapp essay) &mdash; 400 words</div>
+                    <p class="text-xs text-gray-500 mt-1">Before &rarr; Pivot &rarr; What Changed &rarr; Why MSU CHM. Close with "I'm not applying again. I'm coming home." Test it against Dr. Maurer's public "what's different" framing.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">8</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Verify 2026-27 secondary prompts match 2025-26</div>
+                    <p class="text-xs text-gray-500 mt-1">Prompt word limits shifted from 500 &rarr; 400 this past cycle. Re-check the SDN 2026-2027 MSU thread once it opens (typically May/June).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sources -->
+          <div class="border border-gray-100 rounded-2xl overflow-hidden bg-gray-50/30">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-600 flex items-center gap-2"><span class="text-lg">&#128279;</span> Sources &amp; References</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] mt-1">
+                <a href="https://humanmedicine.msu.edu/admissions/Admission-Requirements.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Admission Requirements (Canadian eligibility)</a>
+                <a href="https://humanmedicine.msu.edu/admissions/contact-information.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Admissions Contact Info</a>
+                <a href="https://humanmedicine.msu.edu/about/leadership/organizational-chart.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">CHM Leadership Org Chart</a>
+                <a href="https://humanmedicine.msu.edu/news/2025-Supratik-Rayamajhi-Recommended-as-dean.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Interim Dean Rayamajhi Announcement</a>
+                <a href="https://statenews.com/article/2026/04/board-votes-to-merge-two-medical-colleges-as-faculty-raise-concerns" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">MSU Medicine Merger (Apr 2026)</a>
+                <a href="https://humanmedicine.msu.edu/news/2024-white-coat-infographic.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">2024 White Coat Infographic (class stats)</a>
+                <a href="https://humanmedicine.msu.edu/education/sdc/index.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Shared Discovery Curriculum (SDC)</a>
+                <a href="https://humanmedicine.msu.edu/about/campuses/Southeast-Michigan.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Southeast Michigan Campus</a>
+                <a href="https://humanmedicine.msu.edu/about/campuses/index.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">All 8 Community Campuses</a>
+                <a href="https://flintmed.msu.edu/programs/lmu/index.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">LMU Certificate (Flint)</a>
+                <a href="https://flintmed.msu.edu/programs/md-ph/index.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Medical Partners in Public Health (MD-PH)</a>
+                <a href="https://bioethics.msu.edu/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Center for Bioethics &amp; Social Justice</a>
+                <a href="https://maternalhealthlab.chm.msu.edu/team" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Maternal Health Lab (Lee Anne Roman)</a>
+                <a href="https://humanmedicine.msu.edu/directory/hanna-mona.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Mona Hanna (Rx Kids)</a>
+                <a href="https://humanmedicine.msu.edu/directory/lipscomb-wanda.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Wanda Lipscomb (Access)</a>
+                <a href="https://humanmedicine.msu.edu/students/organizations.html" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">CHM Student Organizations</a>
+                <a href="https://forums.studentdoctor.net/threads/2025-2026-michigan-state.1508048/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">SDN 2025-2026 MSU Thread</a>
+                <a href="https://medschoolinsiders.com/medical-school-secondary-prompts-database/michigan-state-university-secondary-essay-prompts/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">MedSchoolInsiders MSU Secondary Prompts</a>
+                <a href="https://case.edu/medicine/md/admission/all-access-med-school-admission-podcast/episode-3-dr-joel-maurer-and-michigan-state-university-college-human-medicine-listener-questions-about-activities-life-experiences" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Maurer Podcast (Case Western)</a>
+                <a href="https://blog.accepted.com/get-accepted-to-the-michigan-states-md-program/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Accepted.com Maurer Interview</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    `;
 
     // =====================================================
     // STATE
