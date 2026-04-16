@@ -266,7 +266,7 @@ This is *good* and *correctly placed* — but it should be louder elsewhere too.
 | 7 | **Northwestern (Feinberg) SOM** | T20 |
 | 8 | **Wayne State SOM** | Detroit — Michigan ties |
 | 9 | **Sidney Kimmel (Thomas Jefferson)** | |
-| 10 | **Central Michigan University SOM** | Michigan ties — strong fit |
+| 10 | **Central Michigan University SOM** (now **Covenant HealthCare COM at CMU** as of fall 2025) | Michigan ties — strong fit. Renamed after $80M Covenant + MyMichigan partnership. Interim Dean **Dr. Tina Thompson** since 2025-05-16. |
 | 11 | **SUNY Upstate (Norton COM)** | |
 | 12 | **Brown (Warren Alpert)** | |
 | 13 | **Tulane SOM** | |
@@ -327,8 +327,21 @@ With the new LOR + standardized test data, the picture sharpens dramatically. Th
 ### Post-cycle feedback in progress
 
 - **Michigan State CHM** — feedback already received. Need to ask Srishti what they said.
-- **Central Michigan SOM** — feedback in progress.
+- **Covenant HealthCare COM at CMU** — feedback in progress (request submitted; awaiting response). When it lands, compare against the Wanda Run 4 "rejection was structural not academic" hypothesis — stats are above their matriculant median (3.78/507 vs her 3.88/517), so if feedback cites GPA/MCAT that's a tell it's actually something else (OOS filter, missing Michigan framing, late submit, no paid clinical at submission).
 - **All other 19 schools** — no feedback requested yet. Worth asking which others offer it.
+
+### Wanda Run 4 strategic notes — Covenant HealthCare COM at CMU (2026-04-16)
+
+Key discoveries that belong in any future strategy conversation about CMU:
+
+- **School was renamed fall 2025.** It's now "Covenant HealthCare College of Medicine at Central Michigan University" after an $80M partnership ($40M Covenant HealthCare + $40M MyMichigan Health). Every essay and outreach email must use the new name — using the old name signals stale research.
+- **Leadership turned over.** Dr. George Kikano resigned March 2025. **Dr. Tina Thompson is interim dean since 2025-05-16.** Stated priorities: rural Michigan workforce, partnership integration, student-centered curriculum.
+- **Canadian eligibility VERIFIED from CMU's own FAQ:** *"Applicants must be a U.S. citizen, Canadian citizen, or permanent resident of the United States or Canada."* Not secondhand — pulled from the school's website. She qualifies on citizenship alone.
+- **BUT: zero Canadian matriculants in the 2025 class.** CMU is Canadian-*eligible* but not Canadian-*statistically-friendly*. Canadian-identity framing is not their draw — Michigan roots are. Lead with Oakland County, not with Canadian diversity.
+- **OOS matriculation is 0.25% (~18 seats of 104 total).** That's roughly 25x harder than in-state. The wall isn't academic — her stats (3.88/517) are above their median (3.78/507). The wall is that they only take a handful of OOS candidates, so every OOS file needs a structural reason to stay in the pile.
+- **Her Michigan County prompt answer is the single biggest structural advantage she has over the OOS pool.** 250 words. Most OOS applicants literally cannot answer it. She has Farmington Hills (18 years) + Dr. Godbole + Oakland County + intent to return to SE Michigan. Pre-write in May, don't wait for the secondary to land.
+- **Rolling admissions — early June submit is load-bearing.** OOS seats at rolling schools shrink weekly after mid-July. Target: AMCAS submitted by 2026-06-05, secondary returned by 2026-07-01.
+- **Financial open question:** Are CMU's Dean's Award and need-based aid available to Canadian citizens? Some US MD schools require Canadian students to escrow full tuition. This needs to be asked directly — either during interview or by email to admissions before she invests in a fall secondary.
 
 ---
 

@@ -24,7 +24,7 @@ These are the cycle-1 schools that are genuinely Canadian-friendly AND where her
 |---|--------|----------------------|---------------|-------------|
 | 1 | **George Washington SOM** | 3.88 / 515 | At/above | Canadians treated same as US citizens. Global health + health equity mission. DC location. |
 | 2 | **Wayne State SOM** | 3.78 / 511 | Well above | Dedicated Canadian applicant page. Detroit = Michigan ties. She grew up in Farmington Hills. Effectively a "home state" school. |
-| 3 | **Central Michigan SOM** | 3.80 / 506 | Well above | Explicitly accepts Canadians. Rural Michigan mission. Farmington Hills connection. Safety-target. |
+| 3 | **Covenant HealthCare COM at CMU** (renamed fall 2025 — formerly Central Michigan SOM) | 3.78 / 507 | Well above | Explicitly accepts Canadians (verified from their FAQ). Rural Michigan mission. Farmington Hills / Oakland County connection is her structural unlock. Interim Dean Dr. Tina Thompson (since 2025-05-16, after Dr. Kikano resigned). $80M Covenant + MyMichigan partnership = current essay content, not stale. **Michigan County 250-word secondary prompt is her biggest OOS advantage** — most OOS applicants literally can't answer it. Reality check: OOS matriculation is 0.25% (~18 seats of 104), so this is a target not a safety despite her stat lead. Zero Canadian matriculants in 2025 class — Canadian identity framing is not the draw; Michigan roots are. |
 | 4 | **Sidney Kimmel (Jefferson)** | 3.80 / 513 | Above | Same evaluation criteria for Canadians. Clinical excellence + diversity mission. |
 | 5 | **Tulane SOM** | 3.70 / 510 | Well above | Citizenship-blind admissions — identical process for all. Community health + global health + underserved. Outstanding mission fit. |
 | 6 | **VCU SOM** | 3.70 / 512 | Above | Canadians explicitly listed alongside US citizens in eligibility. Health equity mission. She's in Charlotte — Richmond is close. |
@@ -385,10 +385,11 @@ Build a menu of **10+ distinct stories** and assign each school 2-3 that match t
 
 ### School-specific essay assignments
 
-**Michigan schools (Wayne State, CMU, MSUCOM, MSU CHM):**
+**Michigan schools (Wayne State, Covenant HealthCare COM at CMU, MSUCOM, MSU CHM):**
 - Lead with Farmington Hills / Dr. Godbole / Oakland County childhood
 - Father's Detroit master's degree for economic hardship angle
 - "Why us" should reference specific Michigan communities she wants to serve
+- **CMU-specific:** The secondary has a **250-word "Michigan County" prompt** that almost no OOS applicant can answer. Srishti has a complete Oakland County answer (home 18 yrs, Dr. Godbole, family still in SE Michigan, intent to return). **Pre-write this in May before the secondary even lands** — that 2-week head start on a rolling school matters more than a perfect essay written late. Also name the Covenant HealthCare + MyMichigan partnership explicitly in "Why CMU" — it proves current research, not recycled reapplicant copy.
 
 **UNC:**
 - Lead with returning to an institution that shaped her

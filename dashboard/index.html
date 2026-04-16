@@ -380,7 +380,7 @@
     updateProgress();
 
     // === SCHOOL TASKS (from Wanda) ===
-    const schoolNames = { unc: 'UNC', 'msu-chm': 'MSU CHM' };
+    const schoolNames = { unc: 'UNC', 'msu-chm': 'MSU CHM', cmu: 'CMU (Covenant)' };
     async function loadSchoolTasks() {
       let schoolTasks = {};
       try { schoolTasks = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}

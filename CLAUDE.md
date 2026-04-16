@@ -224,7 +224,7 @@ When creating any new feature that stores data:
 | # | Question | Status |
 |---|----------|--------|
 | 1 | MSU post-cycle feedback? | Submitted 2026-04-15, waiting for response |
-| 2 | CMU post-cycle feedback? | In progress |
+| 2 | Covenant HealthCare COM at CMU post-cycle feedback? | In progress (request submitted). When it lands, compare against Wanda Run 4 hypothesis that rejection was structural (OOS filter + no paid clinical at submission + no Michigan framing), not academic — her 3.88/517 is well above their 3.78/507 median. |
 | 3 | NC residency status for UNC in-state? | Unknown |
 | 4 | Financial situation / escrow capacity? | Unknown |
 | 5 | Children's Women's Health Book status? | Unknown — did it publish? |
@@ -233,3 +233,4 @@ When creating any new feature that stores data:
 | 8 | DO shadowing — has she found a DO? | Needs to happen ASAP |
 | 9 | Casper retake decision? | Pending — 3rd quartile in cycle 1 |
 | 10 | PREview registration? | Needs to register |
+| 11 | CMU financial aid Canadian eligibility? | New from Wanda Run 4 (2026-04-16). Does CMU's Dean's Award or need-based aid extend to Canadian citizens? Some US MD schools require Canadian students to escrow full tuition — needs direct confirmation by email to CMU admissions before committing to a fall 2026 secondary. |
