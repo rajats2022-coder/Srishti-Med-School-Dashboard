@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Rajat Singh's operational system for managing his girlfriend Srishti Gadbail's MD/DO medical school reapplication (cycle 2, June 2026 submission, fall 2027 matriculation). Three AI agents research schools and produce actionable plans displayed on a custom dashboard.
+Rajat Singh's operational system for managing his girlfriend Srishti Gadbail's MD/DO medical school reapplication (cycle 2, June 2026 submission, fall 2027 matriculation). Four AI agents research schools, support Srishti, and produce actionable plans displayed on a custom dashboard.
 
 ## The Person
 
@@ -29,23 +29,26 @@ Srishti Med School /
 ├── agents/
 │   ├── COSMO.md                 ← Cosmo's playbook + run log
 │   ├── WANDA.md                 ← Wanda's playbook + run log
-│   └── MR_CROCKER.md            ← Mr. Crocker's playbook + run log
+│   ├── MR_CROCKER.md            ← Mr. Crocker's playbook + run log
+│   └── VICKY.md                 ← Vicky's playbook + run log (personal bestie agent)
 └── dashboard/
     ├── index.html               ← Main dashboard (tasks, spotlight, timeline, agent cards)
     ├── schools.html             ← Cosmo's page (MD school audit — reapply vs cut)
     ├── unc.html                 ← Wanda's page (deep dives + research queue)
     ├── do-schools.html          ← Mr. Crocker's page (DO schools + AACOMAS guide)
+    ├── vicky.html               ← Vicky's page (bestie hub — pep, journal, live agent feed)
     ├── sync.js                  ← Supabase sync layer (localStorage ↔ cloud)
     └── serve.mjs                ← Static file server (port 3006)
 ```
 
-## The Three Agents
+## The Four Agents
 
 | Agent | Page | Role | Playbook |
 |-------|------|------|----------|
 | **Cosmo** | `schools.html` | Audits MD schools — reapply vs cut. Provides essay strategy + outreach per school. | `agents/COSMO.md` |
 | **Wanda** | `unc.html` | Deep dives into priority schools. 6-section plans: Why Belong, Programs, People, Essays, Templates, Interview. | `agents/WANDA.md` |
 | **Mr. Crocker** | `do-schools.html` | Scouts Canadian-friendly DO schools. AACOMAS logistics, osteopathic framing. | `agents/MR_CROCKER.md` |
+| **Vicky** | `vicky.html` | Srishti's personal bestie. Cross-agent context + pep talks, reality checks, journal replies, daily vibes. | `agents/VICKY.md` |
 
 ### How schools flow between agents
 1. **Cosmo** audits MD schools → determines reapply vs cut
@@ -132,7 +135,7 @@ All user data syncs to **Supabase** via `sync.js`:
 ### Navigation
 All pages share the same nav bar:
 ```
-[S logo] Med School HQ  |  Dashboard  Cosmo  Wanda  Mr. Crocker
+[S logo] Med School HQ  |  Dashboard  Cosmo  Wanda  Mr. Crocker  Vicky
 ```
 Active page gets a colored pill button. If you add a new page, add its nav link to ALL existing pages.
 
@@ -198,6 +201,7 @@ When creating any new feature that stores data:
 | `srishti_notes_*`, `srishti_do_notes*`, `srishti_school_notes_*` | `notes` | `syncNote(noteKey, value)` |
 | `srishti_school_tasks` | `school_tasks` | `syncSchoolTasks(allTasks)` |
 | `srishti_wanda_queue` | `wanda_queue` | `syncWandaQueue(queue)` |
+| `srishti_vicky_journal` | `vicky_journal` | `syncVickyJournal(entries)` |
 
 **If you add a new localStorage key without a Supabase sync function, it WILL be lost when Srishti uses a different device. Don't do this.**
 
