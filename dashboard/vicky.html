@@ -73,6 +73,36 @@
     }
     textarea:focus { outline: none; border-color: #FF9562; box-shadow: 0 0 0 3px rgba(255, 149, 98, 0.15); }
   </style>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    /* Vicky-specific dark mode tweaks for peach palette */
+    html.dark .bg-peach-50 { background-color: #2A1A12 !important; }
+    html.dark .bg-peach-100 { background-color: #3A2418 !important; }
+    html.dark .border-peach-100 { border-color: #4A2C1F !important; }
+    html.dark .border-peach-200 { border-color: #5E3A28 !important; }
+    html.dark .text-peach-400 { color: #FFB088 !important; }
+    html.dark .text-peach-500 { color: #FF9562 !important; }
+    html.dark .sunset-bg { background: linear-gradient(135deg, #2A1A12 0%, #1F1410 40%, #15100C 100%) !important; }
+    html.dark .vicky-bubble {
+      background: linear-gradient(135deg, #2A1A12 0%, #3A2418 100%) !important;
+      border-color: #5E3A28 !important;
+    }
+  </style>
+  <script>
+    // Apply theme as early as possible to prevent flash
+    (function() {
+      try {
+        var t = localStorage.getItem('srishti_theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      const theme = isDark ? 'dark' : 'light';
+      try { localStorage.setItem('srishti_theme', theme); } catch(e) {}
+      if (typeof syncTheme === 'function') syncTheme(theme);
+    }
+  </script>
 </head>
 <body class="bg-cream min-h-screen">
 
@@ -89,6 +119,10 @@
         <a href="unc.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Wanda</a>
         <a href="do-schools.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Mr. Crocker</a>
         <a href="vicky.html" class="px-3 py-1.5 rounded-full text-sm font-semibold bg-peach-400 text-white">Vicky</a>
+        <button onclick="toggleTheme()" class="theme-toggle ml-1" title="Toggle light/dark mode" aria-label="Toggle theme">
+          <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
     </div>
   </nav>

@@ -1,0 +1,116 @@
+/* ========== SRISHTI DASHBOARD — Light/Dark Theme ========== */
+/* Smooth transitions */
+html, body { transition: background-color 0.25s ease, color 0.25s ease; }
+
+/* Toggle button */
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #B76E79; cursor: pointer; background: transparent; border: 0;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.theme-toggle:hover { background: rgba(255,105,180,0.10); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle .sun { display: block; }
+.theme-toggle .moon { display: none; }
+html.dark .theme-toggle { color: #C4A6FF; }
+html.dark .theme-toggle:hover { background: rgba(196,166,255,0.15); }
+html.dark .theme-toggle .sun { display: none; }
+html.dark .theme-toggle .moon { display: block; }
+
+/* ===== DARK MODE OVERRIDES ===== */
+html.dark body { background-color: #0B0B10 !important; color: #E8E8EC; }
+html.dark .bg-cream { background-color: #0B0B10 !important; }
+html.dark .bg-blush { background-color: #15101A !important; }
+
+/* Whites */
+html.dark .bg-white { background-color: #1A1A22 !important; }
+html.dark .bg-white\/30 { background-color: rgba(26,26,34,0.35) !important; }
+html.dark .bg-white\/40 { background-color: rgba(26,26,34,0.45) !important; }
+html.dark .bg-white\/50 { background-color: rgba(26,26,34,0.55) !important; }
+html.dark .bg-white\/60 { background-color: rgba(26,26,34,0.65) !important; }
+html.dark .bg-white\/70 { background-color: rgba(26,26,34,0.75) !important; }
+html.dark .bg-white\/80 { background-color: rgba(26,26,34,0.85) !important; }
+html.dark .bg-white\/90 { background-color: rgba(20,20,28,0.92) !important; }
+
+/* Roses */
+html.dark .bg-rose-50 { background-color: #2A1722 !important; }
+html.dark .bg-rose-50\/30 { background-color: rgba(42,23,34,0.35) !important; }
+html.dark .bg-rose-50\/50 { background-color: rgba(42,23,34,0.55) !important; }
+html.dark .bg-rose-50\/60 { background-color: rgba(42,23,34,0.65) !important; }
+html.dark .bg-rose-50\/80 { background-color: rgba(42,23,34,0.85) !important; }
+html.dark .bg-rose-100 { background-color: #3A2030 !important; }
+html.dark .bg-rose-100\/50 { background-color: rgba(58,32,48,0.55) !important; }
+
+/* Lavenders */
+html.dark .bg-lavender-50 { background-color: #1B1830 !important; }
+html.dark .bg-lavender-50\/30 { background-color: rgba(27,24,48,0.35) !important; }
+html.dark .bg-lavender-50\/50 { background-color: rgba(27,24,48,0.55) !important; }
+html.dark .bg-lavender-50\/80 { background-color: rgba(27,24,48,0.85) !important; }
+html.dark .bg-lavender-100 { background-color: #2A2548 !important; }
+
+/* Other accents */
+html.dark .bg-yellow-50 { background-color: #2A2010 !important; }
+html.dark .bg-blue-50 { background-color: #0E1A2A !important; }
+html.dark .bg-green-50 { background-color: #0E2418 !important; }
+html.dark .bg-mint { background-color: #0E2418 !important; }
+html.dark .bg-rosegold\/10 { background-color: rgba(183,110,121,0.15) !important; }
+
+/* Text */
+html.dark .text-gray-800 { color: #F0F0F4 !important; }
+html.dark .text-gray-700 { color: #DCDCE0 !important; }
+html.dark .text-gray-600 { color: #C0C0C6 !important; }
+html.dark .text-gray-500 { color: #9C9CA4 !important; }
+html.dark .text-gray-400 { color: #80808A !important; }
+html.dark .text-gray-300 { color: #5C5C66 !important; }
+html.dark .text-gray-200 { color: #4A4A52 !important; }
+html.dark .text-yellow-800 { color: #E8C570 !important; }
+html.dark .text-yellow-700 { color: #E8C570 !important; }
+html.dark .text-yellow-600 { color: #F0D080 !important; }
+html.dark .text-rose-500 { color: #FF87B2 !important; }
+html.dark .text-rose-400 { color: #FF87B2 !important; }
+html.dark .text-rose-600 { color: #FF87B2 !important; }
+html.dark .text-rose-700 { color: #FF87B2 !important; }
+html.dark .text-lavender-300 { color: #C4A6FF !important; }
+html.dark .text-blue-500 { color: #6BA8E0 !important; }
+html.dark .text-blue-600 { color: #6BA8E0 !important; }
+html.dark .text-green-500 { color: #6BD4A0 !important; }
+html.dark .text-green-600 { color: #6BD4A0 !important; }
+
+/* Borders */
+html.dark .border-rose-50 { border-color: #3A2230 !important; }
+html.dark .border-rose-100 { border-color: #4A2C3C !important; }
+html.dark .border-rose-200 { border-color: #6A3D52 !important; }
+html.dark .border-lavender-100 { border-color: #2A2540 !important; }
+html.dark .border-lavender-200 { border-color: #3A3458 !important; }
+html.dark .border-yellow-200 { border-color: #5A4A1F !important; }
+html.dark .border-green-200 { border-color: #1F5A3A !important; }
+html.dark .border-blue-200 { border-color: #1F3A5A !important; }
+html.dark .border-dashed { border-color: #4A2C3C !important; }
+
+/* Form fields */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #15151D !important;
+  color: #E8E8EC !important;
+  border-color: #3A2230 !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder { color: #6A6A74 !important; }
+
+/* Special utilities */
+html.dark .modal-overlay { background: rgba(0,0,0,0.72) !important; }
+html.dark .polka-bg-subtle { background-image: radial-gradient(circle, rgba(196,166,255,0.18) 1px, transparent 1px) !important; }
+html.dark .polka-bg { background-image: radial-gradient(circle, rgba(196,166,255,0.25) 1px, transparent 1px) !important; }
+html.dark .polka-bg-large { background-image: radial-gradient(circle, rgba(196,166,255,0.10) 3px, transparent 3px) !important; }
+
+/* Hover states */
+html.dark .accordion-head:hover { background: rgba(196,166,255,0.06) !important; }
+html.dark .hover\:bg-rose-50:hover { background-color: rgba(42,23,34,0.55) !important; }
+html.dark .hover\:bg-rose-100:hover { background-color: rgba(58,32,48,0.7) !important; }
+
+/* Card shadows look richer in dark */
+html.dark .shadow-card { box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important; }
+html.dark .shadow-soft { box-shadow: 0 2px 16px rgba(0,0,0,0.35) !important; }
+html.dark .shadow-glow { box-shadow: 0 0 30px rgba(196,166,255,0.12) !important; }

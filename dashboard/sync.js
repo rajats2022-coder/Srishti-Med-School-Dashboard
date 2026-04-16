@@ -43,6 +43,14 @@ async function syncLoad() {
         if (Array.isArray(row.value) && row.value.length > 0) {
           localStorage.setItem('srishti_vicky_widget_chat', JSON.stringify(row.value));
         }
+      } else if (row.key === 'theme') {
+        if (typeof row.value === 'string' && (row.value === 'light' || row.value === 'dark')) {
+          localStorage.setItem('srishti_theme', row.value);
+          // Apply immediately if it differs from current
+          const wantsDark = row.value === 'dark';
+          const isDark = document.documentElement.classList.contains('dark');
+          if (wantsDark !== isDark) document.documentElement.classList.toggle('dark', wantsDark);
+        }
       }
     }
   } catch (e) {
@@ -171,6 +179,20 @@ function syncVickyWidgetChat(history) {
       console.log('Vicky widget chat sync failed (offline mode):', e.message);
     }
   }, 800);
+}
+
+// Save theme preference (light/dark) — cross-device
+async function syncTheme(theme) {
+  localStorage.setItem('srishti_theme', theme);
+  try {
+    await fetch(API, {
+      method: 'POST',
+      headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify({ key: 'theme', value: theme, updated_at: new Date().toISOString() })
+    });
+  } catch (e) {
+    console.log('Theme sync failed (offline mode):', e.message);
+  }
 }
 
 // Load on page init
