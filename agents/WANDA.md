@@ -62,13 +62,20 @@
    - Season (what months, what days of week)
 
 3. **Build the dashboard entry** — Follow `WANDA_SCHOOL_TEMPLATE.md` exactly:
-   - Add school object to `wandaSchools` array
+   - Add school object to `wandaSchools` array (full plan OR Investigated & CUT variant — either counts as "done")
    - Add full plan HTML to `schoolPlanContent[schoolId]`
    - Add school name to `schoolNames` in `index.html`
 
-4. **Remove from queue** — After the deep dive is complete, the school's queue card on Wanda's page will automatically show "Deep dive complete" (it checks `wandaSchools` IDs)
+4. **Update the source page (MD files) based on where the school came from** — Every queued item carries `source: 'cosmo' | 'crocker'`. Match the update to the source:
+   - **If `source === 'cosmo'`** → update `dashboard/schools.html`. For CUT verdicts, move the school out of `allSchools` and document it on schools.html (or cross-link to Wanda's CUT card). For full plans, make sure the school's Cosmo card reflects the latest essay/outreach direction from the deep dive.
+   - **If `source === 'crocker'`** → update `dashboard/do-schools.html`. For CUT verdicts, remove the school from `doSchools` / `mdSchools` and add a card to the Investigated & Cut section with a one-line dealbreaker + primary source. For full plans, refresh the card's `fit` / `canadian` fields with any new intel.
+   - Either way: the source page must never contradict what Wanda just published. If Wanda decided a school is CUT, Cosmo and Mr. Crocker's pages must show CUT, not "VERIFY" or "reapply."
 
-5. **Update the run log** — Append what was found, what was surprising, what to improve
+5. **Remove the school from the Research Queue** — Queue is stored in `localStorage['srishti_wanda_queue']` + Supabase `wanda_queue`. Wanda's page now auto-filters queued items whose IDs appear in `wandaSchools` on every render (and persists the filtered list via `syncWandaQueue`). You don't need to call `removeFromQueue` manually — but verify the queue card is gone after a reload. If the school was never actually in the queue (Rajat asked for it directly), skip this step.
+
+6. **Update the run log** — Append what was found, what was surprising, what to improve
+
+7. **Update all other MD files** — Per the standing rule from Run 4: every Wanda run must update `CONTEXT.md` (new facts about Srishti), `REAPPLICATION_PLAN.md` (school-list / strategy changes), and the root `CLAUDE.md` Open Questions table (mark resolved, add new). Not just the dashboard HTML.
 
 ### Quality checklist
 - [ ] All 6 accordion sections present (Why Belong, Programs, People, Essays, Templates, Interview)
@@ -79,6 +86,8 @@
 - [ ] Reality check banner included if OOS/international odds are <5%
 - [ ] School name added to `schoolNames` in `index.html`
 - [ ] Card appears on Wanda page, modal opens, all 3 tabs (Plan/Tasks/Notes) work
+- [ ] Source page updated: if `source === 'cosmo'` → `schools.html`; if `source === 'crocker'` → `do-schools.html` (CUT verdict removed from active array + added to Investigated & Cut)
+- [ ] Queue confirmed clean: reloaded Wanda page shows no queue card for the deep-dived school
 
 ### Sources to check (in order)
 1. School's official admissions website

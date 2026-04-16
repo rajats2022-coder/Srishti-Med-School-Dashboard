@@ -133,6 +133,19 @@ When searching for new DO schools:
 
 > After every Mr. Crocker run, append an entry here.
 
+### Run 3 — 2026-04-16 (LSU NOLA reconciled after Wanda CUT verdict)
+- **What:** Wanda Run 5 verified LSU NOLA is not Canadian-eligible (Admissions Criteria page + SDN-confirmed "bring a green card to the interview"). Run 2 had shipped LSU to `mdSchools[]` with a VERIFY flag — that flag has now been resolved to CUT. This run reconciles Mr. Crocker's page with Wanda's verdict so the two pages never disagree.
+- **Result:**
+  - Removed `lsu-nola-md` from the `mdSchools[]` array in `do-schools.html` (Pritzker promoted to priority 4).
+  - Added an LSU NOLA card to the Investigated & Cut callout alongside MUSC and USC Greenville. Section header generalized from "South Carolina Schools — Investigated & Cut" to "Investigated & Cut" since it's no longer SC-only.
+  - Confirmed Wanda's queue auto-cleanup filters `lsu-nola` on render (see `unc.html` `renderQueue`), so the queue card no longer lingers as "Deep dive complete."
+- **Key findings:**
+  - VERIFY flags on the scout list are action items with a shelf life. LSU's VERIFY sat on the page from Run 2 (2026-04-16) until Wanda investigated it the same day. Going forward: every VERIFY flag Mr. Crocker ships should either be resolved in the next Wanda run or escalated to Rajat for an eligibility email.
+  - When Wanda issues a CUT verdict on a school Mr. Crocker shipped, both pages must flip together: remove from the active scout array, add to the Cut callout with a primary-source citation, cross-link to Wanda's archived research. This run codifies that contract.
+- **What to improve next time:**
+  - Before shipping a VERIFY-flagged school to the dashboard, estimate how much runway the VERIFY buys. If the question can be resolved by one email to admissions, resolve it during the Crocker run rather than deferring to Wanda.
+  - When a CUT verdict comes in, check whether the SC section header still fits or needs to be generalized — Investigated & Cut is state-agnostic and will hold future CUTs regardless of geography.
+
 ### Run 2 — 2026-04-16 (Dual-track expansion: MUSC/USC verdicts + MD scout + 3 new DO)
 - **What:** Supercharged run per Rajat. Scope expanded from DO-only to **MD + DO + Cut**. Investigated MUSC and USC Greenville (Srishti's asks), scouted 5 new Canadian-friendly MD candidates, and found 3 additional DO schools to round out the list. All research anchored to Srishti's Canadian-on-OPT status, 3.88/517 stats, Michigan + Charlotte networks, and her story arc.
 - **Result:**

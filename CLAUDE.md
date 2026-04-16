@@ -77,6 +77,10 @@ Srishti Med School /
 
 ### AFTER every agent run (Post-flight — DO NOT SKIP)
 1. **Update the dashboard HTML** — Add/modify school data in the appropriate page (`schools.html`, `do-schools.html`, or `unc.html`)
+   - **Wanda runs are source-aware.** Every queued school carries `source: 'cosmo' | 'crocker'`. When Wanda finishes a deep dive (full plan OR Investigated & CUT), she must also update the source page so it never contradicts her verdict:
+     - `source === 'cosmo'` → update `schools.html`
+     - `source === 'crocker'` → update `do-schools.html` (CUT verdicts: remove from `doSchools`/`mdSchools`, add to the Investigated & Cut section)
+   - **Wanda must clean the Research Queue.** `unc.html` auto-filters queued items whose IDs appear in `wandaSchools` on render and persists via `syncWandaQueue`. Verify the queue card is gone after a reload. LSU-style leftovers (CUT verdict published but still sitting in the queue) are a bug.
 2. **Append to the agent's Run Log** — In the agent's playbook (`agents/*.md`), add a new entry:
    ```
    ### Run N — YYYY-MM-DD (Short description)
