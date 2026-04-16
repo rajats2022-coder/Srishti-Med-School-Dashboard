@@ -1,6 +1,6 @@
 {
   "buildCommand": "",
-  "outputDirectory": ".",
+  "outputDirectory": "dashboard",
   "framework": null,
   "rewrites": [
     { "source": "/schools", "destination": "/schools.html" },
