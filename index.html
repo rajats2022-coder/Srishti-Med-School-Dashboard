@@ -323,14 +323,15 @@
 
   </main>
 
+  <script src="sync.js"></script>
   <script>
-    // === TASK PERSISTENCE ===
+    // === TASK PERSISTENCE (synced to Supabase) ===
     const tasks = document.querySelectorAll('.task-check');
     tasks.forEach(cb => {
       const key = 'srishti_' + cb.dataset.key;
       cb.checked = localStorage.getItem(key) === 'true';
       cb.addEventListener('change', () => {
-        localStorage.setItem(key, cb.checked);
+        syncTask(cb.dataset.key, cb.checked);
         updateProgress();
       });
     });

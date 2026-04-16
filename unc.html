@@ -337,7 +337,7 @@ Srishti Gadbail</div>
     <section class="mb-8 fade-enter" style="animation-delay:0.35s">
       <h2 class="font-display text-2xl font-bold text-gray-800 mb-4">&#128221; My UNC Notes</h2>
       <div class="bg-white rounded-2xl p-5 border border-rose-50 shadow-soft">
-        <textarea id="unc-notes" placeholder="Write your thoughts about UNC here... ideas for essays, people you've contacted, questions to ask at office hours..." class="w-full h-48 p-4 rounded-xl border border-rose-100 text-sm focus:outline-none focus:border-rose-300 resize-y" oninput="localStorage.setItem('srishti_unc_notes', this.value)"></textarea>
+        <textarea id="unc-notes" placeholder="Write your thoughts about UNC here... ideas for essays, people you've contacted, questions to ask at office hours..." class="w-full h-48 p-4 rounded-xl border border-rose-100 text-sm focus:outline-none focus:border-rose-300 resize-y" oninput="syncNote('srishti_unc_notes', this.value)"></textarea>
         <p class="text-xs text-gray-300 mt-1">Auto-saved to your browser</p>
       </div>
     </section>
@@ -363,6 +363,7 @@ Srishti Gadbail</div>
 
   </main>
 
+  <script src="sync.js"></script>
   <script>
     // Load saved notes
     const notesArea = document.getElementById('unc-notes');
