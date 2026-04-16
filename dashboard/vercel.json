@@ -1,0 +1,10 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/schools", "destination": "/schools.html" },
+    { "source": "/do-schools", "destination": "/do-schools.html" },
+    { "source": "/unc", "destination": "/unc.html" }
+  ]
+}
