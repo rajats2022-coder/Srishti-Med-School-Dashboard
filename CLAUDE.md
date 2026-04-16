@@ -234,3 +234,4 @@ When creating any new feature that stores data:
 | 9 | Casper retake decision? | Pending — 3rd quartile in cycle 1 |
 | 10 | PREview registration? | Needs to register |
 | 11 | CMU financial aid Canadian eligibility? | New from Wanda Run 4 (2026-04-16). Does CMU's Dean's Award or need-based aid extend to Canadian citizens? Some US MD schools require Canadian students to escrow full tuition — needs direct confirmation by email to CMU admissions before committing to a fall 2026 secondary. |
+| 12 | LSU NOLA Canadian eligibility (from REAPPLICATION_PLAN.md Run 2 scout list row 4)? | **RESOLVED 2026-04-16 by Wanda Run 5.** NOT eligible. LSU Admissions Criteria: "Applications are not accepted from International Students." SDN-confirmed: Canadians without US LPR are treated as international. School moved to Investigated & CUT table. Tulane (already on reapply list) is the LA substitute. No further action needed. |

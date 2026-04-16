@@ -519,3 +519,26 @@ We explored a timing fork around CCMA + better job before Srishti locked cycle 2
 ---
 
 *Last updated: 2026-04-15 (pass 2) by Claude. Cycle 2 locked, framing corrected across §7b/§10/§11/§17 to center the year of MA work as the central transformation — not a deficiency. DO + MD balanced list in scope. Next: MSU feedback read, school list audit, essay strategy. Update this file at the end of every planning session.*
+
+---
+
+## Wanda Run 5 — LSU NOLA CUT decision (2026-04-16)
+
+Wanda investigated LSU Health New Orleans SOM (the Run 2 scout list entry flagged "VERIFY — policy not published"). All three parallel research tracks converged on a CUT verdict.
+
+**The three convergent signals:**
+1. **LSU's own Admissions Criteria page** states: *"Applications are not accepted from International Students."*
+2. **SDN secondary-essay thread** reports Canadians receive the secondary form with an instruction to *"bring a green card to the interview"* — they treat Canadians without US LPR as international.
+3. **SEVP school lookup** — LSU NOLA is SEVP-certified but they apply it only to students they treat as eligible (not international applicants). OPT does not satisfy their eligibility gate regardless.
+
+**The structural fact this confirms:** LSU NOLA is a **citizenship gate**, not a stats gate. 3.88/517 cannot flip a policy that requires green card or US citizenship. This is the same shape of dealbreaker as MUSC (green card required) — not something that can be neutralized by stronger essays, better LORs, or outreach.
+
+**What this changes in the plan:**
+- LSU NOLA moved from REAPPLICATION_PLAN.md "Mr. Crocker MD scout list" row 4 → "Investigated & CUT" table alongside MUSC and USC Greenville
+- Tulane SOM (already on the reapply list, citizenship-blind admissions, private, same city) is the correct Louisiana substitute. No replacement school needed.
+- CUT count in the summary matrix updated from 2 → 3
+- LSU NOLA card added to Wanda's dashboard page as an "Investigated & CUT" variant (red banner + archived research) so the research isn't lost and nobody re-opens the question
+
+**What Srishti does NOT need to do:** email LSU admissions, fill out their secondary, pay their $75 fee, or spend any more time on this school. Closed.
+
+**Lesson for future runs (added to WANDA.md Run Log):** when 3 parallel research tracks converge on a CUT verdict, build the "Investigated & CUT" variant of the dashboard card (red banner + preserved research + outreach template to confirm), not the standard 6-accordion reapply plan. Preserves the work, prevents re-researching, matches the Mr. Crocker MUSC/USC Greenville precedent.

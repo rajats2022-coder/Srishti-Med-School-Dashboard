@@ -111,17 +111,17 @@ New MD schools Mr. Crocker scouted outside Cosmo's core 12. All verified Canadia
 | **1** | **Howard COM** | Washington, DC | 3.58 / 506 | YES — explicit | **TOP MD ADD.** HBCU mission of serving underserved populations = direct Med Anth alignment. Her stats well above median. Primary care + peds pipeline. Grandfather-in-Surat story lands perfectly. |
 | 2 | **Mount Sinai Icahn** | New York, NY | 3.83 / 519 | YES | Stats align (3.88/517 vs 3.83/519). InFocus global/community health + Center for Multicultural Community Affairs. NYC Indian diaspora. |
 | 3 | **Vanderbilt SOM** | Nashville, TN | 3.89 / 521 | YES | Stretch but not unreachable. Research-heavy (matches Marsico background). Curriculum 2.0 emphasizes cultural competency. Need-based aid for internationals. |
-| 4 | **LSU NOLA** | New Orleans, LA | 3.79 / 510 | **VERIFY — policy not published** | IF Canadian-eligible: primary care + underserved mission, Charity Hospital tradition. Must email admissions before investing. |
-| 5 | **UChicago Pritzker** | Chicago, IL | 3.89 / 520 | YES | Small class (~88), research powerhouse, Bucksbaum Institute. Comer Children's for peds. Midwest = closer to MI family. |
+| 4 | **UChicago Pritzker** | Chicago, IL | 3.89 / 520 | YES | Small class (~88), research powerhouse, Bucksbaum Institute. Comer Children's for peds. Midwest = closer to MI family. |
 
-### CUT — INVESTIGATED DEALBREAKERS (Run 2)
+### CUT — INVESTIGATED DEALBREAKERS (Run 2 + Wanda Run 5)
 
 | School | Dealbreaker | Source |
 |--------|-------------|--------|
 | **MUSC College of Medicine** (Charleston, SC) | Requires US citizenship or **lawful permanent resident (green card)**. OPT does not qualify. | MUSC admissions eligibility page, confirmed 2026-04-16 |
 | **USC SOM Greenville** (Greenville, SC) | No SEVP I-17 approval → cannot legally issue I-20 to a Canadian citizen. USC Columbia same policy. | USC SOM Greenville international applicant FAQ + SEVP school lookup, confirmed 2026-04-16 |
+| **LSU Health New Orleans SOM** (New Orleans, LA) | Admissions Criteria states: "Applications are not accepted from International Students." SDN-confirmed: secondary form instructs Canadians to "bring a green card to the interview" — they treat Canadians without US LPR as international. OPT does not qualify. Tulane (private, New Orleans) is the correct LA substitute. | LSU NOLA Admissions Criteria page + SDN secondary thread + SEVP school lookup, confirmed by Wanda Run 5 on 2026-04-16 |
 
-*Documented here so no one re-researches them. Mirror displayed on Mr. Crocker's dashboard page.*
+*Documented here so no one re-researches them. Mirror displayed on Mr. Crocker's dashboard page + LSU NOLA card on Wanda's page.*
 
 ---
 
@@ -132,9 +132,9 @@ New MD schools Mr. Crocker scouted outside Cosmo's core 12. All verified Canadia
 | MD — Reapply from cycle 1 | 7 | GW, Wayne State, CMU, Sidney Kimmel, Tulane, VCU, Maryland |
 | MD — Promoted/new | 4-5 | Dartmouth, BU, Emory, MSU CHM, + 1-2 TBD |
 | MD — Reach (UNC) | 1 | UNC Chapel Hill |
-| MD — Mr. Crocker scout list (Run 2) | 4-5 | Howard COM, Mount Sinai Icahn, Vanderbilt, UChicago Pritzker (+ LSU NOLA if verified) |
+| MD — Mr. Crocker scout list (Run 2) | 4 | Howard COM, Mount Sinai Icahn, Vanderbilt, UChicago Pritzker |
 | DO — New AACOMAS track | 11-14 | MSUCOM, Marian WCOM, KCU, NSU, LECOM, CCOM, RVUCOM, AZCOM, RowanSOM, MCOM, WesternU, WCUCOM, UNECOM, LUCOM |
-| **CUT** | 2 | MUSC, USC Greenville (dealbreakers documented) |
+| **CUT** | 3 | MUSC, USC Greenville, LSU NOLA (dealbreakers documented) |
 | **TOTAL (potential)** | **27-32** | Balanced, every included school verified Canadian-friendly |
 
 vs. Cycle 1: 21 schools, ~half were international-hostile, 0 DO schools. Night and day.
