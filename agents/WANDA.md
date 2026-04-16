@@ -99,7 +99,7 @@
 - **What:** Full deep dive on UNC SOM as reapplication target
 - **Result:** Complete 6-section plan with 6 programs, 8+ people, 5 essay prompts + reapplicant essay, 3 outreach templates, MMI interview format
 - **Key findings:**
-  - UNC has Friday virtual office hours at 11 AM — this is the single most actionable outreach opportunity
+  - UNC has Friday virtual office hours at 11 AM — this is the single most actionable outreach opportunity [**CORRECTED IN RUN 2:** actually Tuesdays 9-10am EST]
   - Dr. Lisa Rahangdale is both Associate Dean for Admissions AND an OB/GYN professor — directly relevant to Srishti's women's health interest
   - The Kenan Urban Primary Care Scholars Program is partly based in Charlotte where Srishti currently works — huge "why UNC" point
   - Department of Social Medicine is the direct academic home for her Med Anth background
@@ -107,3 +107,25 @@
 - **Sources that worked best:** UNC SOM website (programs, faculty), SDN 2025-2026 thread (essay prompts, interview format), Instagram @unc.som and @uncsom_charlotte (student orgs)
 - **What was hard to find:** Exact secondary prompts required cross-referencing SDN with the school portal. Interview format details were scattered across SDN posts.
 - **What to improve next time:** Start by searching SDN for the school's thread — it usually has everything (prompts, interview format, student experiences) in one place. Also search for "[school] Canadian student" to find any international student experiences.
+
+### Run 2 — 2026-04-16 (UNC Chapel Hill — Deeper Research Round 2)
+- **What:** Rajat asked for a second round of UNC research to expand/improve the existing deep dive. Launched 3 parallel subagents (admissions stats & timeline; faculty & people; additional programs & reapplicant strategy) and synthesized findings into 4 new accordion sections + expanded existing sections.
+- **Result:** UNC plan grew from 6 accordions → 10 accordions. Added: Charlotte Campus deep dive, 2026-27 Timeline, Action Items This Week, Sources list. Expanded: overview stats (Class of 2029 data + new dean), Programs (all 12 SCPs), People (5 → 20+ named faculty with emails), Outreach Templates (3 → 8, including a priority template for Dr. Mara Buchbinder).
+- **Key findings (new intel):**
+  - **CORRECTION to Run 1:** Virtual office hours are **Tuesdays 9–10am EST** (not Friday 11am). First-come-first-served, 10-min cap, no signup. URL: med.unc.edu/admit/requirements/virtual-office-hours
+  - **CORRECTION to Run 1:** Reapplicant essay is **200 words**, not 250
+  - **NEW DEAN (Nov 24, 2025):** Dr. Cristy Page, MD, MPH — UNC triple alum, family medicine, founded **FIRST program** and Mission3. Mission now tilts toward primary care + service + rural equity, not research prestige. Major reframe for "Why UNC"
+  - **Class of 2029 stats:** 6,264 apps → 229 matriculants (3.66%). OOS: 5,130 apps → ~38 seats (0.74%). Matriculant median: 3.82 / 516 — Srishti's 3.88 / 517 is ABOVE median. Her C1 rejection was not academic
+  - **Post-interview yield: ~36%** — once she gets an II, ~1 in 3 odds. Getting the invite is the real wall
+  - **Reapplicant cap: 4 total apps** (initial + 3 reapps). She's on #2. Two chances remain
+  - **Charlotte campus partner = NOVANT HEALTH, not Atrium.** (Atrium deal fell through 2018.) Opened Feb 2022 with 9 students, scaling to 30/class. Stated mission: "special focus on health equity led by Novant Health." Years 1-2 Chapel Hill, Years 3-4 Charlotte. Same MD, branch campus. Assoc Dean: Dr. Mark Higdon (mlhigdon@novanthealth.org)
+  - **12 scholarly concentrations** (not 4): Humanities & Social Sciences, Women's Health (NEW 2024), Global Health, MESSAGE (LGBTQ+), Clinical Research, Care of Older Patient, QI/Safety, Med Ed, Med Innovation, Nutrition, Planetary Health, Ultrasound
+  - **TEC 2.0 curriculum** launched Aug 2023 — shortened core rotations 16→8 weeks, competency-based, emphasizes "diversity, telehealth, QI, patient safety." Name-check for "Why UNC"
+  - **Top 5 first-touch faculty:** Dr. Mara Buchbinder (Chair, Social Medicine, medical anthropologist — highest leverage), Dr. Chemtai Mungo (Global Women's Health, NIH-funded, early-career), Dr. Anne Drapkin Lyerly (Social Med + OB-GYN bridge), Dr. Mark Higdon (Charlotte gatekeeper), Dr. Camille Ehre (Marsico PI)
+  - **Timeline:** AMCAS deadline Oct 1, 2026. First secondaries mid-July 2026, 14-day turnaround. No secondary screen. First II wave aug 19-21 (last cycle pattern). Acceptances Oct 15+ by phone. Waitlist movement into May/June/July
+  - **F-1 policy (verbatim):** "Non-US citizens with visa types F-1, H-1, J, etc., are not eligible to apply as NC residents (but may apply as a non-resident) and are not eligible for federal loans or grants." No published escrow amount but I-20 issuance requires proof of funds
+  - **Hidden unlock:** She IS UNC alumni. Medical Alumni Office (medalum@med.unc.edu) can pair her with current SOM students — few reapplicants have this asset
+  - **No Osher Center at UNC** — UNC's integrative medicine is PIM (Dr. Gary Asher). Don't mis-name in essays
+- **Sources that worked best:** med.unc.edu directly (admissions FAQ, Charlotte campus profile, scholarly concentrations list, faculty directory), medcmp.com (Class of 2029 stats), Accepted.com (secondary essay breakdown), UNC Health News (dean announcements), SDN 2025-2026 UNC thread
+- **What was hard to find:** Exact international/F-1 matriculation counts — not public, requires direct email or MSAR lookup. Individual faculty email verification took cross-referencing (UNC convention is firstname_lastname@med.unc.edu but many faculty use different variants)
+- **What to improve next time:** The 3-parallel-agent pattern (stats/timeline, people, programs/strategy) was very high-leverage — each returned ~1500-2000 words of structured findings with sources in under 6 minutes total. Do this for every Wanda school going forward, not just sequential research. Also: always verify every fact from the previous run against the school's current website — Run 1 had the office hours day wrong and the essay word count wrong.

@@ -188,10 +188,10 @@
         borderColor: 'border-[#4B9CD3]/20',
         tags: ['MD — Reach', 'Alma Mater', 'Deep Connections'],
         tagColors: ['bg-yellow-50 text-yellow-600', 'bg-blue-50 text-blue-500', 'bg-lavender-50 text-lavender-300'],
-        stats: { classSize: '~200', inState: '83%', theirGPA: '3.82', theirMCAT: '512', yourGPA: '3.88', yourMCAT: '517' },
-        summary: 'Your alma mater. Marsico research, Med Anth minor, deep outreach strategy.',
-        canadian: 'Accepts international applicants as out-of-state. No explicit barriers. BUT 83% of class is NC residents. OOS rate ~1-2%.',
-        realityCheck: 'OOS acceptance rate is ~1-2%. NC law says F-1/OPT holders can\'t claim residency. This is a reach — but a meaningful one because of your real institutional connections. The strategy below is outreach-heavy to overcome the OOS wall.',
+        stats: { classSize: '229', inState: '83.4%', theirGPA: '3.82', theirMCAT: '516', yourGPA: '3.88', yourMCAT: '517' },
+        summary: 'Your alma mater. New dean (Dr. Cristy Page). Charlotte campus = home turf. Deep outreach strategy.',
+        canadian: 'Accepts F-1/OPT as out-of-state. No federal loans/grants. 83.4% of class is NC residents — OOS acceptance ~0.74% (~38 seats from 5,130 OOS apps).',
+        realityCheck: 'OOS acceptance ~0.74%. F-1/OPT cannot establish NC residency. Stats above matriculant median (3.82 / 516) — C1 rejection was narrative + paid clinical hours + international filtering, NOT academics. C2 fixes all three.',
       }
     ];
 
@@ -202,26 +202,49 @@
       unc: `
         <!-- Overview Banner -->
         <div class="bg-gradient-to-br from-[#4B9CD3]/10 to-lavender-50 rounded-2xl p-5 mb-6 border border-[#4B9CD3]/20">
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
             <div class="bg-white/80 rounded-xl p-3 text-center">
-              <div class="text-xs text-gray-400">Class Size</div>
-              <div class="font-bold text-gray-700">~200</div>
+              <div class="text-xs text-gray-400">Class of 2029</div>
+              <div class="font-bold text-gray-700">229 matric</div>
+              <div class="text-[10px] text-gray-400">from 6,264 apps (3.66%)</div>
             </div>
             <div class="bg-white/80 rounded-xl p-3 text-center">
-              <div class="text-xs text-gray-400">In-State</div>
-              <div class="font-bold text-gray-700">83%</div>
+              <div class="text-xs text-gray-400">OOS Matriculants</div>
+              <div class="font-bold text-gray-700">~38 seats</div>
+              <div class="text-[10px] text-gray-400">0.74% of 5,130 OOS apps</div>
             </div>
             <div class="bg-white/80 rounded-xl p-3 text-center">
-              <div class="text-xs text-gray-400">Their GPA/MCAT</div>
-              <div class="font-bold text-gray-700">3.82 / 512</div>
+              <div class="text-xs text-gray-400">Matriculant Median</div>
+              <div class="font-bold text-gray-700">3.82 / 516</div>
+              <div class="text-[10px] text-gray-400">GPA / MCAT</div>
             </div>
             <div class="bg-white/80 rounded-xl p-3 text-center">
-              <div class="text-xs text-gray-400">Your GPA/MCAT</div>
+              <div class="text-xs text-gray-400">Your Stats</div>
               <div class="font-bold text-green-500">3.88 / 517</div>
+              <div class="text-[10px] text-green-500">above median &#10003;</div>
             </div>
           </div>
-          <div class="p-3 bg-yellow-50 rounded-xl border border-yellow-200">
-            <p class="text-xs text-yellow-700"><strong>Reality check:</strong> OOS acceptance rate is ~1-2%. NC law says F-1/OPT holders can't claim residency. This is a reach — but a meaningful one because of your real institutional connections. The strategy below is outreach-heavy to overcome the OOS wall.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+            <div class="bg-white/80 rounded-xl p-3">
+              <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Post-interview yield</div>
+              <div class="text-sm text-gray-700"><strong>~36%</strong> — once you get the II, you have ~1 in 3 odds. Getting the invite is the real wall.</div>
+            </div>
+            <div class="bg-white/80 rounded-xl p-3">
+              <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Reapplicant cap</div>
+              <div class="text-sm text-gray-700"><strong>4 total apps</strong> (initial + 3 reapps). You're on <strong>#2</strong>. Two chances remain after this.</div>
+            </div>
+          </div>
+          <div class="p-3 bg-gradient-to-r from-yellow-50 to-rose-50 rounded-xl border border-yellow-200 mb-2">
+            <p class="text-xs text-yellow-800"><strong>&#9888; Reality check:</strong> OOS acceptance is ~0.74%. NC law + UNC FAQ confirm F-1/OPT holders cannot claim residency. Your stats <em>exceed</em> the matriculant median — C1 rejection was NOT academic. It was narrative + paid clinical hours + international filtering. All three are fixed in C2.</p>
+          </div>
+          <div class="p-3 bg-gradient-to-r from-[#4B9CD3]/10 to-lavender-50 rounded-xl border border-[#4B9CD3]/30">
+            <div class="flex items-start gap-2">
+              <span class="text-base leading-none">&#127891;</span>
+              <div>
+                <p class="text-xs text-gray-700"><strong>New Dean (Nov 24, 2025):</strong> Dr. Cristy Page, MD, MPH — UNC triple alum, Family Medicine, founded the <strong>FIRST program</strong> and Mission3 nonprofit. Primary care + service + rural equity is now the dean-level mission.</p>
+                <p class="text-[10px] text-gray-500 mt-1 italic">Reframe your "Why UNC" — lead with service &amp; community health, not research prestige. Your Medi-Weightloss year maps directly to what Page values.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -254,8 +277,60 @@
                 <div class="bg-rose-50/50 rounded-xl p-4">
                   <div class="text-xl mb-1">&#127968;</div>
                   <h4 class="font-bold text-gray-800 text-sm mb-1">Charlotte Connection</h4>
-                  <p class="text-xs text-gray-500">UNC's Kenan Urban Primary Care Scholars Program is partly based in Charlotte where you work.</p>
+                  <p class="text-xs text-gray-500">UNC's Novant Health Charlotte Campus is in your neighborhood. Your 1,000+ Medi-Weightloss hours are in the exact catchment area.</p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charlotte Campus Deep Dive -->
+          <div class="border-2 border-rose-200 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50/30 to-lavender-50/30">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#127979;</span> Charlotte Campus (Novant Health) — Your Biggest Untapped Weapon</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="mt-1 p-3 mb-3 bg-white/80 rounded-xl border border-rose-100">
+                <p class="text-xs text-gray-700 leading-relaxed"><strong>Why this matters:</strong> Your 1,000+ Medi-Weightloss hours are literally in the catchment area of Novant Health Presbyterian. No other OOS applicant has this geographic + clinical + cultural fluency in Charlotte. In your "Why UNC" secondary, say explicitly: <em>"I've spent 2 years building clinical relationships in Charlotte's Ballantyne community — the Novant Health Charlotte campus would let me bring that continuity to my clinical years, particularly for underserved women's health where I've seen gaps firsthand."</em></p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="text-[10px] font-bold text-rose-400 uppercase tracking-wide">Partner</div>
+                  <div class="text-sm font-bold text-gray-800">Novant Health</div>
+                  <div class="text-[11px] text-gray-500">NOT Atrium — their deal fell through in 2018. Novant partnership signed instead.</div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="text-[10px] font-bold text-rose-400 uppercase tracking-wide">Location</div>
+                  <div class="text-sm font-bold text-gray-800">Presbyterian Medical Ctr</div>
+                  <div class="text-[11px] text-gray-500">+ Huntersville &amp; Matthews sites, Charlotte</div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="text-[10px] font-bold text-rose-400 uppercase tracking-wide">Opened</div>
+                  <div class="text-sm font-bold text-gray-800">February 2022</div>
+                  <div class="text-[11px] text-gray-500">Started w/ 9 students, scaling to 30/class</div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="text-[10px] font-bold text-rose-400 uppercase tracking-wide">Track Type</div>
+                  <div class="text-sm font-bold text-gray-800">Same MD, branch campus</div>
+                  <div class="text-[11px] text-gray-500">Years 1-2 Chapel Hill, Years 3-4 Charlotte</div>
+                </div>
+              </div>
+              <div class="bg-gradient-to-r from-rose-50 to-lavender-50 rounded-xl p-4 border border-rose-200 mb-3">
+                <div class="text-xs font-bold text-rose-500 mb-1">Stated Mission (quote-worthy)</div>
+                <p class="text-sm text-gray-700 italic">"A special focus on health equity led by Novant Health"</p>
+                <p class="text-[11px] text-gray-500 mt-1">Health equity + cultural humility is your brand. Use this exact phrase in your secondary.</p>
+              </div>
+              <div class="space-y-2">
+                <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide">Clinical Rotation Structure (8-week blocks)</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">Community-Based Primary Care</span>
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">Surgery</span>
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">Inpatient Adult Medicine</span>
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">Pediatrics</span>
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">OB-GYN</span>
+                  <span class="bg-white rounded-lg px-3 py-2 text-xs border border-rose-50 shadow-soft text-center">Psychiatry</span>
+                </div>
+                <p class="text-[11px] text-gray-500 italic mt-1">+ Longitudinal "Social and Health Systems" curriculum that threads through all rotations.</p>
               </div>
             </div>
           </div>
@@ -267,30 +342,136 @@
               <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="accordion-body px-5 pb-5">
-              <div class="space-y-2 mt-1">
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">Humanities & Social Sciences Scholarly Concentration</h4>
-                  <p class="text-xs text-gray-500 mt-1">The direct continuation of your Medical Anthropology minor within the MD curriculum.</p>
+              <!-- Top picks -->
+              <div class="mb-4">
+                <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">&#11088; Your Top 3 Fit Programs</h4>
+                <div class="space-y-2">
+                  <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-4 border border-rose-200">
+                    <div class="flex items-center justify-between mb-1">
+                      <h4 class="font-bold text-gray-800 text-sm">Humanities &amp; Social Sciences SCP</h4>
+                      <span class="text-[10px] font-bold text-white bg-rose-400 px-2 py-0.5 rounded-full">PRIMARY</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Direct continuation of your Medical Anthropology minor. Narrative medicine + med humanities + ethics. Run through the Dept of Social Medicine — your academic home. <strong>Name this SCP explicitly in your "Why UNC" essay.</strong></p>
+                  </div>
+                  <div class="bg-gradient-to-br from-lavender-50 to-rose-50 rounded-xl p-4 border border-lavender-200">
+                    <h4 class="font-bold text-gray-800 text-sm">Women's Health SCP <span class="text-[10px] font-bold text-lavender-300 bg-white px-2 py-0.5 rounded-full ml-1">NEW 2024</span></h4>
+                    <p class="text-xs text-gray-600 mt-1">UNC launched this in 2024 — OB/GYN, reproductive justice, women's health research. Pairs with your Children's Women's Health Book + mother's ectopic story + sister's early-period story.</p>
+                  </div>
+                  <div class="bg-gradient-to-br from-lavender-50 to-rose-50 rounded-xl p-4 border border-lavender-200">
+                    <h4 class="font-bold text-gray-800 text-sm">Global Health SCP</h4>
+                    <p class="text-xs text-gray-600 mt-1">Trains globally-minded physicians. Pairs with IGHID (below) + your Gujarat heritage + Med Anth fieldwork.</p>
+                  </div>
                 </div>
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">Department of Social Medicine</h4>
-                  <p class="text-xs text-gray-500 mt-1">"Teaching, research, and service addressing the social dimensions of health, illness, and doctoring." This is YOUR academic home.</p>
+              </div>
+
+              <!-- All 12 SCPs -->
+              <div class="mb-4">
+                <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">All 12 Scholarly Concentrations</h4>
+                <p class="text-[11px] text-gray-400 mb-2 italic">Students pick ONE. Applications open Nov 10, close Nov 30. Decisions in February.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Humanities &amp; Social Sciences &#11088;</div>
+                    <p class="text-[11px] text-gray-500">Narrative medicine, ethics, med hum</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Women's Health &#11088;</div>
+                    <p class="text-[11px] text-gray-500">OB/GYN + reproductive justice (new 2024)</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Global Health &#11088;</div>
+                    <p class="text-[11px] text-gray-500">International elective + mentored project</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">MESSAGE (LGBTQ+)</div>
+                    <p class="text-[11px] text-gray-500">Medical Ed Supporting Sexuality &amp; Gender</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Clinical Research</div>
+                    <p class="text-[11px] text-gray-500">Biostats, IRB, scholarly project</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Care of the Older Patient</div>
+                    <p class="text-[11px] text-gray-500">Geriatrics, longitudinal mentorship</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Clinician Leadership in QI &amp; Safety</div>
+                    <p class="text-[11px] text-gray-500">QI projects, patient safety, systems</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Medical Education</div>
+                    <p class="text-[11px] text-gray-500">Curriculum, teaching, med-ed scholarship</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Medical Innovation</div>
+                    <p class="text-[11px] text-gray-500">Device design, entrepreneurship</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Nutrition</div>
+                    <p class="text-[11px] text-gray-500">Clinical + community nutrition</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Planetary Health</div>
+                    <p class="text-[11px] text-gray-500">Climate change &amp; health (newer, under-applied)</p>
+                  </div>
+                  <div class="bg-lavender-50/50 rounded-lg p-3 border border-lavender-100">
+                    <div class="text-xs font-bold text-gray-700">Ultrasound (POCUS)</div>
+                    <p class="text-[11px] text-gray-500">Point-of-care ultrasound skill-building</p>
+                  </div>
                 </div>
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">Kenan Urban Primary Care Scholars Program</h4>
-                  <p class="text-xs text-gray-500 mt-1">5 scholars/year. $2,000 stipend. Based in Raleigh AND Charlotte — where you work.</p>
-                </div>
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">Global Health Scholarly Concentration</h4>
-                  <p class="text-xs text-gray-500 mt-1">Trains "globally-minded physicians" with courses including anthropology and social medicine.</p>
-                </div>
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">FIRST Program</h4>
-                  <p class="text-xs text-gray-500 mt-1">3-year accelerated MD with directed pathway into NC residency + 3 years of rural/underserved NC service.</p>
-                </div>
-                <div class="bg-lavender-50/50 rounded-xl p-4 border border-lavender-100">
-                  <h4 class="font-bold text-gray-800 text-sm">Health and Humanities Lab (HHive)</h4>
-                  <p class="text-xs text-gray-500 mt-1">Interdisciplinary initiative connecting health and humanities. Another touchpoint for your med anth background.</p>
+              </div>
+
+              <!-- Other programs & centers -->
+              <div class="mb-2">
+                <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Other Programs, Centers &amp; Pipelines</h4>
+                <div class="space-y-2">
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">TEC 2.0 Curriculum <span class="text-[10px] font-bold text-blue-500 bg-blue-50 px-2 py-0.5 rounded-full ml-1">Launched Aug 2023</span></h4>
+                    <p class="text-xs text-gray-500 mt-1">Shortened core rotations 16&rarr;8 weeks, competency-based assessment, emphasizes "diversity, telehealth, QI, patient safety." <strong>Name-check this specifically in "Why UNC" — few applicants know the curriculum by name.</strong></p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">FIRST Program (3-year MD)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Founded by new Dean Cristy Page. Accelerated MD &rarr; directed NC residency (family med, peds, psych, surgery) + 3 years of rural/underserved NC service. ~5 scholars/class. Huge signal to align with.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Kenan Urban Primary Care Scholars</h4>
+                    <p class="text-xs text-gray-500 mt-1">POST-matriculation. 5/year, M3 year, Raleigh (WakeMed) urban underserved focus. Director: <strong>Dr. Rasheeda Monroe</strong>. Fits your Charlotte trajectory perfectly.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Kenan Rural Scholars (MAHEC Asheville)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Longitudinal 3-year rural preceptor program — different from Urban. Asheville-based.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Department of Social Medicine</h4>
+                    <p class="text-xs text-gray-500 mt-1">"Teaching, research, and service addressing the social dimensions of health, illness, and doctoring." Chair: <strong>Dr. Mara Buchbinder, PhD</strong> (medical anthropologist). Your academic home.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Institute for Global Health &amp; Infectious Diseases (IGHID)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Founded 2007. Cross-school center (SOM + Gillings + Pharmacy + Dentistry + Nursing). Research + education + clinical ops in NC and globally. Pair with Global Health SCP in "Why UNC."</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">UNC Center for Women's Health Research (CWHR)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Director: <strong>Dr. Wendy Brewster</strong>. UNC's flagship women's health research hub. Apply for CWHR trainee events once matriculated.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Health and Humanities Lab (HHive)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Interdisciplinary initiative connecting health and humanities. Another med anth touchpoint.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Dual Degrees (MD/PhD, MD/MPH, MD/MBA)</h4>
+                    <p class="text-xs text-gray-500 mt-1">MD/MPH with Gillings (#2 nationally) — applied <em>during M3</em>, not now. Mention interest; don't commit. MD/MBA with Kenan-Flagler. No MD/MA or MD-MS in Clinical Research (covered by Clinical Research SCP).</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Carolina Medical Student Research Program (CMSRP)</h4>
+                    <p class="text-xs text-gray-500 mt-1">POST-matriculation. 8-week summer between M1-M2, 40 hrs/wk, stipend, faculty mentor. Talking point for "Why UNC" — name a specific PI you'd want.</p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">UNC Program on Integrative Medicine (PIM)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Housed in Phys Med &amp; Rehab. Director: <strong>Dr. Gary Asher</strong> (herbal, acupuncture, Tai Chi). Closest UNC has to integrative/Ayurveda scholarship — niche angle for your mother's Ayurvedic thread. <em>Note: UNC does NOT have an Osher Center — don't mis-name in essays.</em></p>
+                  </div>
+                  <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                    <h4 class="font-bold text-gray-800 text-sm">Scholarships — Medical Alumni Loyalty Fund</h4>
+                    <p class="text-xs text-gray-500 mt-1">80+ scholarships/year, alumni-funded. Also Medical Alumni Faculty Scholarship (4-yr full support). <strong>International eligibility unclear</strong> — email somfinaid@listserv.med.unc.edu to confirm.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -304,9 +485,33 @@
             </button>
             <div class="accordion-body px-5 pb-5">
               <div class="mt-1 space-y-4">
+                <!-- Top 5 first-touch -->
+                <div class="bg-gradient-to-br from-rose-50/80 to-lavender-50/80 rounded-2xl p-4 border-2 border-rose-200">
+                  <h4 class="font-bold text-rose-500 text-xs uppercase tracking-wide mb-2">&#128293; Top 5 First-Touch Recommendations (by fit)</h4>
+                  <ol class="text-xs text-gray-700 space-y-1 list-decimal list-inside">
+                    <li><strong>Dr. Mara Buchbinder</strong> (Chair, Social Medicine — med anthropologist) — highest leverage single email</li>
+                    <li><strong>Dr. Chemtai Mungo</strong> (Global Women's Health, early-career, approachable, NIH-funded)</li>
+                    <li><strong>Dr. Anne Drapkin Lyerly</strong> (Social Medicine + OB-GYN bridge — your exact academic shape)</li>
+                    <li><strong>Dr. Mark Higdon</strong> (Assoc Dean, Charlotte Campus — your home-turf gatekeeper)</li>
+                    <li><strong>Dr. Camille Ehre</strong> (Marsico PI — natural "worked down the hall from you" opener)</li>
+                  </ol>
+                </div>
+
+                <!-- Admissions -->
                 <div>
                   <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Admissions Leadership</h4>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-gradient-to-br from-yellow-50 to-rose-50 rounded-xl p-3 border border-yellow-200">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Cristy Page, MD, MPH <span class="text-[10px] bg-yellow-200 text-yellow-800 px-1.5 py-0.5 rounded-full ml-1">NEW DEAN</span></div>
+                      <div class="text-xs text-rose-500 font-semibold">Dean, SOM + CEO, UNC Health (Nov 2025)</div>
+                      <p class="text-xs text-gray-500 mt-1">UNC triple alum. Family medicine. Founded FIRST + Mission3. Primary care / service mission now top-down.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Shannelle Campbell, MD, MPH, FACS</div>
+                      <div class="text-xs text-rose-400 font-semibold">Faculty Director for Admissions</div>
+                      <p class="text-xs text-gray-500 mt-1">Yale MD/MPH. Newly announced Aug 2025. Surgery + public health. Touches admissions decisions directly.</p>
+                      <div class="text-xs text-gray-400 mt-1">shannelle_campbell@med.unc.edu</div>
+                    </div>
                     <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
                       <div class="font-bold text-gray-800 text-sm">Dr. Lisa Rahangdale, MD, MPH</div>
                       <div class="text-xs text-rose-400 font-semibold">Associate Dean for Admissions</div>
@@ -315,48 +520,209 @@
                     <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
                       <div class="font-bold text-gray-800 text-sm">Dr. Anthony Passannante, MD</div>
                       <div class="text-xs text-rose-400 font-semibold">Assistant Dean for Admissions</div>
-                      <p class="text-xs text-gray-500 mt-1">Part of the admissions leadership team. May attend Friday virtual office hours.</p>
+                      <p class="text-xs text-gray-500 mt-1">Part of the admissions leadership team. May attend Tuesday virtual office hours.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Jessica Pan, MA</div>
+                      <div class="text-xs text-rose-400 font-semibold">Senior Director for Admissions</div>
+                      <p class="text-xs text-gray-500 mt-1">Operations lead — manages interview invites + status. Polite check-in from an international OPT applicant = useful.</p>
+                      <div class="text-xs text-gray-400 mt-1">jessica_pan@med.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Alice Chuang, MD, MEd</div>
+                      <div class="text-xs text-rose-400 font-semibold">Assoc Dean for Student Affairs</div>
+                      <p class="text-xs text-gray-500 mt-1">OB-GYN + student affairs (teaching award winner). Good "I'm interested in UNC's student experience" contact.</p>
+                      <div class="text-xs text-gray-400 mt-1">alice_chuang@med.unc.edu | 919-962-8335</div>
                     </div>
                   </div>
                 </div>
+
+                <!-- Department of Social Medicine (your academic home) -->
                 <div>
-                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Your Existing Connections</h4>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">&#127891; Dept of Social Medicine — Your Academic Home</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-3 border-2 border-rose-200">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Mara Buchbinder, PhD <span class="text-[10px] bg-rose-500 text-white px-1.5 py-0.5 rounded-full">#1</span></div>
+                      <div class="text-xs text-rose-500 font-semibold">Chair, Social Medicine + Adjunct Prof Anthropology</div>
+                      <p class="text-xs text-gray-500 mt-1">Medical anthropologist — cultures of health/illness, ICU clinician burnout, OB-GYN mental health. Your highest-leverage email at UNC.</p>
+                      <div class="text-xs text-gray-400 mt-1">mara_buchbinder@med.unc.edu | 347A MacNider Hall</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Anne Drapkin Lyerly, MD, MA</div>
+                      <div class="text-xs text-rose-400 font-semibold">Prof Social Medicine + Research Prof OB-GYN</div>
+                      <p class="text-xs text-gray-500 mt-1">Pregnancy ethics, inclusion of pregnant women in research, Second Wave Initiative. Perfect bridge: social medicine + OB-GYN.</p>
+                      <div class="text-xs text-gray-400 mt-1">alyerly@email.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Giselle Corbie, MD, MSc</div>
+                      <div class="text-xs text-rose-400 font-semibold">Kenan Distinguished Prof + Co-Dir, Center for Thriving Communities</div>
+                      <p class="text-xs text-gray-500 mt-1">National leader in health equity + community-engaged research. Maps to Kenan Urban Scholars interest.</p>
+                      <div class="text-xs text-gray-400 mt-1">gcorbie@med.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Raúl Necochea López, PhD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Assoc Prof Social Medicine + History</div>
+                      <p class="text-xs text-gray-500 mt-1">History of medicine, reproductive health, Latin America. Non-Western perspectives = Ayurveda/Gujarat angle.</p>
+                      <div class="text-xs text-gray-400 mt-1">necochea@email.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Sue E. Estroff, PhD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Prof Social Medicine + Anthro + Psychiatry</div>
+                      <p class="text-xs text-gray-500 mt-1">Medical anthropologist (mixed methods, lived experience) — your exact academic background.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Women's Health -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Women's Health &amp; OB-GYN</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Chemtai Mungo, MD, MPH, FACOG <span class="text-[10px] bg-rose-400 text-white px-1.5 py-0.5 rounded-full">#2</span></div>
+                      <div class="text-xs text-rose-400 font-semibold">Asst Prof OB-GYN + Global Women's Health</div>
+                      <p class="text-xs text-gray-500 mt-1">Cervical cancer prevention in LMIC, HPV, women with HIV in Africa. $2.5M NIH award. Early-career + actively mentoring.</p>
+                      <div class="text-xs text-gray-400 mt-1">chemtai_mungo@med.unc.edu | 919-966-2131</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Jeffrey S. A. Stringer, MD, FACOG</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director, Division of Global Women's Health</div>
+                      <p class="text-xs text-gray-500 mt-1">Runs Global Women's Health — overlaps your global + women's health + international background.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Wendy Brewster, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director, UNC Center for Women's Health Research</div>
+                      <p class="text-xs text-gray-500 mt-1">Runs UNC's flagship women's health research center (CWHR).</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Elizabeth Stringer, MD, MSc</div>
+                      <div class="text-xs text-rose-400 font-semibold">Vice Chair Faculty Development, OB-GYN; MFM</div>
+                      <p class="text-xs text-gray-500 mt-1">MFM + mentorship role — good women-in-medicine mentorship ask.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pulmonary / Marsico -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Pulmonary &amp; Marsico — Your Research Roots</h4>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-3 border border-rose-100">
                       <div class="font-bold text-gray-800 text-sm">Dr. Stephen Schworer, MD, PhD</div>
                       <div class="text-xs text-rose-500 font-semibold">Your PI — Marsico Lung Institute</div>
-                      <p class="text-xs text-gray-500 mt-1">Assistant Professor of Medicine. Reconnect ASAP — ask for LOR + introductions.</p>
+                      <p class="text-xs text-gray-500 mt-1">Asst Prof of Medicine. Reconnect ASAP — ask for LOR + introductions.</p>
                       <div class="text-xs text-gray-400 mt-1">saschworer@unc.edu</div>
                     </div>
-                    <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-3 border border-rose-100">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Camille Ehre, PhD <span class="text-[10px] bg-rose-400 text-white px-1.5 py-0.5 rounded-full">#5</span></div>
+                      <div class="text-xs text-rose-400 font-semibold">Assoc Prof, Peds/Marsico Lung Institute</div>
+                      <p class="text-xs text-gray-500 mt-1">Mucus biology in CF, COPD, PCD, SARS-CoV-2. Active PI taking trainees. "Worked down the hall from you" opener.</p>
+                      <div class="text-xs text-gray-400 mt-1">camille_ehre@med.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Stephanie Duggins Davis, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Chair, Dept of Pediatrics + Peds Pulmonologist</div>
+                      <p class="text-xs text-gray-500 mt-1">Pulm + peds triangle = clean narrative with your Marsico + Play Atrium history. A thoughtful note to the chair is a power move.</p>
+                      <div class="text-xs text-gray-400 mt-1">stephanie_davis@med.unc.edu | 919-966-1505</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Thomas Ferkol, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Chief, Division of Pediatric Pulmonology</div>
+                      <p class="text-xs text-gray-500 mt-1">Current division chief. Schworer / Marsico / peds pulm triangle. Ask for grand rounds pointer.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Marianne Muhlebach, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Prof of Pediatrics (Peds Pulm)</div>
+                      <p class="text-xs text-gray-500 mt-1">CF microbiome, MRSA in CF. Direct Marsico collaborator — your lab's neighbor.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
                       <div class="font-bold text-gray-800 text-sm">Dr. Richard C. Boucher, MD</div>
-                      <div class="text-xs text-rose-500 font-semibold">Director, Marsico Lung Institute</div>
-                      <p class="text-xs text-gray-500 mt-1">James C. Moeser Eminent Distinguished Professor. 43 years at UNC. A brief email mentioning your work could open a door.</p>
+                      <div class="text-xs text-rose-400 font-semibold">Director, Marsico Lung Institute</div>
+                      <p class="text-xs text-gray-500 mt-1">James C. Moeser Eminent Distinguished Professor. 43 years at UNC.</p>
                     </div>
                   </div>
                 </div>
+
+                <!-- Charlotte Campus -->
                 <div>
-                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Student Organizations</h4>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">South Asian Medical Student Org</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">Pediatrics Interest Group</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">SHAC (Free Clinic)</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">SNMA</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">Health Science Ambassadors</span>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">&#127979; Charlotte Campus Leadership — Your Home Turf</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-3 border-2 border-rose-200">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Mark Higdon, DO <span class="text-[10px] bg-rose-500 text-white px-1.5 py-0.5 rounded-full">#4</span></div>
+                      <div class="text-xs text-rose-500 font-semibold">Assoc Dean, UNC SOM Novant Health Charlotte Campus</div>
+                      <p class="text-xs text-gray-500 mt-1">Family medicine, retired Army colonel. THE Charlotte gatekeeper. "I live and work in Charlotte and am drawn to your campus" = authentic.</p>
+                      <div class="text-xs text-gray-400 mt-1">mlhigdon@novanthealth.org</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">A. Hagler</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director of Curricular &amp; Student Affairs, Charlotte</div>
+                      <p class="text-xs text-gray-500 mt-1">Ops lead for Charlotte — handles student experience inquiries.</p>
+                      <div class="text-xs text-gray-400 mt-1">AHagler@novanthealth.org</div>
+                    </div>
                   </div>
                 </div>
+
+                <!-- Kenan + others -->
                 <div>
-                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Social Media & Forums</h4>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Kenan Scholars + Other Strategic Contacts</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Rasheeda Monroe, MD</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director, Kenan Urban Scholars (WakeMed Raleigh)</div>
+                      <p class="text-xs text-gray-500 mt-1">Brody SOM '05, UNC Peds residency '08. WakeMed pediatrician since 2013. Urban underserved + peds = your trajectory.</p>
+                      <div class="text-xs text-gray-400 mt-1">Request via ebakal@wakemed.org (Med Ed Supervisor)</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Meredith Bazemore</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director, Kenan Primary Care Scholars (overall)</div>
+                      <p class="text-xs text-gray-500 mt-1">Program-level director.</p>
+                      <div class="text-xs text-gray-400 mt-1">meredith_bazemore@med.unc.edu</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">Dr. Gary Asher, MD, MPH</div>
+                      <div class="text-xs text-rose-400 font-semibold">Director, Integrative Medicine Services (PIM)</div>
+                      <p class="text-xs text-gray-500 mt-1">Herbal, acupuncture, Tai Chi. Closest UNC has to Ayurveda scholarship — niche but meaningful.</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">UNC Medical Alumni Office</div>
+                      <div class="text-xs text-rose-400 font-semibold">Your hidden unlock — you ARE UNC alumni</div>
+                      <p class="text-xs text-gray-500 mt-1">Ask to be connected with current med students from your undergrad class OR a student ambassador. Alumni status is a real asset few reapplicants have.</p>
+                      <div class="text-xs text-gray-400 mt-1">medalum@med.unc.edu</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Student Orgs + Social -->
+                <div>
+                  <h4 class="font-bold text-rose-400 text-xs uppercase tracking-wide mb-2">Student Orgs &amp; Channels</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">SHAC (Student Health Action Coalition)</div>
+                      <p class="text-xs text-gray-500 mt-1">Oldest student-run free clinic in the US. 2025-26 Co-CEOs: Anysa Fernandez, Ryan Trate. CEOs-elect: Gregory Alspaugh, <strong>Tiffany Persaud</strong> (South Asian-adjacent surname — natural DM).</p>
+                      <div class="text-xs text-gray-400 mt-1">IG: @unc_shac | med.unc.edu/shac</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                      <div class="font-bold text-gray-800 text-sm">UNC SOM SAMOSA (South Asian Med Org)</div>
+                      <p class="text-xs text-gray-500 mt-1">Official student org. Leaders not publicly listed — DM via Instagram OR ask Office of Med Student Ed for current president.</p>
+                    </div>
+                  </div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @unc.som</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @uncsom_charlotte</span>
-                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128172; SDN 2025-2026 Thread</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @unc.som (6,065 followers, official)</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @uncsom_charlotte (236 followers — DM-able)</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @unc_snma</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128247; @uncsom_medicalmentors</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128172; <a href="https://forums.studentdoctor.net/threads/2025-2026-u-north-carolina-chapel-hill.1507985/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600">SDN 2025-26 UNC Thread</a></span>
                     <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">&#128188; LinkedIn Students</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">Pediatrics Interest Group</span>
+                    <span class="bg-white rounded-full px-3 py-1.5 text-xs border border-rose-50 shadow-soft">SNMA</span>
                   </div>
                 </div>
                 <div class="bg-rose-50 rounded-xl p-4 border border-rose-100">
-                  <div class="font-bold text-rose-500 text-sm mb-1">&#128197; Friday Virtual Office Hours — 11 AM</div>
-                  <p class="text-xs text-gray-600">UNC Admissions hosts weekly virtual office hours. <strong>Start attending NOW.</strong> Become a known name before you submit.</p>
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <div class="font-bold text-rose-500 text-sm">&#128197; Tuesday Virtual Office Hours — 9–10 AM EST</div>
+                    <a href="https://www.med.unc.edu/admit/requirements/virtual-office-hours/" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-1 bg-gradient-to-r from-rose-400 to-rose-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-full hover:opacity-90 hover:scale-105 active:scale-95 transition-all shadow-soft">
+                      Get Zoom Link &rarr;
+                    </a>
+                  </div>
+                  <p class="text-xs text-gray-600">UNC Admissions hosts weekly virtual office hours on Zoom — first-come-first-served, 10-minute cap per person, <strong>no signup required</strong>, just join the link. <strong>Start attending NOW.</strong> Bring specific questions (F-1/I-20 funding docs, international scholarship eligibility) — the answers become interview ammunition.</p>
                   <p class="text-xs text-gray-400 mt-1">admissions@med.unc.edu | 919-962-8331</p>
                 </div>
               </div>
@@ -392,17 +758,21 @@
                   <p class="text-xs text-gray-400 mt-2 italic">Strategy: Open with a Marsico Lab memory. Name Dept of Social Medicine + Humanities Scholarly Concentration. Name Kenan Scholars (Charlotte). Close with serving NC communities.</p>
                 </div>
                 <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-4 border border-rose-200">
-                  <div class="text-xs font-bold text-rose-500 mb-1">Reapplicant Essay (Required)</div>
-                  <p class="text-sm text-gray-700 font-medium">What has changed about you as a candidate since your last application?</p>
+                  <div class="flex items-center justify-between mb-1">
+                    <div class="text-xs font-bold text-rose-500">Reapplicant Essay (Required) — 200 words</div>
+                    <span class="text-[10px] font-bold text-rose-400 bg-white px-2 py-0.5 rounded-full">Highest leverage</span>
+                  </div>
+                  <p class="text-sm text-gray-700 font-medium">"What has changed about you as a candidate since your last application to medical school? What has made you a stronger applicant?"</p>
                   <div class="mt-2 p-3 bg-white/80 rounded-lg">
-                    <p class="text-xs text-gray-600"><strong>Framework:</strong></p>
+                    <p class="text-xs text-gray-600"><strong>Framework (Before &rarr; Pivot &rarr; What Changed &rarr; Why UNC):</strong></p>
                     <ul class="text-xs text-gray-600 mt-1 space-y-0.5">
-                      <li>&#8226; <strong>Before:</strong> Strong academics + research, but zero paid clinical hours</li>
-                      <li>&#8226; <strong>The pivot:</strong> Started full-time MA at Medi-Weightloss (Aug 2025)</li>
-                      <li>&#8226; <strong>What changed:</strong> 1,000+ hours direct patient care</li>
-                      <li>&#8226; <strong>Deeper lesson:</strong> Every patient deserves same quality care regardless of setting</li>
-                      <li>&#8226; <strong>Why UNC:</strong> Returning with the clinical foundation she was missing</li>
+                      <li>&#8226; <strong>Before:</strong> Strong academics + Marsico research, but zero paid clinical hours at submission</li>
+                      <li>&#8226; <strong>The pivot:</strong> Started full-time MA at Medi-Weightloss Ballantyne, Charlotte (Aug 2025)</li>
+                      <li>&#8226; <strong>What changed:</strong> 1,000+ hours direct patient care + first real insight into women's health access gaps in uninsured Charlotte patients</li>
+                      <li>&#8226; <strong>Deeper lesson:</strong> Reflection beats activity stacking — one sentence showing self-awareness, not more bullets</li>
+                      <li>&#8226; <strong>Why UNC:</strong> Returning to Chapel Hill with the clinical foundation she was missing — AND with 2 years of relationships in the Novant/Charlotte catchment area</li>
                     </ul>
+                    <p class="text-[10px] text-gray-400 mt-2 italic">200 words is tight. Cut adjectives. One specific patient story &gt; two general claims. Reapplicant cap at UNC is 4 total apps — she's on #2, 2 chances remain.</p>
                   </div>
                 </div>
               </div>
@@ -466,6 +836,136 @@ I would love to learn more about opportunities in your department and how my bac
 Thank you for your time,
 Srishti Gadbail</div>
                 </div>
+
+                <!-- Priority Template #1 — Buchbinder -->
+                <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-4 border-2 border-rose-200">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">&#128293; Email to Dr. Mara Buchbinder (Social Medicine Chair — TOP priority)</h4>
+                    <button onclick="copyEl('tpl-buchbinder')" class="copy-btn text-xs font-semibold text-rose-500 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-300 bg-white hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div id="tpl-buchbinder" class="bg-white/70 rounded-lg p-3 text-xs text-gray-700 leading-relaxed whitespace-pre-line">Subject: UNC Med Anth alum reapplying — question about Dept of Social Medicine
+
+Dear Dr. Buchbinder,
+
+My name is Srishti Gadbail. I graduated from UNC Chapel Hill in 2025 with a Biology degree and Medical Anthropology minor (Highest Distinction), and I'm reapplying to UNC SOM this cycle.
+
+My undergrad med anth coursework — from comparative healing systems (Hmong and Azande) to ethnographic methods — reshaped how I think about clinical encounters. Since graduating I've spent a year as a full-time Medical Assistant at a weight-loss clinic in Charlotte, where I've watched medical anthropology's ideas about culture, stigma, and care play out in every single patient room.
+
+Your work on clinician burnout in the ICU and on OB-GYN mental health resonates with what I've been reading on my own. I'd love to learn more about how students in the Humanities &amp; Social Sciences Scholarly Concentration connect with Social Medicine faculty during their MD training — and whether there are specific courses or projects in the department that you'd point an applicant like me toward.
+
+Would you have 10-15 minutes in the next few weeks for a brief conversation? I can make myself available to your schedule.
+
+Thank you so much for your time.
+
+Warmly,
+Srishti Gadbail
+UNC '25 | she/her
+srishti.gadbail@gmail.com</div>
+                </div>
+
+                <!-- Priority Template #2 — Mungo -->
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">Email to Dr. Chemtai Mungo (Global Women's Health)</h4>
+                    <button onclick="copyEl('tpl-mungo')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div id="tpl-mungo" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Subject: UNC alum reapplying — interest in global women's health
+
+Dear Dr. Mungo,
+
+My name is Srishti Gadbail. I graduated from UNC in 2025 (Biology BS + Medical Anthropology minor, Highest Distinction) and I'm reapplying to UNC SOM this cycle.
+
+I came across your research on cervical cancer prevention and HPV care in LMIC settings, and your work with women living with HIV — it sits exactly at the intersection of what drew me to medicine. My grandfather was a physician in Gujarat, India, where I spent summers watching him see patients in the family home. Since graduating I've been working as a Medical Assistant in Charlotte, where I've noticed how quickly women's health slips through the gaps for uninsured and undocumented patients.
+
+I'd love to briefly learn about the path students take into global women's health research at UNC, and whether there are ways for incoming or prospective students to engage with your lab or your department's trainees.
+
+Would you have time for a 15-minute call in the next few weeks?
+
+Thank you so much,
+Srishti Gadbail
+UNC '25
+srishti.gadbail@gmail.com</div>
+                </div>
+
+                <!-- Priority Template #3 — Higdon (Charlotte) -->
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">Email to Dr. Mark Higdon (Charlotte Campus Assoc Dean)</h4>
+                    <button onclick="copyEl('tpl-higdon')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div id="tpl-higdon" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Subject: UNC alum in Charlotte — question about the Novant Health campus
+
+Dear Dr. Higdon,
+
+My name is Srishti Gadbail. I'm a 2025 UNC Chapel Hill graduate (Biology BS + Medical Anthropology minor, Highest Distinction) currently working as a full-time Medical Assistant at Medi-Weightloss Ballantyne, here in Charlotte. I'm reapplying to UNC SOM this cycle.
+
+I live and work within the Novant Health Charlotte catchment area, and over the last year I've built clinical relationships with patients across Ballantyne — many of whom have limited access to women's health care or continuity with a physician. The Charlotte campus's focus on health equity is exactly the model I'd want to train in, because it's the model of care my community already needs.
+
+I'd love to ask you a few questions about the Charlotte campus as I'm preparing my application — specifically around student life in Charlotte during the clinical years, and how the campus approaches community-based primary care.
+
+Would you have 15 minutes to connect by phone or Zoom in the next few weeks?
+
+Thank you so much for your time.
+
+Warmly,
+Srishti Gadbail
+UNC '25
+srishti.gadbail@gmail.com | Charlotte, NC</div>
+                </div>
+
+                <!-- Priority Template #4 — Admissions I-20/escrow question -->
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">Email to Admissions — F-1/I-20 Financial Docs Question</h4>
+                    <button onclick="copyEl('tpl-admissions-i20')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div id="tpl-admissions-i20" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Subject: F-1/OPT applicant — I-20 financial documentation question
+
+Hello,
+
+I'm Srishti Gadbail, a prospective applicant for the UNC SOM 2026-2027 cycle. I'm a Canadian citizen currently on OPT following my May 2025 graduation from UNC Chapel Hill.
+
+As I prepare my application, I wanted to confirm a few things that aren't fully covered on the admissions FAQ:
+
+1. For F-1 students who matriculate, what documentation of financial support is required for the school to issue the I-20? (e.g., bank statement minimums, sponsor letter format, escrow requirements.)
+
+2. Are any institutional scholarships or need-based aid programs open to international/F-1 admits?
+
+3. Has UNC SOM matriculated any F-1 or OPT-status students in the past 5 entering classes? Understanding historical matriculation patterns would help me plan realistically.
+
+I'd be grateful for any pointers — and I'm happy to have a short call or follow any documentation process you recommend.
+
+Thank you very much for your time.
+
+Best,
+Srishti Gadbail
+UNC '25 | AAMC ID: 16418230
+srishti.gadbail@gmail.com</div>
+                </div>
+
+                <!-- Priority Template #5 — Alumni Office -->
+                <div class="bg-white rounded-xl p-4 border border-rose-50 shadow-soft">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="font-bold text-gray-800 text-sm">Email to UNC Medical Alumni Office</h4>
+                    <button onclick="copyEl('tpl-alumni')" class="copy-btn text-xs font-semibold text-rose-400 hover:text-rose-600 px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-50 transition-all">Copy</button>
+                  </div>
+                  <div id="tpl-alumni" class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed whitespace-pre-line">Subject: UNC '25 alum applying to SOM — student ambassador pairing?
+
+Hi,
+
+I'm a UNC Chapel Hill 2025 graduate (Biology BS + Medical Anthropology minor, Highest Distinction) and I'm applying to UNC SOM this cycle.
+
+As an alum, I'd love to be connected with a current UNC SOM student — especially one from my undergrad class, or someone on the student ambassador team — so I can ask honest questions about student life, the Charlotte campus, and how the Humanities &amp; Social Sciences concentration actually plays out in the curriculum.
+
+Is there a pairing program, an ambassador list, or an alumni-student mentorship opportunity I can sign up for?
+
+Thank you so much — and Go Heels!
+
+Warmly,
+Srishti Gadbail
+UNC '25 | she/her
+srishti.gadbail@gmail.com</div>
+                </div>
               </div>
             </div>
           </div>
@@ -488,8 +988,180 @@ Srishti Gadbail</div>
                 </div>
                 <div class="bg-lavender-50/50 rounded-xl p-3">
                   <div class="font-bold text-gray-700 text-sm mb-1">Season</div>
-                  <p class="text-xs text-gray-500">Sept through Feb. Mondays & Thursdays. Student-led tours + lunch.</p>
+                  <p class="text-xs text-gray-500">Sept through Feb. Mondays &amp; Thursdays. Student-led tours + lunch.</p>
                 </div>
+              </div>
+              <div class="mt-3 p-3 bg-gradient-to-r from-rose-50 to-lavender-50 rounded-xl border border-rose-100">
+                <p class="text-xs text-gray-700"><strong>Acceptance call:</strong> UNC delivers acceptances by phone (not portal email). <strong>Post-interview yield ~36%.</strong> Acceptances released on or after Oct 15, rolling through early April. Waitlist movement runs into May/June/July historically.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline & Application Intel -->
+          <div class="border border-rose-50 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#9200;</span> 2026-27 Timeline &amp; Application Intel</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="space-y-2 mt-1">
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">EARLY JUN</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600">Submit AMCAS primary first week of June. Early complete = early II. <strong>Rolling admissions — this compounds.</strong></div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">MID-JUL</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600">Secondary release starts. <strong>14-day turnaround.</strong> Pre-write all 4 essays + reapplicant essay by July 1. No secondary screen — every verified app gets one.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">AUG 31</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600"><strong>LOR deadline</strong> — all letters received by this date.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">AUG 19-21</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600">First II wave (based on last-cycle pattern). Waves continue mid-Sept and through Oct.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">OCT 1</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600"><strong>AMCAS hard deadline.</strong> (Your target is ~4 months earlier.)</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">SEP-FEB</div>
+                    <div class="text-[10px] text-gray-400">2026-27</div>
+                  </div>
+                  <div class="text-xs text-gray-600">Interview season. Mondays &amp; Thursdays.</div>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3 border border-rose-50 shadow-soft">
+                  <div class="shrink-0 w-16 text-center">
+                    <div class="text-[10px] font-bold text-rose-400">OCT 15+</div>
+                    <div class="text-[10px] text-gray-400">2026</div>
+                  </div>
+                  <div class="text-xs text-gray-600">Acceptances start rolling out (by phone call). Runs through early April.</div>
+                </div>
+              </div>
+              <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-xl p-3 border border-rose-100">
+                  <div class="text-[10px] font-bold text-rose-500 uppercase tracking-wide">F-1/OPT Policy (verbatim)</div>
+                  <p class="text-[11px] text-gray-600 mt-1 italic">"Non-US citizens with visa types F-1, H-1, J, etc., are not eligible to apply as NC residents (but may apply as a non-resident) and are not eligible for federal loans or grants."</p>
+                  <p class="text-[10px] text-gray-400 mt-1">Source: med.unc.edu/admit/faqs</p>
+                </div>
+                <div class="bg-gradient-to-br from-lavender-50 to-rose-50 rounded-xl p-3 border border-lavender-100">
+                  <div class="text-[10px] font-bold text-rose-500 uppercase tracking-wide">What This Means</div>
+                  <p class="text-[11px] text-gray-600 mt-1">Canadian BS from UNC is fully accepted. You apply OOS. No escrow amount is published — but I-20 issuance will require proof of funds post-acceptance. Private loans likely need US cosigner. <strong>Flag with family NOW.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Items This Week -->
+          <div class="border-2 border-rose-300 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50/40 to-yellow-50/40">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-800 flex items-center gap-2"><span class="text-lg">&#128293;</span> Action Items — This Week</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <p class="text-xs text-gray-500 mb-3 italic">Direct, high-leverage moves. Do these first — every one creates a paper trail, a contact, or a citable fact for your secondary.</p>
+              <div class="space-y-2">
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">1</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Attend Tuesday 9am EST Virtual Office Hours</div>
+                    <p class="text-xs text-gray-500 mt-1">No signup — just join the Zoom. Ask: (a) "For F-1 admits, what I-20 financial docs are required?" (b) "Are institutional scholarships open to international admits?"</p>
+                    <a href="https://www.med.unc.edu/admit/requirements/virtual-office-hours/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 mt-2 text-[11px] font-bold text-rose-500 hover:text-rose-600">Get Zoom Link &rarr;</a>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">2</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email somfinaid@listserv.med.unc.edu</div>
+                    <p class="text-xs text-gray-500 mt-1">Confirm international-student scholarship eligibility in writing.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">3</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email admissions@med.unc.edu</div>
+                    <p class="text-xs text-gray-500 mt-1">Formal ask: I-20 / escrow documentation requirements for F-1 admits. Also ask: has UNC SOM matriculated an F-1/OPT student in the past 5 cycles? That answer alone shapes strategy.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">4</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email rds@ncseaa.edu (NCSEAA)</div>
+                    <p class="text-xs text-gray-500 mt-1">Get written confirmation that OPT holders can't establish NC residency. Paper trail if asked in interview.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">5</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Email medalum@med.unc.edu (Alumni Office)</div>
+                    <p class="text-xs text-gray-500 mt-1">Request student-ambassador pairing as UNC 2025 alum. Alumni status is a real asset few reapplicants have.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">6</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Send Email #1 — Dr. Mara Buchbinder</div>
+                    <p class="text-xs text-gray-500 mt-1">Highest-leverage single email at UNC. Social Medicine chair + med anthropologist. See Outreach Templates below.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">7</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Log in to AAMC MSAR</div>
+                    <p class="text-xs text-gray-500 mt-1">Pull UNC's exact international matriculation data for the last 5 years. Document before writing the international paragraph of secondaries.</p>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-soft flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-full bg-rose-400 text-white flex items-center justify-center text-xs font-bold">8</div>
+                  <div class="flex-1">
+                    <div class="text-sm font-bold text-gray-800">Draft reapplicant essay (200 words)</div>
+                    <p class="text-xs text-gray-500 mt-1">Frame: before (research + aspiration) &rarr; pivot (Aug 2025 Medi-Weightloss) &rarr; what changed (1 specific Charlotte patient story) &rarr; why UNC. Cut adjectives ruthlessly.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sources -->
+          <div class="border border-gray-100 rounded-2xl overflow-hidden bg-gray-50/30">
+            <button onclick="toggleAccordion(this)" class="accordion-head w-full flex items-center justify-between px-5 py-4 text-left">
+              <span class="font-bold text-gray-600 flex items-center gap-2"><span class="text-lg">&#128279;</span> Sources &amp; References</span>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body px-5 pb-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] mt-1">
+                <a href="https://www.med.unc.edu/admit/faqs/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">UNC Admissions FAQ</a>
+                <a href="https://www.med.unc.edu/admit/requirements/virtual-office-hours/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Virtual Office Hours</a>
+                <a href="https://www.med.unc.edu/md/curriculum/campus-profiles/charlotte-campus/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Charlotte Campus Profile</a>
+                <a href="https://www.med.unc.edu/md/curriculum/opportunities-and-programs/scholarly-concentrations/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Scholarly Concentrations (all 12)</a>
+                <a href="https://news.unchealthcare.org/2025/11/dr-cristy-page-named-ceo-of-unc-health-dean-of-unc-school-of-medicine/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Cristy Page named Dean (Nov 2025)</a>
+                <a href="https://www.medcmp.com/university-of-north-carolina-school-of-medicine/statistics-by-year/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Class of 2029 statistics</a>
+                <a href="https://forums.studentdoctor.net/threads/2025-2026-u-north-carolina-chapel-hill.1507985/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">SDN 2025-2026 UNC Thread</a>
+                <a href="https://blog.accepted.com/unc-medical-school-secondary-application-essay-tips/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Accepted.com UNC Secondary Tips</a>
+                <a href="https://www.med.unc.edu/md/admissions/how-to-apply/admissions-requirements/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Admissions Requirements</a>
+                <a href="https://www.med.unc.edu/socialmed/directory/mara-buchbinder/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Mara Buchbinder (Social Medicine Chair)</a>
+                <a href="https://www.med.unc.edu/obgyn/people/chemtai-mungo/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Dr. Chemtai Mungo (Global Women's Health)</a>
+                <a href="https://www.med.unc.edu/shac/about-the-clinic/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">SHAC (Student Free Clinic)</a>
+                <a href="https://www.med.unc.edu/inclusion/programs-initiatives/kenan-primary-care-medical-scholars-urban/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">Kenan Urban Primary Care Scholars</a>
+                <a href="https://globalhealth.unc.edu/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">UNC Institute for Global Health (IGHID)</a>
+                <a href="https://www.ncresidency.org/tuition-benefits/" target="_blank" rel="noopener" class="text-rose-400 hover:text-rose-600 hover:underline">NC Residency Determination Service</a>
               </div>
             </div>
           </div>
