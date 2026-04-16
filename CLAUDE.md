@@ -47,13 +47,16 @@ Srishti Med School /
 |-------|------|------|----------|
 | **Cosmo** | `schools.html` | Audits MD schools — reapply vs cut. Provides essay strategy + outreach per school. | `agents/COSMO.md` |
 | **Wanda** | `unc.html` | Deep dives into priority schools. 6-section plans: Why Belong, Programs, People, Essays, Templates, Interview. | `agents/WANDA.md` |
-| **Mr. Crocker** | `do-schools.html` | Scouts Canadian-friendly DO schools. AACOMAS logistics, osteopathic framing. | `agents/MR_CROCKER.md` |
+| **Mr. Crocker** | `do-schools.html` | Dual-track scout: Canadian-friendly **MD + DO** schools outside Cosmo's core list, plus "Investigated & Cut" callout for documented dealbreakers. AACOMAS/AMCAS logistics, osteopathic framing. | `agents/MR_CROCKER.md` |
 | **Vicky** | `vicky.html` | Srishti's personal bestie. Cross-agent context + pep talks, reality checks, journal replies, daily vibes. | `agents/VICKY.md` |
 
 ### How schools flow between agents
-1. **Cosmo** audits MD schools → determines reapply vs cut
-2. **Mr. Crocker** discovers DO schools → ranks by Canadian-friendliness
-3. On either page, Rajat clicks **"Plan for Wanda"** to queue a school for a deep dive
+1. **Cosmo** audits Srishti's cycle-1 MD list → determines reapply vs cut vs promoted vs reach
+2. **Mr. Crocker** dual-track scouts:
+   - **DO track** — Canadian-friendly DO schools, ranked by Canadian-friendliness
+   - **MD track** — new MD candidates outside Cosmo's core 12 (e.g., Howard, Sinai, Vanderbilt)
+   - **Cut track** — documented dealbreakers (e.g., MUSC, USC Greenville) so no one re-researches them
+3. On either page, Rajat clicks **"Plan for Wanda"** to queue a school for a deep dive. The queue item carries `type: 'MD' | 'DO'` so Wanda renders the right color chip.
 4. **Wanda** picks up schools from the Research Queue and runs full deep dives
 5. Deep dive results appear as full-screen modals on Wanda's page with tasks + notes
 
@@ -125,7 +128,7 @@ All user data syncs to **Supabase** via `sync.js`:
 
 **Cosmo (schools.html):** Add object to `allSchools` array. See `agents/COSMO.md` for field format.
 
-**Mr. Crocker (do-schools.html):** Add object to `doSchools` array. See `agents/MR_CROCKER.md` for field format.
+**Mr. Crocker (do-schools.html):** Add object to `doSchools` array (DO track) OR `mdSchools` array (MD track). Same shape for both; the arrays only differ in which section renders them. See `agents/MR_CROCKER.md` for field format and the Cut-callout pattern.
 
 **Wanda (unc.html):** Follow `WANDA_SCHOOL_TEMPLATE.md` exactly:
 1. Add object to `wandaSchools` array

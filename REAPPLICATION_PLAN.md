@@ -84,18 +84,44 @@ Her 3.88/517 is dramatically above DO medians (~3.5-3.65 GPA, ~504-508 MCAT). Th
 | Priority | School | Location | Their Median | Accepts Canadians? | Why It Fits |
 |----------|--------|----------|-------------|-------------------|-------------|
 | **1** | **MSUCOM** (Michigan State DO) | East Lansing, MI | 3.6 / 507 | **YES — dedicated Canadian Initiative Program with reserved seats (~25/yr) + tuition scholarship** | **THE #1 DO PICK.** Canadian program, Michigan roots (Farmington Hills), scholarship reduces international tuition. Her stats demolish their median. |
-| 2 | **KCU** (Kansas City) | Kansas City, MO | 3.62 / 505 | YES | Canadian-friendly, active COMSA members. Stats way above. |
-| 3 | **NSU-KPCOM** (Nova Southeastern) | Fort Lauderdale, FL | 3.5 / 505 | YES | Strong pediatrics pipeline (one of only 2 community health center-based peds residency programs in the country). Southeast location. |
-| 4 | **LECOM** (Bradenton campus) | Bradenton, FL | ~3.5 / ~505 | YES | Lowest tuition among private DO schools (~$40K/yr). Southeast. Primary care mission. |
-| 5 | **CCOM** (Midwestern - Chicago) | Downers Grove, IL | ~3.6 / 509 | YES | Near Michigan. Peds + OB/GYN core rotations. |
-| 6 | **AZCOM** (Midwestern - Arizona) | Glendale, AZ | ~3.6 / 509 | YES | Canadian-friendly per COMSA. |
-| 7 | **RowanSOM** | Stratford, NJ | 3.70 / 508 | YES | Cultural humility curriculum (Tensegrity) — perfect match for her Med Anth background. |
-| 8 | **WesternU COMP** (Pomona only) | Pomona, CA | 3.67 / 507 | YES (Pomona campus only) | Canadian-friendly. |
-| 9 | **WCUCOM** (William Carey) | Hattiesburg, MS | 3.56 / 504 | YES | #3 nationally for primary care graduates. #4 for health shortage areas. Her stats are dramatically above. |
-| 10 | **UNECOM** (New England) | Biddeford, ME | ~3.6 / ~507 | YES | ~40% from outside New England. Global mission. Holistic review. |
-| 11 | **LUCOM** (Liberty) | Lynchburg, VA | 3.40 / 504 | Likely yes — verify | Closest Canadian-friendly DO to Charlotte (~3.5 hrs). Faith-based environment — confirm she's comfortable. |
+| **2** | **Marian WCOM** (Indianapolis) | Indianapolis, IN | 3.56 / 506 | YES — explicit Canadian acceptance | **NEW from Run 2.** Midwest proximity to Michigan family. Franciscan service mission aligns with Med Anth background. Stats well above median. |
+| 3 | **KCU** (Kansas City) | Kansas City, MO | 3.62 / 505 | YES | Canadian-friendly, active COMSA members. Stats way above. |
+| 4 | **NSU-KPCOM** (Nova Southeastern) | Fort Lauderdale, FL | 3.5 / 505 | YES | Strong pediatrics pipeline (one of only 2 community health center-based peds residency programs in the country). Southeast location. |
+| 5 | **LECOM** (Bradenton campus) | Bradenton, FL | ~3.5 / ~505 | YES | Lowest tuition among private DO schools (~$40K/yr). Southeast. Primary care mission. |
+| 6 | **CCOM** (Midwestern - Chicago) | Downers Grove, IL | ~3.6 / 509 | YES | Near Michigan. Peds + OB/GYN core rotations. |
+| 7 | **RVUCOM** (Rocky Vista) | Parker, CO | 3.60 / 505 | YES — confirmed | **NEW from Run 2.** Military + rural medicine tracks. Holistic medicine emphasis aligns with DO philosophy. |
+| 8 | **AZCOM** (Midwestern - Arizona) | Glendale, AZ | ~3.6 / 509 | YES | Canadian-friendly per COMSA. |
+| 9 | **RowanSOM** | Stratford, NJ | 3.70 / 508 | YES | Cultural humility curriculum (Tensegrity) — perfect match for her Med Anth background. |
+| 10 | **MCOM** (Rocky Mountain / Montana) | Billings, MT | ~3.5 / ~504 | LIKELY YES — verify | **NEW from Run 2.** New school (first class 2023), rural/frontier mission, lower competition. Residency data still maturing. |
+| 11 | **WesternU COMP** (Pomona only) | Pomona, CA | 3.67 / 507 | YES (Pomona campus only) | Canadian-friendly. |
+| 12 | **WCUCOM** (William Carey) | Hattiesburg, MS | 3.56 / 504 | YES | #3 nationally for primary care graduates. #4 for health shortage areas. Her stats are dramatically above. |
+| 13 | **UNECOM** (New England) | Biddeford, ME | ~3.6 / ~507 | YES | ~40% from outside New England. Global mission. Holistic review. |
+| 14 | **LUCOM** (Liberty) | Lynchburg, VA | 3.40 / 504 | Likely yes — verify | Closest Canadian-friendly DO to Charlotte (~3.5 hrs). Faith-based environment — confirm she's comfortable. |
 
-**Total DO schools: 8-11**
+**Total DO schools: 11-14** (3 new from Run 2: Marian WCOM, RVUCOM, MCOM)
+
+---
+
+### MD CANDIDATES — MR. CROCKER SCOUT LIST (Run 2, 2026-04-16)
+
+New MD schools Mr. Crocker scouted outside Cosmo's core 12. All verified Canadian-friendly unless flagged. Priorities reflect profile fit + international policy strength.
+
+| Priority | School | Location | Their Median | Accepts Canadians? | Why It Fits |
+|----------|--------|----------|-------------|-------------------|-------------|
+| **1** | **Howard COM** | Washington, DC | 3.58 / 506 | YES — explicit | **TOP MD ADD.** HBCU mission of serving underserved populations = direct Med Anth alignment. Her stats well above median. Primary care + peds pipeline. Grandfather-in-Surat story lands perfectly. |
+| 2 | **Mount Sinai Icahn** | New York, NY | 3.83 / 519 | YES | Stats align (3.88/517 vs 3.83/519). InFocus global/community health + Center for Multicultural Community Affairs. NYC Indian diaspora. |
+| 3 | **Vanderbilt SOM** | Nashville, TN | 3.89 / 521 | YES | Stretch but not unreachable. Research-heavy (matches Marsico background). Curriculum 2.0 emphasizes cultural competency. Need-based aid for internationals. |
+| 4 | **LSU NOLA** | New Orleans, LA | 3.79 / 510 | **VERIFY — policy not published** | IF Canadian-eligible: primary care + underserved mission, Charity Hospital tradition. Must email admissions before investing. |
+| 5 | **UChicago Pritzker** | Chicago, IL | 3.89 / 520 | YES | Small class (~88), research powerhouse, Bucksbaum Institute. Comer Children's for peds. Midwest = closer to MI family. |
+
+### CUT — INVESTIGATED DEALBREAKERS (Run 2)
+
+| School | Dealbreaker | Source |
+|--------|-------------|--------|
+| **MUSC College of Medicine** (Charleston, SC) | Requires US citizenship or **lawful permanent resident (green card)**. OPT does not qualify. | MUSC admissions eligibility page, confirmed 2026-04-16 |
+| **USC SOM Greenville** (Greenville, SC) | No SEVP I-17 approval → cannot legally issue I-20 to a Canadian citizen. USC Columbia same policy. | USC SOM Greenville international applicant FAQ + SEVP school lookup, confirmed 2026-04-16 |
+
+*Documented here so no one re-researches them. Mirror displayed on Mr. Crocker's dashboard page.*
 
 ---
 
@@ -106,10 +132,14 @@ Her 3.88/517 is dramatically above DO medians (~3.5-3.65 GPA, ~504-508 MCAT). Th
 | MD — Reapply from cycle 1 | 7 | GW, Wayne State, CMU, Sidney Kimmel, Tulane, VCU, Maryland |
 | MD — Promoted/new | 4-5 | Dartmouth, BU, Emory, MSU CHM, + 1-2 TBD |
 | MD — Reach (UNC) | 1 | UNC Chapel Hill |
-| DO — New AACOMAS track | 8-11 | MSUCOM, KCU, NSU, LECOM, CCOM, AZCOM, RowanSOM, WesternU, WCUCOM, UNECOM, LUCOM |
-| **TOTAL** | **20-24** | Balanced, every school verified Canadian-friendly |
+| MD — Mr. Crocker scout list (Run 2) | 4-5 | Howard COM, Mount Sinai Icahn, Vanderbilt, UChicago Pritzker (+ LSU NOLA if verified) |
+| DO — New AACOMAS track | 11-14 | MSUCOM, Marian WCOM, KCU, NSU, LECOM, CCOM, RVUCOM, AZCOM, RowanSOM, MCOM, WesternU, WCUCOM, UNECOM, LUCOM |
+| **CUT** | 2 | MUSC, USC Greenville (dealbreakers documented) |
+| **TOTAL (potential)** | **27-32** | Balanced, every included school verified Canadian-friendly |
 
 vs. Cycle 1: 21 schools, ~half were international-hostile, 0 DO schools. Night and day.
+
+**Note:** Mr. Crocker's MD scout list overlaps zero with Cosmo's reapply list — these are new candidates to consider during final school-list consolidation. Srishti + Rajat pick which to actually add after Wanda deep dives and cost/fit review.
 
 ---
 

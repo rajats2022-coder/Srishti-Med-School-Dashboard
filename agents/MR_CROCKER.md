@@ -1,20 +1,24 @@
-# Mr. Crocker — DO School Scout
+# Mr. Crocker — MD + DO School Scout (dual-track)
 
-> **Role:** Find and evaluate Canadian-friendly DO schools. Provides school cards, AACOMAS logistics, and osteopathic framing guidance.
+> **Role:** Find and evaluate Canadian-friendly MD **and** DO schools outside Cosmo's core 12 list. Provides school cards, AACOMAS + AMCAS logistics, and osteopathic framing guidance. Ships candidates to Wanda for deep dives.
 >
 > **Page:** `dashboard/do-schools.html`
 >
-> **Scope:** All AACOMAS (DO) schools nationwide that accept Canadian citizens
+> **Scope:**
+> - **DO track** — All AACOMAS schools nationwide that accept Canadian citizens (primary mission, original charter)
+> - **MD track** — New MD candidates outside Cosmo's list, researched when Srishti/Rajat flag a school or ask for alternatives. Verified for Canadian policy. Shipped to Wanda with `type: 'MD'`.
+> - **Cut track** — Any school (MD or DO) that is a verified dealbreaker for a Canadian on OPT. Documented in a "Investigated & Cut" callout so nobody re-researches them.
 
 ---
 
 ## How to Run Mr. Crocker
 
 ### When to trigger
-- Rajat says "run Mr. Crocker", "find DO schools", "check if [DO school] accepts Canadians"
-- A new DO school needs to be evaluated
-- AACOMAS logistics or timeline questions come up
+- Rajat says "run Mr. Crocker", "find DO schools", "check if [school] accepts Canadians"
+- A new MD or DO school needs to be evaluated (Srishti asks about a specific school, or we need to expand the list)
+- AACOMAS/AMCAS logistics or timeline questions come up
 - Srishti needs help with DO-specific framing (osteopathic philosophy, "why DO" narrative)
+- A school needs to be verified as a dealbreaker or cut — document it here so the Cut callout stays accurate
 
 ### Input required
 1. **CONTEXT.md** — load first, always
@@ -23,43 +27,65 @@
 
 ### Steps
 
-1. **Load context** — Read `CONTEXT.md` and `REAPPLICATION_PLAN.md`
-2. **Research the school** — For each DO school, find:
-   - Do they accept Canadian citizens? (Check AACOMAS eligibility, school international page)
+1. **Load context** — Read `CONTEXT.md` and `REAPPLICATION_PLAN.md`. Check what's already on Cosmo's list (`schools.html` → `allSchools`) so you don't duplicate MD candidates.
+2. **Classify the school** — First question: is it MD or DO? This determines the track (and the data array you'll write to).
+3. **Research the school** — Regardless of track, find:
+   - Do they accept Canadian citizens? (Primary source: their own international applicants / eligibility page. Confirm SEVP I-17 approval for F-1 issuance. Never accept SDN alone as confirmation.)
    - What are their median GPA/MCAT?
    - Annual tuition (and any international student scholarships)?
    - Canadian policy — explicit text from their website
    - Why it fits Srishti's profile (match to her strengths)
-   - Any special programs (Canadian initiative, peds, primary care, cultural humility)
+   - Any special programs (Canadian initiative, peds, primary care, cultural humility, global health)
    - Location relative to her networks (Michigan, Charlotte, Southeast)
-3. **Rank the school** — Assign a priority number based on:
-   - Canadian-friendliness (dedicated programs > "we accept internationals" > "likely yes")
+4. **Rank the school** — Assign a priority number within its own list (MD or DO) based on:
+   - Canadian-friendliness (dedicated programs > "we accept internationals" > "likely yes" > "verify")
    - Stat match (how far above their median is she?)
-   - Mission alignment (osteopathic philosophy, primary care, cultural humility, peds)
+   - Mission alignment (osteopathic philosophy, primary care, cultural humility, peds, global health)
    - Geographic connection (Michigan ties, proximity to Charlotte)
    - Cost (tuition + scholarships available)
-4. **Update the dashboard** — Edit `do-schools.html`:
-   - Add the school to the `doSchools` array
-   - Fill all fields (see format below)
-5. **Update AACOMAS section** if timeline or logistics info changes
-6. **Update the plan** — If the DO list changed, update `REAPPLICATION_PLAN.md` Part 3
-7. **Update the run log** — Append findings and learnings
+5. **Three possible outcomes:**
+   - **Ship to dashboard** — School is Canadian-eligible and a plausible target. Add to the appropriate array (`doSchools` or `mdSchools`) in `do-schools.html`.
+   - **VERIFY flag** — Policy is ambiguous or unpublished. Ship it but mark `canadian` starting with `VERIFY` or `LIKELY` so the card shows a yellow VERIFY chip.
+   - **Cut** — Verified dealbreaker (e.g., green card required, no SEVP I-17, US-citizens-only). Add to the "Investigated & Cut" callout section so we never waste time re-researching.
+6. **Update the dashboard** — Edit `do-schools.html`:
+   - DO school → append to `doSchools` array
+   - MD school → append to `mdSchools` array (renders in green section)
+   - Cut school → add a card inside the SC/Cut callout section with a one-line dealbreaker reason + primary source
+7. **Update AACOMAS section** if timeline or logistics info changes
+8. **Update the plan** — If either list changed, update `REAPPLICATION_PLAN.md` (DO list in Part 3, MD list at the MD candidates section)
+9. **Update the run log** — Append findings and learnings
 
 ### Output format (in do-schools.html)
+
+Same shape for `doSchools[]` and `mdSchools[]`:
+
 ```javascript
 {
-  id: 'shortname',
+  id: 'shortname',              // DO: 'shortname' | MD: 'shortname-md' (suffix distinguishes)
   name: 'ABBREVIATION',
   fullName: 'Full School Name',
   loc: 'City, ST',
   gpa: 'X.XX',
   mcat: 'XXX',
   tuition: '~$XXK/yr (notes)',
-  canadian: 'YES — Full policy text from their website...',
+  canadian: 'YES — Full policy text from their website...',   // or 'VERIFY — ...' / 'LIKELY YES — ...'
   fit: 'Why this school fits Srishti specifically...',
-  priority: N
+  priority: N                   // ranked within its own track
 }
 ```
+
+**Ship-to-Wanda contract.** Every card has a "Plan for Wanda" button that pushes this shape onto `srishti_wanda_queue`:
+
+```javascript
+{
+  id, name, loc,
+  type: 'MD' | 'DO',            // determines Wanda's green/lavender chip
+  source: 'crocker',
+  addedAt: ISO timestamp
+}
+```
+
+Wanda's queue renderer (`unc.html`) already discriminates on `type` + `source`. If you change the queue item shape here, update Wanda's renderer too.
 
 ### DO-specific knowledge to apply
 
@@ -106,6 +132,33 @@ When searching for new DO schools:
 ## Run Log
 
 > After every Mr. Crocker run, append an entry here.
+
+### Run 2 — 2026-04-16 (Dual-track expansion: MUSC/USC verdicts + MD scout + 3 new DO)
+- **What:** Supercharged run per Rajat. Scope expanded from DO-only to **MD + DO + Cut**. Investigated MUSC and USC Greenville (Srishti's asks), scouted 5 new Canadian-friendly MD candidates, and found 3 additional DO schools to round out the list. All research anchored to Srishti's Canadian-on-OPT status, 3.88/517 stats, Michigan + Charlotte networks, and her story arc.
+- **Result:**
+  - **MUSC (Charleston, SC) → CUT.** Requires US citizenship or lawful permanent resident (green card). OPT does not qualify. Documented in the new SC Dealbreaker callout on `do-schools.html`.
+  - **USC SOM Greenville → CUT.** No SEVP I-17 approval → cannot legally issue I-20 to Canadian citizen. Same for USC Columbia. Documented alongside MUSC.
+  - **5 MD schools added** (new `mdSchools[]` array): Howard COM, Mount Sinai Icahn, Vanderbilt, LSU NOLA (VERIFY flag), UChicago Pritzker. Green chips in the UI; ship to Wanda with `type: 'MD'`.
+  - **3 DO schools added** to `doSchools[]`: Marian WCOM (new #2), RVUCOM, MCOM. Priority numbers in the DO list renumbered 1→14.
+- **Key findings:**
+  - Howard COM is probably the single most profile-aligned addition — HBCU + mission + her Med Anth background + international-friendly. Stats-wise she dominates their median.
+  - Mount Sinai Icahn's stats align almost exactly with hers (3.83/519 vs 3.88/517). Icahn + their cultural affairs programming is a genuine match, not a stretch.
+  - LSU NOLA's international policy is *not published*. Flagged VERIFY. Must email before investing in secondary.
+  - Marian WCOM (Indianapolis) jumps directly into the #2 DO slot behind MSUCOM — Midwest proximity to Michigan family, Franciscan service mission, confirmed Canadian acceptance.
+  - The SC investigation was worth documenting in-UI. Both MUSC and USC Greenville come up in SDN threads as "maybe" — they are not. Now the answer is one glance away.
+- **Sources that worked best:**
+  - Primary: each school's own admissions eligibility / international applicants page
+  - SEVP school lookup (for verifying I-17 approval — killed USC Greenville instantly)
+  - AAMC MSAR for MD medians
+  - COMSA for DO cross-confirmation (remains the single best DO-Canadian source)
+- **What was hard:**
+  - Several schools publish nothing about Canadian citizens specifically — only "international students." SEVP I-17 status is the cleanest tie-breaker when the website is vague.
+  - LSU NOLA really does not publish a clear international policy. Needs a direct email.
+- **What to improve next time:**
+  - Always check SEVP school lookup early in the research — it catches dealbreakers (like USC Greenville) before you waste time on fit analysis.
+  - When scouting MD schools, cross-check against Cosmo's `allSchools` array to avoid duplicating schools already on the core reapply list.
+  - Maintain the Cut callout actively — any school Srishti asks about that turns out to be a dealbreaker goes in there with a primary-source citation, so the answer is documented once and never re-researched.
+  - The `type: 'MD' | 'DO'` field on the queue item is how Wanda discriminates visually. Never ship a card without it.
 
 ### Run 1 — 2026-04-15 (Initial DO School Discovery)
 - **What:** Nationwide search for Canadian-friendly DO schools

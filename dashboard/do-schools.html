@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mr. Crocker's Report — DO Schools</title>
+  <title>Mr. Crocker's Report — MD + DO School Scout</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +78,55 @@
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rosegold to-rose-400 flex items-center justify-center text-white text-xl">&#128218;</div>
         <h1 class="font-display text-3xl sm:text-4xl font-bold text-gray-800">Mr. Crocker's Report</h1>
       </div>
-      <p class="text-gray-500">Canadian-friendly DO schools &mdash; your parallel track to becoming a doctor</p>
+      <p class="text-gray-500">Dual-track scout &mdash; Canadian-friendly <strong class="text-green-600">MD</strong> + <strong class="text-rosegold">DO</strong> schools, ready to ship into Wanda for deep dives.</p>
+      <div class="mt-3 inline-flex items-center gap-4 text-xs">
+        <span class="inline-flex items-center gap-1.5 bg-green-50 text-green-600 px-3 py-1 rounded-full font-bold"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> MD track</span>
+        <span class="inline-flex items-center gap-1.5 bg-lavender-50 text-lavender-300 px-3 py-1 rounded-full font-bold"><span class="w-1.5 h-1.5 rounded-full bg-lavender-300"></span> DO track</span>
+        <span class="inline-flex items-center gap-1.5 bg-red-50 text-red-400 px-3 py-1 rounded-full font-bold"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span> Cut &mdash; dealbreaker</span>
+      </div>
+    </section>
+
+    <!-- MD Schools — New Discoveries -->
+    <section class="mb-8 fade-enter" style="animation-delay:0.05s">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-600 text-xl">&#9876;&#65039;</div>
+        <h2 class="font-display text-2xl font-bold text-gray-800">MD Schools &mdash; New Discoveries</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-5">Fresh MD candidates Mr. Crocker vetted against your Canadian-on-OPT status, stats (3.88 / 517), Michigan + Charlotte networks, and cycle-2 story arc. Ship any into Wanda for a full deep dive.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="md-grid">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- SC Schools — Investigated & Cut -->
+    <section class="mb-10 fade-enter" style="animation-delay:0.1s">
+      <div class="bg-red-50 border border-red-200 rounded-3xl p-6 sm:p-7">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-red-500 text-xl">&#9888;&#65039;</div>
+          <h2 class="font-display text-xl font-bold text-red-700">South Carolina Schools &mdash; Investigated & Cut</h2>
+        </div>
+        <p class="text-sm text-red-700/80 mb-4">You asked about <strong>MUSC</strong> and <strong>USC Greenville</strong>. Mr. Crocker verified both &mdash; neither works for a Canadian on OPT. Documented here so no one loses a week revisiting them.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl p-5 border border-red-100">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-gray-800">MUSC College of Medicine</h3>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-500">CUT</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-3">Charleston, SC &middot; MD</p>
+            <p class="text-sm text-gray-600 mb-2"><strong class="text-red-600">Dealbreaker:</strong> MUSC requires applicants to be US citizens or <strong>lawful permanent residents (green card)</strong>. OPT status does not qualify.</p>
+            <p class="text-xs text-gray-500">Source: MUSC College of Medicine admissions eligibility page. Confirmed April 2026.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-red-100">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-gray-800">USC School of Medicine Greenville</h3>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-500">CUT</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-3">Greenville, SC &middot; MD</p>
+            <p class="text-sm text-gray-600 mb-2"><strong class="text-red-600">Dealbreaker:</strong> USC Greenville is not SEVP-certified to issue I-20s to international students &mdash; they cannot legally admit a Canadian citizen. USC School of Medicine Columbia has the same policy.</p>
+            <p class="text-xs text-gray-500">Source: USC SOM Greenville international applicant FAQ + SEVP school lookup. Confirmed April 2026.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Why DO -->
@@ -262,74 +310,134 @@
         priority: 1
       },
       {
+        id: 'marian', name: 'Marian WCOM', fullName: 'Marian University Wood College of Osteopathic Medicine',
+        loc: 'Indianapolis, IN', gpa: '3.56', mcat: '506', tuition: '~$56K/yr (private, same for all)',
+        canadian: 'YES — Explicitly accepts Canadian citizens. International applicants held to same standards as domestic. Historic Canadian enrollment documented on their international page.',
+        fit: 'NEW #2. Midwest location closer to Michigan family. Catholic/Franciscan mission on service to vulnerable populations aligns with your Med Anth background. Your stats (3.88/517) are well above median. Primary care + rural medicine emphasis fits your narrative.',
+        priority: 2
+      },
+      {
         id: 'kcu', name: 'KCU', fullName: 'Kansas City University College of Osteopathic Medicine',
         loc: 'Kansas City, MO (+ Joplin)', gpa: '3.62', mcat: '505', tuition: 'Same for all (private)',
         canadian: 'YES — International students held to same requirements. Active COMSA (Canadian Osteopathic Medical Students Association) members confirm Canadian student presence.',
         fit: 'Strong apply. Your stats are significantly above median. Private institution so same tuition for all. Two campuses available.',
-        priority: 2
+        priority: 3
       },
       {
         id: 'nsu', name: 'NSU-KPCOM', fullName: 'Nova Southeastern University Dr. Kiran C. Patel College of Osteopathic Medicine',
         loc: 'Fort Lauderdale, FL (+ Clearwater)', gpa: '3.50', mcat: '505', tuition: '~$70K/yr (expensive)',
         canadian: 'YES — International applicants accepted. F-1 visa students work with Office of International Affairs.',
         fit: 'Strong pediatrics pipeline — one of only 2 community health center-based peds residency programs in the country. Southeast location familiar to you. ~380 students/year across both campuses.',
-        priority: 3
+        priority: 4
       },
       {
         id: 'lecom', name: 'LECOM', fullName: 'Lake Erie College of Osteopathic Medicine (Bradenton)',
         loc: 'Bradenton, FL', gpa: '~3.50', mcat: '~505', tuition: '~$40K/yr (LOWEST private tuition)',
         canadian: 'YES — 75% of baccalaureate credits must be from accredited US or Canadian institution (you qualify via UNC).',
         fit: 'Most affordable private DO school. Primary care mission. Southeast location. Largest medical school in the US (~2,200+ across all campuses). Cannot guarantee residency placement for internationals — verify.',
-        priority: 4
+        priority: 5
       },
       {
         id: 'ccom', name: 'CCOM (Midwestern)', fullName: 'Midwestern University Chicago College of Osteopathic Medicine',
         loc: 'Downers Grove, IL (Chicago suburb)', gpa: '~3.60', mcat: '509', tuition: 'Private (same for all)',
         canadian: 'YES — Accepts Canadian applicants.',
         fit: 'Midwest location closer to Michigan family. Core rotations include Pediatrics + OB/GYN. Established program.',
-        priority: 5
+        priority: 6
+      },
+      {
+        id: 'rvucom', name: 'RVUCOM', fullName: 'Rocky Vista University College of Osteopathic Medicine',
+        loc: 'Parker, CO (+ Ivins, UT)', gpa: '3.60', mcat: '505', tuition: '~$58K/yr (private)',
+        canadian: 'YES — Accepts Canadian citizens. International Student Office supports F-1 visa students. Small but confirmed Canadian enrollment.',
+        fit: 'Strong military + rural medicine tracks. Holistic medicine emphasis aligns with osteopathic philosophy. Your stats well above median. New geography but Southwest climate + growing program.',
+        priority: 7
       },
       {
         id: 'azcom', name: 'AZCOM (Midwestern)', fullName: 'Midwestern University Arizona College of Osteopathic Medicine',
         loc: 'Glendale, AZ', gpa: '~3.60', mcat: '509', tuition: 'Private (same for all)',
         canadian: 'YES — Limited number of citizens from countries where DOs can obtain unrestricted licenses. Specifically mentioned as Canadian-friendly by COMSA.',
         fit: 'Canadian-friendly per COMSA. Good stats match. Geographically far from your networks but solid option.',
-        priority: 6
+        priority: 8
       },
       {
         id: 'rowan', name: 'RowanSOM', fullName: 'Rowan-Virtua School of Osteopathic Medicine',
         loc: 'Stratford, NJ', gpa: '3.70', mcat: '508', tuition: '~$74K/yr OOS (expensive)',
         canadian: 'YES — International students can apply.',
         fit: 'The Tensegrity Curriculum specifically focuses on cultural humility — PERFECT match for your Medical Anthropology background. Strong diversity council and organizations.',
-        priority: 7
+        priority: 9
+      },
+      {
+        id: 'mcom', name: 'MCOM', fullName: 'Rocky Mountain University / Montana College of Osteopathic Medicine',
+        loc: 'Billings, MT', gpa: '~3.50', mcat: '~504', tuition: '~$63K/yr (new school)',
+        canadian: 'LIKELY YES — Newer school, accepts international applicants. Small inaugural classes. VERIFY Canadian-specific policy directly before applying.',
+        fit: 'New school (first class 2023) — lower competition curve. Rural/frontier medicine mission. Your stats are far above their median. Flag: early career school so residency placement data still maturing. Consider as mission-aligned stretch.',
+        priority: 10
       },
       {
         id: 'westernu', name: 'WesternU COMP', fullName: 'Western University of Health Sciences COMP',
         loc: 'Pomona, CA (Pomona campus ONLY)', gpa: '3.67', mcat: '507', tuition: 'Private (expensive ~$490K total)',
         canadian: 'YES — But ONLY the Pomona campus (NOT COMP-Northwest). Requires 90 semester units from accredited US/Canadian institution.',
         fit: 'Canadian-friendly at Pomona campus only. Well above their median. California location. Expensive.',
-        priority: 8
+        priority: 11
       },
       {
         id: 'wcucom', name: 'WCUCOM', fullName: 'William Carey University College of Osteopathic Medicine',
         loc: 'Hattiesburg, MS', gpa: '3.56', mcat: '504', tuition: '~$50K/yr',
         canadian: 'YES — Credential evaluation required for foreign transcripts (but you have a US degree from UNC, so straightforward).',
         fit: '#3 nationally for highest % of graduates in primary care. #7 for rural graduates. #4 for health shortage areas. Your stats are dramatically above their median (3.88/517 vs 3.56/504). Strong mission fit.',
-        priority: 9
+        priority: 12
       },
       {
         id: 'unecom', name: 'UNECOM', fullName: 'University of New England College of Osteopathic Medicine',
         loc: 'Biddeford, ME', gpa: '~3.60', mcat: '~507', tuition: 'Private',
         canadian: 'YES — ~40% of class from outside New England, including international locations.',
         fit: 'Holistic admissions considers GPA, MCAT, interview, and lived experiences. Global mission — 4th-year electives can be completed internationally. Good fit for your profile.',
-        priority: 10
+        priority: 13
       },
       {
         id: 'lucom', name: 'LUCOM', fullName: 'Liberty University College of Osteopathic Medicine',
         loc: 'Lynchburg, VA (~3.5 hrs from Charlotte)', gpa: '3.40', mcat: '504', tuition: 'Private',
         canadian: 'LIKELY YES — Accepts international students but "strongly encourages each applicant to investigate licensure requirements." Recent class had 7 international students from 5 countries. VERIFY directly.',
         fit: 'Closest Canadian-friendly DO school to Charlotte. Your stats are dramatically above median. Faith-based university environment — confirm you are comfortable with this. Postgraduate visa sponsorship not guaranteed.',
-        priority: 11
+        priority: 14
+      },
+    ];
+
+    // MD Schools — new discoveries researched by Mr. Crocker (dual-track expansion)
+    const mdSchools = [
+      {
+        id: 'howard-md', name: 'Howard COM', fullName: 'Howard University College of Medicine',
+        loc: 'Washington, DC', gpa: '3.58', mcat: '506', tuition: '~$53K/yr (private)',
+        canadian: 'YES — Howard explicitly welcomes international applicants including Canadian citizens. Historical HBCU mission includes global health equity; Caribbean and African diaspora students enrolled annually.',
+        fit: 'HBCU mission of serving underserved populations aligns directly with your Medical Anthropology training (Hmong, Azande healing systems, cultural humility). Your stats (3.88/517) are well above median — you\'d stand out. Strong primary care + peds pipeline. Your grandfather-in-Surat story lands here.',
+        priority: 1
+      },
+      {
+        id: 'sinai-md', name: 'Mount Sinai Icahn', fullName: 'Icahn School of Medicine at Mount Sinai',
+        loc: 'New York, NY', gpa: '3.83', mcat: '519', tuition: '~$65K/yr (private)',
+        canadian: 'YES — Accepts Canadian citizens. One of the most internationally-friendly top-tier MD programs. F-1 visa sponsorship supported.',
+        fit: 'Your stats match or exceed median (3.88/517 vs 3.83/519). InFocus program in global & community health + Center for Multicultural & Community Affairs = direct Med Anth fit. Strong peds + women\'s health. NYC Indian diaspora community.',
+        priority: 2
+      },
+      {
+        id: 'vandy-md', name: 'Vanderbilt', fullName: 'Vanderbilt University School of Medicine',
+        loc: 'Nashville, TN', gpa: '3.89', mcat: '521', tuition: '~$64K/yr (private, generous aid)',
+        canadian: 'YES — Vanderbilt accepts Canadian citizens. Strong international student support.',
+        fit: 'Stretch but not unreachable (3.88/517 vs 3.89/521). Research-heavy institution matches your Marsico Lung Institute background. Curriculum 2.0 emphasizes cultural competency. Need-based financial aid available to internationals. Southeast geography closer to Charlotte.',
+        priority: 3
+      },
+      {
+        id: 'lsu-nola-md', name: 'LSU NOLA', fullName: 'LSU Health Sciences Center New Orleans School of Medicine',
+        loc: 'New Orleans, LA', gpa: '3.79', mcat: '510', tuition: '~$31K/yr in-state equivalent',
+        canadian: 'VERIFY — LSU NOLA is primarily Louisiana-resident focused. International policy is not clearly published. Must email admissions to confirm Canadian eligibility before investing in application.',
+        fit: 'IF Canadian-eligible: strong primary care + underserved mission, Charity Hospital tradition of serving uninsured, relatively low public-school tuition. Gulf Coast cultural diversity. FLAG: confirm international status before adding to final list.',
+        priority: 4
+      },
+      {
+        id: 'pritzker-md', name: 'UChicago Pritzker', fullName: 'The University of Chicago Pritzker School of Medicine',
+        loc: 'Chicago, IL', gpa: '3.89', mcat: '520', tuition: '~$64K/yr (private)',
+        canadian: 'YES — Pritzker accepts Canadian citizens. Financial aid available to internationals on need basis.',
+        fit: 'Small class (~88), research powerhouse, Bucksbaum Institute for Clinical Excellence. South Side community engagement fits your Med Anth framing. Pediatric oncology strength (Comer Children\'s). Midwest = closer to Michigan family. Reach given MCAT 520 median but your profile is genuinely competitive.',
+        priority: 5
       },
     ];
 
@@ -338,12 +446,13 @@
       try { return JSON.parse(localStorage.getItem('srishti_wanda_queue') || '[]'); } catch(e) { return []; }
     }
     function isInWandaQueue(id) { return getWandaQueue().some(s => s.id === id); }
-    function addToWandaQueue(id, name, loc) {
+    function addToWandaQueue(id, name, loc, type) {
       const queue = getWandaQueue();
       if (queue.some(s => s.id === id)) return;
-      queue.push({ id, name, loc, type: 'DO', source: 'crocker', addedAt: new Date().toISOString() });
+      queue.push({ id, name, loc, type: type || 'DO', source: 'crocker', addedAt: new Date().toISOString() });
       syncWandaQueue(queue);
       renderDOCards();
+      renderMDCards();
     }
 
     function renderDOCards() {
@@ -355,6 +464,7 @@
           <div class="bg-white rounded-2xl p-5 border ${isMSU ? 'border-rosegold/30 ring-2 ring-rosegold/20' : 'border-rose-50'} shadow-soft hover:shadow-card cursor-pointer transition-all duration-300 hover:-translate-y-0.5" onclick="openModal('${s.id}')">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-bold px-2.5 py-1 rounded-full ${isMSU ? 'bg-rosegold/10 text-rosegold' : 'bg-lavender-50 text-lavender-300'}">#${s.priority} ${isMSU ? '&#127775;' : ''}</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-lavender-50 text-lavender-300">DO</span>
             </div>
             <h3 class="font-display text-lg font-bold text-gray-800 mb-1">${s.name}</h3>
             <p class="text-xs text-gray-400 mb-3">${s.loc}</p>
@@ -363,7 +473,37 @@
               <div><span class="text-gray-400">MCAT</span> <span class="font-bold text-green-500">${s.mcat}</span></div>
             </div>
             <p class="text-xs text-gray-500 line-clamp-2">${s.fit}</p>
-            <button onclick="event.stopPropagation(); addToWandaQueue('${s.id}', '${s.name.replace(/'/g, "\\'")}', '${s.loc.replace(/'/g, "\\'")}')" class="mt-3 w-full py-2 rounded-xl text-xs font-bold transition-all ${queued ? 'bg-lavender-100 text-lavender-300 cursor-default' : 'bg-gradient-to-r from-lavender-200 to-lavender-300 text-white hover:opacity-90 active:scale-[0.98]'}">
+            <button onclick="event.stopPropagation(); addToWandaQueue('${s.id}', '${s.name.replace(/'/g, "\\'")}', '${s.loc.replace(/'/g, "\\'")}', 'DO')" class="mt-3 w-full py-2 rounded-xl text-xs font-bold transition-all ${queued ? 'bg-lavender-100 text-lavender-300 cursor-default' : 'bg-gradient-to-r from-lavender-200 to-lavender-300 text-white hover:opacity-90 active:scale-[0.98]'}">
+              ${queued ? '&#10003; Queued for Wanda' : '&#9829; Plan for Wanda'}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderMDCards() {
+      const grid = document.getElementById('md-grid');
+      if (!grid) return;
+      grid.innerHTML = mdSchools.map(s => {
+        const queued = isInWandaQueue(s.id);
+        const isVerify = s.canadian.startsWith('VERIFY') || s.canadian.startsWith('LIKELY');
+        return `
+          <div class="bg-white rounded-2xl p-5 border ${isVerify ? 'border-yellow-200 ring-2 ring-yellow-100' : 'border-green-100'} shadow-soft hover:shadow-card cursor-pointer transition-all duration-300 hover:-translate-y-0.5" onclick="openModal('${s.id}')">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-green-50 text-green-600">#${s.priority}</span>
+              <div class="flex gap-1.5">
+                ${isVerify ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">VERIFY</span>' : ''}
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-600">MD</span>
+              </div>
+            </div>
+            <h3 class="font-display text-lg font-bold text-gray-800 mb-1">${s.name}</h3>
+            <p class="text-xs text-gray-400 mb-3">${s.loc}</p>
+            <div class="flex gap-3 text-sm mb-3">
+              <div><span class="text-gray-400">GPA</span> <span class="font-bold text-green-500">${s.gpa}</span></div>
+              <div><span class="text-gray-400">MCAT</span> <span class="font-bold text-green-500">${s.mcat}</span></div>
+            </div>
+            <p class="text-xs text-gray-500 line-clamp-2">${s.fit}</p>
+            <button onclick="event.stopPropagation(); addToWandaQueue('${s.id}', '${s.name.replace(/'/g, "\\'")}', '${s.loc.replace(/'/g, "\\'")}', 'MD')" class="mt-3 w-full py-2 rounded-xl text-xs font-bold transition-all ${queued ? 'bg-green-100 text-green-600 cursor-default' : 'bg-gradient-to-r from-green-400 to-green-500 text-white hover:opacity-90 active:scale-[0.98]'}">
               ${queued ? '&#10003; Queued for Wanda' : '&#9829; Plan for Wanda'}
             </button>
           </div>
@@ -372,12 +512,18 @@
     }
 
     function openModal(id) {
-      const s = doSchools.find(x => x.id === id);
+      const s = doSchools.find(x => x.id === id) || mdSchools.find(x => x.id === id);
       if (!s) return;
-      const notes = localStorage.getItem('srishti_do_notes_' + id) || '';
+      const isMD = mdSchools.some(x => x.id === id);
+      const notesKey = isMD ? 'srishti_md_notes_' + id : 'srishti_do_notes_' + id;
+      const notes = localStorage.getItem(notesKey) || '';
       document.getElementById('modal-content').innerHTML = `
         <div class="flex items-center justify-between mb-6">
           <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${isMD ? 'bg-green-100 text-green-600' : 'bg-lavender-50 text-lavender-300'}">${isMD ? 'MD' : 'DO'}</span>
+              <span class="text-xs text-gray-400">#${s.priority}</span>
+            </div>
             <h2 class="font-display text-2xl font-bold text-gray-800">${s.fullName}</h2>
             <p class="text-sm text-gray-400">${s.loc}</p>
           </div>
@@ -417,7 +563,7 @@
         </div>
         <div class="border-t border-rose-50 pt-4">
           <h3 class="font-bold text-sm text-gray-800 mb-2">Notes</h3>
-          <textarea id="notepad-do-${id}" placeholder="Your notes about ${s.name}..." class="w-full h-32 p-4 rounded-xl border border-rose-100 text-sm focus:outline-none focus:border-rose-300 resize-none" oninput="syncNote('srishti_do_notes_${id}', this.value)">${notes}</textarea>
+          <textarea id="notepad-${isMD ? 'md' : 'do'}-${id}" placeholder="Your notes about ${s.name}..." class="w-full h-32 p-4 rounded-xl border border-rose-100 text-sm focus:outline-none focus:border-rose-300 resize-none" oninput="syncNote('${notesKey}', this.value)">${notes}</textarea>
           <p class="text-xs text-gray-300 mt-1">Auto-saved to your browser</p>
         </div>
       `;
@@ -432,6 +578,7 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+    renderMDCards();
     renderDOCards();
   </script>
   <script src="vicky-widget.js" defer></script>
