@@ -93,5 +93,23 @@ function syncNote(noteKey, value) {
   }, 1000); // Debounce 1 second
 }
 
+// Save school tasks (from Wanda page) — debounced
+let _schoolTaskTimer;
+function syncSchoolTasks(allTasks) {
+  localStorage.setItem('srishti_school_tasks', JSON.stringify(allTasks));
+  clearTimeout(_schoolTaskTimer);
+  _schoolTaskTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'school_tasks', value: allTasks, updated_at: new Date().toISOString() })
+      });
+    } catch (e) {
+      console.log('School tasks sync failed (offline mode):', e.message);
+    }
+  }, 1000);
+}
+
 // Load on page init
 syncLoad();

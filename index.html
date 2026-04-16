@@ -152,6 +152,7 @@
           <h2 class="font-display text-xl font-bold text-gray-800">Today's Tasks</h2>
         </div>
         <div class="space-y-3" id="tasks-container">
+          <!-- General tasks (hardcoded) -->
           <div class="flex items-start gap-3">
             <input type="checkbox" id="task-0" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-0">
             <label for="task-0" class="text-sm text-gray-700 leading-snug cursor-pointer">Email <strong>Dr. Stephen Schworer</strong> — PI reconnection at Marsico Lung Institute</label>
@@ -180,6 +181,8 @@
             <input type="checkbox" id="task-6" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-6">
             <label for="task-6" class="text-sm text-gray-700 leading-snug cursor-pointer">Cold-reach <strong>Dr. C</strong> for physician LOR</label>
           </div>
+          <!-- School-specific tasks injected here by JS -->
+          <div id="school-tasks-inject"></div>
         </div>
         <div class="mt-4 pt-4 border-t border-rose-50">
           <div class="flex items-center justify-between text-sm">
@@ -336,12 +339,77 @@
       });
     });
     function updateProgress() {
-      const total = tasks.length;
-      const done = [...tasks].filter(t => t.checked).length;
+      const allChecks = document.querySelectorAll('.task-check');
+      const total = allChecks.length;
+      const done = [...allChecks].filter(t => t.checked).length;
       document.getElementById('tasks-progress').textContent = `${done} / ${total} complete`;
       document.getElementById('tasks-bar').style.width = `${(done / total) * 100}%`;
     }
     updateProgress();
+
+    // === SCHOOL TASKS (from Wanda) ===
+    const schoolNames = { unc: 'UNC' };
+    async function loadSchoolTasks() {
+      let schoolTasks = {};
+      try { schoolTasks = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+
+      // Also try Supabase for latest
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/srishti_dashboard?key=eq.school_tasks&select=value`, { headers: HEADERS });
+        if (res.ok) {
+          const rows = await res.json();
+          if (rows[0]?.value && Object.keys(rows[0].value).length > 0) {
+            schoolTasks = rows[0].value;
+            localStorage.setItem('srishti_school_tasks', JSON.stringify(schoolTasks));
+          }
+        }
+      } catch(e) {}
+
+      const inject = document.getElementById('school-tasks-inject');
+      let html = '';
+      for (const [schoolId, tasks] of Object.entries(schoolTasks)) {
+        const incomplete = tasks.filter(t => !t.done);
+        if (incomplete.length === 0) continue;
+
+        const label = schoolNames[schoolId] || schoolId.toUpperCase();
+        html += `<div class="pt-2 mt-2 border-t border-rose-50"><div class="text-[10px] font-bold text-lavender-300 uppercase tracking-wider mb-2">From ${label} (Wanda)</div></div>`;
+        for (const t of incomplete) {
+          const checkKey = 'school_task_' + t.id;
+          html += `
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="${checkKey}" class="task-check mt-1 w-4 h-4 rounded accent-lavender-300 shrink-0" data-school="${schoolId}" data-taskid="${t.id}" onchange="toggleSchoolTask(this)">
+              <label for="${checkKey}" class="text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
+            </div>`;
+        }
+      }
+      inject.innerHTML = html;
+      updateProgress();
+    }
+
+    function escapeHtml(text) {
+      const d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+
+    async function toggleSchoolTask(el) {
+      const schoolId = el.dataset.school;
+      const taskId = el.dataset.taskid;
+      let schoolTasks = {};
+      try { schoolTasks = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+      const tasks = schoolTasks[schoolId] || [];
+      const task = tasks.find(t => t.id === taskId);
+      if (task) {
+        task.done = el.checked;
+        localStorage.setItem('srishti_school_tasks', JSON.stringify(schoolTasks));
+        syncSchoolTasks(schoolTasks);
+        // Re-render to remove completed tasks from view
+        setTimeout(() => loadSchoolTasks(), 300);
+      }
+      updateProgress();
+    }
+
+    loadSchoolTasks();
 
     // === SCHOOL SPOTLIGHT ===
     const schools = [
