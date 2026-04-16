@@ -85,6 +85,15 @@
     transition: background 0.15s ease, color 0.15s ease;
   }
   .vw-close:hover { background: #FFE5D0; color: #FF7A3D; }
+  .vw-clear {
+    margin-left: auto; background: transparent; border: none;
+    width: 32px; height: 32px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #9ca3af; font-size: 15px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .vw-clear:hover { background: #FFE5D0; color: #FF7A3D; }
+  .vw-clear + .vw-close { margin-left: 0; }
 
   .vw-thread {
     flex: 1; overflow-y: auto; padding: 16px;
@@ -311,6 +320,7 @@
         </div>
         <div class="vw-header-sub">ur bestie &mdash; here on every page 💖</div>
       </div>
+      <button class="vw-clear" id="vw-clear" aria-label="Clear chat" title="clear chat">&#128465;</button>
       <button class="vw-close" id="vw-close" aria-label="Close chat">&times;</button>
     </div>
     <div class="vw-thread" id="vw-thread"></div>
@@ -332,6 +342,7 @@
   const input = panel.querySelector('#vw-input');
   const sendBtn = panel.querySelector('#vw-send');
   const closeBtn = panel.querySelector('#vw-close');
+  const clearBtn = panel.querySelector('#vw-clear');
   const chipsWrap = panel.querySelector('#vw-chips');
   const statusEl = panel.querySelector('#vw-status');
   const dotEl = btn.querySelector('#vw-btn-dot');
@@ -472,6 +483,16 @@
     else openPanel();
   });
   closeBtn.addEventListener('click', closePanel);
+
+  function clearChat() {
+    if (history.length === 0) return;
+    if (!confirm('clear the whole chat with vicky? this wipes it on every device 💔')) return;
+    history = [];
+    saveHistory(history); // also syncs empty [] to Supabase
+    renderThread();
+    input.focus();
+  }
+  clearBtn.addEventListener('click', clearChat);
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && panel.classList.contains('vw-open')) closePanel();

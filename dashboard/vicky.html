@@ -250,6 +250,7 @@
           <h2 class="font-display text-xl font-bold text-gray-800">Dear Vicky</h2>
           <span class="text-xs text-gray-400 ml-2">vent, brag, spiral, ask &mdash; i'm listening</span>
           <span id="brain-indicator" class="ml-auto text-xs font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-400">brain: checking...</span>
+          <button id="journal-clear" title="clear chat" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-50 text-gray-400 hover:bg-rose-50 hover:text-rose-500 transition-colors border border-gray-100">&#128465; clear</button>
         </div>
         <textarea id="journal-input" placeholder="what's up bestie... tell me everything, or ask me anything" rows="4" class="w-full bg-peach-50 border border-peach-100 rounded-2xl p-4 text-sm text-gray-700 placeholder-gray-400 resize-none"></textarea>
         <div class="flex items-center justify-between mt-3">
@@ -697,6 +698,21 @@
     journalInput.value = localStorage.getItem('srishti_vicky_journal_draft') || '';
     journalInput.addEventListener('input', () => {
       localStorage.setItem('srishti_vicky_journal_draft', journalInput.value);
+    });
+
+    // Clear chat — wipes local + Supabase
+    const journalClear = document.getElementById('journal-clear');
+    journalClear.addEventListener('click', () => {
+      if (journalEntries.length === 0) return;
+      if (!confirm('clear the whole Dear Vicky thread? this wipes it on every device 💔')) return;
+      journalEntries = [];
+      localStorage.setItem('srishti_vicky_journal', JSON.stringify(journalEntries));
+      if (typeof syncVickyJournal === 'function') {
+        syncVickyJournal(journalEntries);
+      }
+      renderJournalThread();
+      journalStatus.textContent = 'cleared 🧼 fresh start bestie';
+      setTimeout(() => { journalStatus.textContent = "autosaves to ur bestie notebook 💖"; }, 2500);
     });
 
     // ============================================================
