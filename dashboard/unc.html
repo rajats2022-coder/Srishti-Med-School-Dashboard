@@ -2883,8 +2883,12 @@ AAMC ID: 16418230</div>
 
       // Auto-remove any queued school whose deep dive is already done (full plan or CUT).
       // Wanda's post-flight contract: once a school enters wandaSchools, it leaves the queue.
-      const researched = wandaSchools.map(s => s.id);
-      const cleaned = queue.filter(s => !researched.includes(s.id));
+      // Match on id OR normalized name — Crocker and Wanda have drifted on ids before
+      // (e.g. "lsu-nola-md" vs "lsu-nola"); name-match is the safety net.
+      const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const researchedIds = new Set(wandaSchools.map(s => s.id));
+      const researchedNames = new Set(wandaSchools.map(s => norm(s.name)));
+      const cleaned = queue.filter(s => !researchedIds.has(s.id) && !researchedNames.has(norm(s.name)));
       if (cleaned.length !== queue.length) {
         syncWandaQueue(cleaned);
         queue = cleaned;
