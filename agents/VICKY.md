@@ -121,3 +121,28 @@ Vicky is Srishti's **girl-girl bestie**. Younger-ish Gen Z best-friend energy. R
   - Add more variety to the message pools so rotation feels fresh across weeks
   - When a task gets checked off in index.html, trigger a Vicky celebration message next time she loads (cross-page celebration)
   - Consider a "bestie streak" counter — days in a row Srishti opened the dashboard
+
+### Run 2 — 2026-04-16 (Cross-page widget + Vercel brain)
+- **What:** Vicky becomes a floating chat bubble on every page AND her brain starts working on the deployed Vercel site (not just localhost). Two new files: `dashboard/api/vicky-chat.js` (Vercel serverless function mirroring `callVicky()` from `serve.mjs`) and `dashboard/vicky-widget.js` (self-injecting floating bubble + chat panel). Script tag added to `index.html`, `schools.html`, `unc.html`, `do-schools.html` — skipped on `vicky.html` (full chat already there).
+- **Result:** Vicky is now reachable from anywhere Srishti is on the dashboard. Floating bottom-right bubble → slide-out chat panel → real Groq-backed replies that know which page she's on, how many tasks she's done today, how many days until AMCAS submit, and what's in Wanda's queue. Chat history persists to Supabase via new `vicky_widget_chat` key (with `srishti_vicky_widget_chat` localStorage). Local test on `localhost:3006`: widget mounts on all four pages, real reply came back in under a second ("omg, bestie, you're on the dashboard page, where all your tasks and school research are laid out! ✨"), history carries across page navigation.
+- **Key findings:**
+  - GROQ_API_KEY env var was already set in Vercel project settings, so the serverless function should work on first deploy
+  - Serverless function uses CommonJS (`module.exports = async function handler`) since there's no `package.json` — keeps it zero-config on Vercel
+  - Widget is vanilla JS, zero dependencies, scoped CSS prefixed with `.vw-` so nothing collides with existing Tailwind classes
+  - Context collection is cheap: reads `srishti_task-*` localStorage keys, `srishti_wanda_queue`, computes days-until-June-1, maps pathname → page name. Sends all of it as `dashState` on every message.
+  - Widget maps `role: 'vicky' | 'user'` → OpenAI `role: 'assistant' | 'user'` when building the history payload
+- **Key decisions:**
+  - **Duplicated SRISHTI_PROFILE + VICKY_SYSTEM into the serverless function** instead of extracting a shared module. Two strings, small file, Vercel's import-path resolution isn't worth the gymnastics.
+  - **New Supabase key `vicky_widget_chat`** separate from `vicky_journal`. Widget chat is fast/texty, journal is deliberate/long-form — different UX, different data.
+  - **Short-reply mode:** added a `MODE_NOTES.ask` entry that says "widget context, 1-2 sentences, no scrolling" so widget replies stay tight vs. journal replies which can breathe.
+  - **visibilitychange re-ping** — when Srishti tabs back in (e.g., after a Vercel redeploy finishes), the brain indicator re-checks itself automatically.
+  - Skipped vicky.html on purpose — the full page already has everything the widget does and more.
+- **Sources that worked:**
+  - Vercel Node.js runtime docs (req.body auto-parsing for JSON content-types)
+  - Existing `serve.mjs` `callVicky()` — copied structure verbatim, changed only the handler signature
+- **What to improve next time:**
+  - Widget doesn't announce a new page change — if she switches pages while the panel is closed, Vicky could nudge ("ok u opened wanda — want the queue summary?"). Proactive mode.
+  - No "typing" indicator on `brain: checking` state; it just shows the offline dot. Could animate a pulsing dot.
+  - Mobile: when the keyboard opens, the panel can overlap. Needs `env(safe-area-inset-bottom)` + keyboard-resize handling next pass.
+  - Consider rate-limiting: if she smashes send 10 times, we flood Groq. Simple client-side debounce would fix.
+  - Page-specific context could be richer (e.g., on unc.html, include the currently-expanded school modal id) — punted for now, keep it simple.

@@ -39,6 +39,10 @@ async function syncLoad() {
         if (Array.isArray(row.value) && row.value.length > 0) {
           localStorage.setItem('srishti_vicky_journal', JSON.stringify(row.value));
         }
+      } else if (row.key === 'vicky_widget_chat') {
+        if (Array.isArray(row.value) && row.value.length > 0) {
+          localStorage.setItem('srishti_vicky_widget_chat', JSON.stringify(row.value));
+        }
       }
     }
   } catch (e) {
@@ -147,6 +151,24 @@ function syncVickyJournal(entries) {
       });
     } catch (e) {
       console.log('Vicky journal sync failed (offline mode):', e.message);
+    }
+  }, 800);
+}
+
+// Save Vicky widget chat history (debounced) — cross-page floating bestie widget
+let _vickyWidgetTimer;
+function syncVickyWidgetChat(history) {
+  localStorage.setItem('srishti_vicky_widget_chat', JSON.stringify(history));
+  clearTimeout(_vickyWidgetTimer);
+  _vickyWidgetTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'vicky_widget_chat', value: history, updated_at: new Date().toISOString() })
+      });
+    } catch (e) {
+      console.log('Vicky widget chat sync failed (offline mode):', e.message);
     }
   }, 800);
 }
