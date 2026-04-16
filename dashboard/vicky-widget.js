@@ -1,7 +1,7 @@
 // Vicky Widget — floating cross-page chatbot for Srishti's dashboard.
 // Include on any page (except vicky.html, which has the full chat).
 // Talks to /api/vicky-chat — works on localhost:3006 (via serve.mjs)
-// AND on Vercel-deployed site (via dashboard/api/vicky-chat.js).
+// AND on Vercel-deployed site (via /api/vicky-chat.js at project root).
 //
 // New localStorage key: `srishti_vicky_widget_chat`
 // New Supabase key:     `vicky_widget_chat`  (sync via syncVickyWidgetChat in sync.js)
