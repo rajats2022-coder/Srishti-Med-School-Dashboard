@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srishti's Med School Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: { 50: '#FFF0F5', 100: '#FFE4EF', 200: '#FFB6D3', 300: '#FF87B2', 400: '#FF69B4', 500: '#FF1493', 600: '#DB0A7B', 700: '#A3085C' },
+            blush: '#FFF5F7',
+            cream: '#FFFAF5',
+            lavender: { 50: '#F8F5FF', 100: '#EDE6FF', 200: '#DBC9FF', 300: '#C4A6FF' },
+            rosegold: '#B76E79',
+            mint: '#E8FFF5',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Quicksand', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 2px 20px rgba(255, 105, 180, 0.12)',
+            'card': '0 4px 24px rgba(255, 105, 180, 0.10)',
+            'glow': '0 0 30px rgba(255, 20, 147, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { scrollbar-width: thin; scrollbar-color: #FFB6D3 transparent; }
+    body { font-family: 'Quicksand', sans-serif; }
+    .polka-bg {
+      background-image: radial-gradient(circle, #FFB6D3 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .polka-bg-subtle {
+      background-image: radial-gradient(circle, rgba(255,182,211,0.3) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .polka-bg-large {
+      background-image: radial-gradient(circle, rgba(255,105,180,0.08) 3px, transparent 3px);
+      background-size: 48px 48px;
+    }
+    .fade-enter { animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    .shimmer-text {
+      background: linear-gradient(90deg, #FF69B4, #C4A6FF, #FF69B4);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    .slide-in { animation: slideIn 0.4s ease-out; }
+    .stat-pill { backdrop-filter: blur(10px); }
+    @keyframes pulse-soft { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,105,180,0.3); } 50% { box-shadow: 0 0 0 8px rgba(255,105,180,0); } }
+    .pulse-ring { animation: pulse-soft 2s ease-in-out infinite; }
+    .task-check:checked + label { text-decoration: line-through; color: #ccc; }
+  </style>
+</head>
+<body class="bg-cream min-h-screen">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-rose-100 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-400 to-lavender-200 flex items-center justify-center text-white text-sm font-bold">S</span>
+        <span class="font-display text-lg text-rose-600 hidden sm:block">Med School HQ</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a href="index.html" class="px-3 py-1.5 rounded-full text-sm font-semibold bg-rose-400 text-white">Dashboard</a>
+        <a href="schools.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Cosmo</a>
+        <a href="unc.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Wanda</a>
+        <a href="do-schools.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Mr. Crocker</a>
+      </div>
+      <button id="mobile-nav-btn" class="sm:hidden text-rose-400 text-xl">&#9776;</button>
+    </div>
+  </nav>
+
+  <main class="pt-20 pb-16 px-4 sm:px-6 max-w-6xl mx-auto">
+
+    <!-- Hero greeting -->
+    <section class="text-center mb-10 fade-enter">
+      <div class="inline-block mb-4">
+        <span class="text-5xl float-anim inline-block">&#127800;</span>
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-2">
+        Hi, <span class="shimmer-text">Srishti</span>
+      </h1>
+      <p class="text-gray-500 text-lg font-medium">April 15, 2026 &middot; Let's get you into med school</p>
+    </section>
+
+    <!-- Stats bar -->
+    <section class="mb-10 fade-enter" style="animation-delay: 0.1s">
+      <div class="flex flex-wrap justify-center gap-3">
+        <div class="stat-pill bg-white/80 border border-rose-100 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-soft">
+          <span class="text-rose-400 text-lg">&#127891;</span>
+          <span class="font-bold text-gray-700">cGPA 3.88</span>
+        </div>
+        <div class="stat-pill bg-white/80 border border-rose-100 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-soft">
+          <span class="text-rose-400 text-lg">&#128300;</span>
+          <span class="font-bold text-gray-700">sGPA 3.80</span>
+        </div>
+        <div class="stat-pill bg-white/80 border border-rose-100 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-soft">
+          <span class="text-rose-400 text-lg">&#128170;</span>
+          <span class="font-bold text-gray-700">MCAT 517</span>
+          <span class="text-xs text-gray-400">94th %ile</span>
+        </div>
+        <div class="stat-pill bg-white/80 border border-rose-100 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-soft">
+          <span class="text-rose-400 text-lg">&#127979;</span>
+          <span class="font-bold text-gray-700">UNC Chapel Hill</span>
+          <span class="text-xs text-gray-400">Highest Distinction</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick stats row -->
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 fade-enter" style="animation-delay: 0.15s">
+      <div class="bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl p-5 text-white text-center shadow-card">
+        <div class="text-3xl font-bold">12</div>
+        <div class="text-sm opacity-90 mt-1">MD Schools</div>
+      </div>
+      <div class="bg-gradient-to-br from-lavender-200 to-lavender-300 rounded-2xl p-5 text-white text-center shadow-card">
+        <div class="text-3xl font-bold">11</div>
+        <div class="text-sm opacity-90 mt-1">DO Schools</div>
+      </div>
+      <div class="bg-gradient-to-br from-rosegold to-rose-400 rounded-2xl p-5 text-white text-center shadow-card">
+        <div class="text-3xl font-bold">23</div>
+        <div class="text-sm opacity-90 mt-1">Total Apps</div>
+      </div>
+      <div class="bg-gradient-to-br from-gray-300 to-gray-400 rounded-2xl p-5 text-white text-center shadow-card">
+        <div class="text-3xl font-bold line-through opacity-60">10</div>
+        <div class="text-sm opacity-90 mt-1">Schools Cut</div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+
+      <!-- Today's Tasks -->
+      <div class="lg:col-span-1 bg-white rounded-3xl p-6 shadow-card border border-rose-50 fade-enter" style="animation-delay: 0.2s">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="text-xl">&#9989;</span>
+          <h2 class="font-display text-xl font-bold text-gray-800">Today's Tasks</h2>
+        </div>
+        <div class="space-y-3" id="tasks-container">
+          <!-- General tasks (hardcoded) -->
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-0" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-0">
+            <label for="task-0" class="text-sm text-gray-700 leading-snug cursor-pointer">Email <strong>Dr. Stephen Schworer</strong> — PI reconnection at Marsico Lung Institute</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-1" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-1">
+            <label for="task-1" class="text-sm text-gray-700 leading-snug cursor-pointer">Identify <strong>PA/NP at Medi-Weightloss</strong> for clinical LOR</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-2" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-2">
+            <label for="task-2" class="text-sm text-gray-700 leading-snug cursor-pointer">Register for <strong>AAMC PREview</strong> exam</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-3" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-3">
+            <label for="task-3" class="text-sm text-gray-700 leading-snug cursor-pointer">Start attending <strong>UNC virtual office hours</strong> (Fridays 11 AM)</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-4" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-4">
+            <label for="task-4" class="text-sm text-gray-700 leading-snug cursor-pointer">Find a <strong>DO physician</strong> to shadow</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-5" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-5">
+            <label for="task-5" class="text-sm text-gray-700 leading-snug cursor-pointer">Email <strong>Medical Anthropology professor</strong> — confirm LOR</label>
+          </div>
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="task-6" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-6">
+            <label for="task-6" class="text-sm text-gray-700 leading-snug cursor-pointer">Cold-reach <strong>Dr. C</strong> for physician LOR</label>
+          </div>
+          <!-- School-specific tasks injected here by JS -->
+          <div id="school-tasks-inject"></div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-rose-50">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-gray-400" id="tasks-progress">0 / 7 complete</span>
+            <div class="w-24 h-2 bg-rose-100 rounded-full overflow-hidden">
+              <div id="tasks-bar" class="h-full bg-gradient-to-r from-rose-400 to-rose-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- School Spotlight (rotating) -->
+      <div class="lg:col-span-1 bg-white rounded-3xl p-6 shadow-card border border-rose-50 fade-enter polka-bg-subtle relative overflow-hidden" style="animation-delay: 0.25s">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="text-xl">&#10024;</span>
+          <h2 class="font-display text-xl font-bold text-gray-800">School Spotlight</h2>
+        </div>
+        <div id="spotlight-container" class="min-h-[200px] relative">
+          <!-- Filled by JS -->
+        </div>
+        <div class="flex justify-center gap-1.5 mt-4" id="spotlight-dots">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="lg:col-span-1 bg-white rounded-3xl p-6 shadow-card border border-rose-50 fade-enter" style="animation-delay: 0.3s">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="text-xl">&#128197;</span>
+          <h2 class="font-display text-xl font-bold text-gray-800">Timeline</h2>
+        </div>
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-rose-400 pulse-ring"></div>
+              <div class="w-0.5 h-full bg-rose-200"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-rose-500">April 2026 &larr; NOW</div>
+              <div class="text-xs text-gray-500 mt-0.5">Reconnect with LOR writers. Shadow a DO. Register PREview.</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-rose-300"></div>
+              <div class="w-0.5 h-full bg-rose-200"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-gray-700">May 2026</div>
+              <div class="text-xs text-gray-500 mt-0.5">Draft personal statements. AACOMAS opens. Pre-write secondaries.</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-rose-200"></div>
+              <div class="w-0.5 h-full bg-rose-200"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-gray-700">June 2026</div>
+              <div class="text-xs text-gray-500 mt-0.5">Submit AMCAS within first week. All LORs finalized.</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-rose-100"></div>
+              <div class="w-0.5 h-full bg-rose-200"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-gray-700">July 2026</div>
+              <div class="text-xs text-gray-500 mt-0.5">Complete ALL secondaries. Target: done at every school by mid-July.</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-lavender-200"></div>
+              <div class="w-0.5 h-full bg-lavender-100"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-gray-700">Sept &ndash; Feb 2027</div>
+              <div class="text-xs text-gray-500 mt-0.5">Interview season! Mock MMIs. CCMA update letters if earned.</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-green-300"></div>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-gray-700">Fall 2027</div>
+              <div class="text-xs text-gray-500 mt-0.5">Matriculate! &#127881;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent Cards -->
+    <section class="mb-10 fade-enter" style="animation-delay: 0.35s">
+      <h2 class="font-display text-2xl font-bold text-gray-800 mb-6 text-center">Your Research Agents</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+        <!-- Cosmo -->
+        <a href="schools.html" class="group bg-white rounded-3xl p-6 shadow-card border border-rose-50 hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-500 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-transform">&#9733;</div>
+          <h3 class="font-display text-xl font-bold text-gray-800 mb-1">Cosmo</h3>
+          <p class="text-sm text-gray-500 mb-4">Audited all 21 schools from cycle 1. Sorted into <strong>Reapply</strong> vs <strong>Cut</strong> based on Canadian applicant policies, stat fit, and mission alignment.</p>
+          <div class="flex items-center gap-2 text-rose-400 text-sm font-semibold group-hover:gap-3 transition-all">
+            <span>View School List</span>
+            <span>&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Wanda -->
+        <a href="unc.html" class="group bg-white rounded-3xl p-6 shadow-card border border-lavender-100 hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender-200 to-lavender-300 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-transform">&#9829;</div>
+          <h3 class="font-display text-xl font-bold text-gray-800 mb-1">Wanda</h3>
+          <p class="text-sm text-gray-500 mb-4">Deep dive into <strong>UNC Chapel Hill SOM</strong>. Reapplication strategy, people to reach out to, programs that fit, essay prompts, and outreach templates.</p>
+          <div class="flex items-center gap-2 text-lavender-300 text-sm font-semibold group-hover:gap-3 transition-all">
+            <span>View UNC Plan</span>
+            <span>&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Gus -->
+        <a href="do-schools.html" class="group bg-white rounded-3xl p-6 shadow-card border border-rose-50 hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rosegold to-rose-400 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-transform">&#128218;</div>
+          <h3 class="font-display text-xl font-bold text-gray-800 mb-1">Mr. Crocker</h3>
+          <p class="text-sm text-gray-500 mb-4">Found <strong>11 Canadian-friendly DO schools</strong> nationwide. MSUCOM's Canadian Initiative Program is the #1 pick. Full AACOMAS guide included.</p>
+          <div class="flex items-center gap-2 text-rosegold text-sm font-semibold group-hover:gap-3 transition-all">
+            <span>View DO Schools</span>
+            <span>&rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Motivational footer -->
+    <section class="text-center py-8 polka-bg-large rounded-3xl fade-enter" style="animation-delay: 0.4s">
+      <p class="font-display text-2xl text-gray-700 italic">"Like my grandfather, I hope to become a physician grounded in service and human connection."</p>
+      <p class="text-sm text-gray-400 mt-2">&mdash; From your personal statement</p>
+    </section>
+
+  </main>
+
+  <script src="sync.js"></script>
+  <script>
+    // === TASK PERSISTENCE (synced to Supabase) ===
+    const tasks = document.querySelectorAll('.task-check');
+    tasks.forEach(cb => {
+      const key = 'srishti_' + cb.dataset.key;
+      cb.checked = localStorage.getItem(key) === 'true';
+      cb.addEventListener('change', () => {
+        syncTask(cb.dataset.key, cb.checked);
+        updateProgress();
+      });
+    });
+    function updateProgress() {
+      const allChecks = document.querySelectorAll('.task-check');
+      const total = allChecks.length;
+      const done = [...allChecks].filter(t => t.checked).length;
+      document.getElementById('tasks-progress').textContent = `${done} / ${total} complete`;
+      document.getElementById('tasks-bar').style.width = `${(done / total) * 100}%`;
+    }
+    updateProgress();
+
+    // === SCHOOL TASKS (from Wanda) ===
+    const schoolNames = { unc: 'UNC' };
+    async function loadSchoolTasks() {
+      let schoolTasks = {};
+      try { schoolTasks = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+
+      // Also try Supabase for latest
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/srishti_dashboard?key=eq.school_tasks&select=value`, { headers: HEADERS });
+        if (res.ok) {
+          const rows = await res.json();
+          if (rows[0]?.value && Object.keys(rows[0].value).length > 0) {
+            schoolTasks = rows[0].value;
+            localStorage.setItem('srishti_school_tasks', JSON.stringify(schoolTasks));
+          }
+        }
+      } catch(e) {}
+
+      const inject = document.getElementById('school-tasks-inject');
+      let html = '';
+      for (const [schoolId, tasks] of Object.entries(schoolTasks)) {
+        const incomplete = tasks.filter(t => !t.done);
+        if (incomplete.length === 0) continue;
+
+        const label = schoolNames[schoolId] || schoolId.toUpperCase();
+        html += `<div class="pt-2 mt-2 border-t border-rose-50"><div class="text-[10px] font-bold text-lavender-300 uppercase tracking-wider mb-2">From ${label} (Wanda)</div></div>`;
+        for (const t of incomplete) {
+          const checkKey = 'school_task_' + t.id;
+          html += `
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="${checkKey}" class="task-check mt-1 w-4 h-4 rounded accent-lavender-300 shrink-0" data-school="${schoolId}" data-taskid="${t.id}" onchange="toggleSchoolTask(this)">
+              <label for="${checkKey}" class="text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
+            </div>`;
+        }
+      }
+      inject.innerHTML = html;
+      updateProgress();
+    }
+
+    function escapeHtml(text) {
+      const d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+
+    async function toggleSchoolTask(el) {
+      const schoolId = el.dataset.school;
+      const taskId = el.dataset.taskid;
+      let schoolTasks = {};
+      try { schoolTasks = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+      const tasks = schoolTasks[schoolId] || [];
+      const task = tasks.find(t => t.id === taskId);
+      if (task) {
+        task.done = el.checked;
+        localStorage.setItem('srishti_school_tasks', JSON.stringify(schoolTasks));
+        syncSchoolTasks(schoolTasks);
+        // Re-render to remove completed tasks from view
+        setTimeout(() => loadSchoolTasks(), 300);
+      }
+      updateProgress();
+    }
+
+    loadSchoolTasks();
+
+    // === SCHOOL SPOTLIGHT ===
+    const schools = [
+      { name: 'George Washington SOM', loc: 'Washington, DC', type: 'MD — Reapply', gpa: '3.88', mcat: '515', note: 'Canadians treated same as US citizens', link: 'schools.html' },
+      { name: 'Wayne State SOM', loc: 'Detroit, MI', type: 'MD — Reapply', gpa: '3.78', mcat: '511', note: 'Dedicated Canadian applicant page. Your Michigan home.', link: 'schools.html' },
+      { name: 'Central Michigan SOM', loc: 'Mt Pleasant, MI', type: 'MD — Reapply', gpa: '3.80', mcat: '506', note: 'Explicitly accepts Canadians. Farmington Hills ties.', link: 'schools.html' },
+      { name: 'Sidney Kimmel (Jefferson)', loc: 'Philadelphia, PA', type: 'MD — Reapply', gpa: '3.80', mcat: '513', note: 'Same criteria for Canadian applicants.', link: 'schools.html' },
+      { name: 'Tulane SOM', loc: 'New Orleans, LA', type: 'MD — Reapply', gpa: '3.70', mcat: '510', note: 'Citizenship-blind admissions. Global health mission.', link: 'schools.html' },
+      { name: 'VCU SOM', loc: 'Richmond, VA', type: 'MD — Reapply', gpa: '3.70', mcat: '512', note: 'Canadians listed alongside US citizens.', link: 'schools.html' },
+      { name: 'University of Maryland SOM', loc: 'Baltimore, MD', type: 'MD — Reapply', gpa: '3.84', mcat: '512', note: 'Citizens of Canada explicitly eligible.', link: 'schools.html' },
+      { name: 'Dartmouth Geisel SOM', loc: 'Hanover, NH', type: 'MD — Promoted', gpa: '3.77', mcat: '516', note: 'Same financial aid as US citizens.', link: 'schools.html' },
+      { name: 'Boston University SOM', loc: 'Boston, MA', type: 'MD — Promoted', gpa: '3.76', mcat: '517', note: 'Encourages Canadian applicants.', link: 'schools.html' },
+      { name: 'Emory SOM', loc: 'Atlanta, GA', type: 'MD — Promoted', gpa: '3.70', mcat: '514', note: 'Welcomes internationals. Close to Charlotte.', link: 'schools.html' },
+      { name: 'Michigan State CHM', loc: 'East Lansing, MI', type: 'MD — Promoted', gpa: '3.70', mcat: '507', note: 'Michigan ties. Post-cycle feedback received.', link: 'schools.html' },
+      { name: 'UNC Chapel Hill SOM', loc: 'Chapel Hill, NC', type: 'MD — Reach', gpa: '3.82', mcat: '512', note: 'Your alma mater. Marsico research. Outreach-heavy.', link: 'unc.html' },
+      { name: 'MSUCOM (DO)', loc: 'East Lansing, MI', type: 'DO — #1 Pick', gpa: '3.60', mcat: '507', note: 'Canadian Initiative: 25 reserved seats + scholarship!', link: 'do-schools.html' },
+      { name: 'KCU (DO)', loc: 'Kansas City, MO', type: 'DO', gpa: '3.62', mcat: '505', note: 'Canadian-friendly. Your stats dominate.', link: 'do-schools.html' },
+      { name: 'NSU-KPCOM (DO)', loc: 'Fort Lauderdale, FL', type: 'DO', gpa: '3.50', mcat: '505', note: 'Strong pediatrics pipeline. Southeast.', link: 'do-schools.html' },
+      { name: 'LECOM (DO)', loc: 'Bradenton, FL', type: 'DO', gpa: '3.50', mcat: '505', note: 'Lowest tuition among private DO schools.', link: 'do-schools.html' },
+      { name: 'RowanSOM (DO)', loc: 'Stratford, NJ', type: 'DO', gpa: '3.70', mcat: '508', note: 'Cultural humility curriculum matches your Med Anth.', link: 'do-schools.html' },
+    ];
+
+    let spotIdx = 0;
+    const spotContainer = document.getElementById('spotlight-container');
+    const spotDots = document.getElementById('spotlight-dots');
+
+    // Create dots
+    schools.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'bg-rose-400 w-4' : 'bg-rose-200'}`;
+      dot.onclick = () => { spotIdx = i; renderSpotlight(); resetTimer(); };
+      spotDots.appendChild(dot);
+    });
+
+    function renderSpotlight() {
+      const s = schools[spotIdx];
+      const typeColor = s.type.includes('DO') ? 'bg-lavender-100 text-lavender-300' : s.type.includes('Reach') ? 'bg-yellow-50 text-yellow-600' : s.type.includes('Promoted') ? 'bg-blue-50 text-blue-500' : 'bg-green-50 text-green-600';
+      spotContainer.innerHTML = `
+        <div class="slide-in">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full ${typeColor}">${s.type}</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-gray-800 mb-1">${s.name}</h3>
+          <p class="text-sm text-gray-400 mb-4">${s.loc}</p>
+          <div class="flex gap-4 mb-4">
+            <div class="text-center">
+              <div class="text-xs text-gray-400">Their GPA</div>
+              <div class="font-bold text-gray-700">${s.gpa}</div>
+            </div>
+            <div class="text-center">
+              <div class="text-xs text-gray-400">Their MCAT</div>
+              <div class="font-bold text-gray-700">${s.mcat}</div>
+            </div>
+            <div class="text-center">
+              <div class="text-xs text-gray-400">Your GPA</div>
+              <div class="font-bold text-rose-400">3.88</div>
+            </div>
+            <div class="text-center">
+              <div class="text-xs text-gray-400">Your MCAT</div>
+              <div class="font-bold text-rose-400">517</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">${s.note}</p>
+          <a href="${s.link}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-rose-400 hover:text-rose-500 transition-colors">View Details <span>&rarr;</span></a>
+        </div>
+      `;
+      // Update dots
+      [...spotDots.children].forEach((d, i) => {
+        d.className = `h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === spotIdx ? 'bg-rose-400 w-4' : 'bg-rose-200 w-1.5'}`;
+      });
+    }
+
+    let timer;
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => { spotIdx = (spotIdx + 1) % schools.length; renderSpotlight(); }, 10000);
+    }
+    renderSpotlight();
+    resetTimer();
+  </script>
+</body>
+</html>
