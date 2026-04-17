@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planner — Stats, School List, Secondaries</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: { 50: '#FFF0F5', 100: '#FFE4EF', 200: '#FFB6D3', 300: '#FF87B2', 400: '#FF69B4', 500: '#FF1493', 600: '#DB0A7B' },
+            blush: '#FFF5F7', cream: '#FFFAF5',
+            lavender: { 50: '#F8F5FF', 100: '#EDE6FF', 200: '#DBC9FF', 300: '#C4A6FF' },
+            rosegold: '#B76E79', mint: '#E8FFF5',
+          },
+          fontFamily: { display: ['Playfair Display', 'serif'], body: ['Quicksand', 'sans-serif'] },
+          boxShadow: { 'soft': '0 2px 20px rgba(255,105,180,0.12)', 'card': '0 4px 24px rgba(255,105,180,0.10)', 'glow': '0 0 30px rgba(255,20,147,0.15)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Quicksand', sans-serif; }
+    .polka-bg-subtle { background-image: radial-gradient(circle, rgba(255,182,211,0.3) 1px, transparent 1px); background-size: 32px 32px; }
+    .fade-enter { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .tab-active { background: #FF69B4; color: white; }
+    .pill {
+      user-select: none;
+      cursor: grab;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.15s ease;
+    }
+    .pill:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,105,180,0.25); }
+    .pill:active { cursor: grabbing; }
+    .pill.dragging { opacity: 0.45; }
+    .pill.used { opacity: 0.4; pointer-events: none; text-decoration: line-through; }
+    .drop-zone { transition: background-color 0.15s ease, border-color 0.15s ease; }
+    .drop-zone.drag-over { background-color: #FFF0F5; border-color: #FF69B4; }
+    .stat-input, .cell-input {
+      background: transparent; border: 0; outline: 0; width: 100%;
+      font: inherit; color: inherit; padding: 4px 0;
+    }
+    .stat-input:focus, .cell-input:focus { background: #FFF5F7; border-radius: 6px; padding: 4px 8px; }
+    html.dark .stat-input:focus, html.dark .cell-input:focus { background: rgba(42,23,34,0.6) !important; }
+    .stat-row:hover .row-del { opacity: 1; }
+    .row-del { opacity: 0; transition: opacity 0.15s ease; }
+    table.list-tbl th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #9C9CA4; padding: 10px 8px; border-bottom: 1px solid rgba(255,182,211,0.4); text-align: left; white-space: nowrap; }
+    table.list-tbl td { padding: 8px 8px; border-bottom: 1px solid rgba(255,182,211,0.2); vertical-align: top; font-size: 13px; }
+    table.list-tbl tr:hover td { background: rgba(255,240,245,0.6); }
+    html.dark table.list-tbl tr:hover td { background: rgba(42,23,34,0.35) !important; }
+    .row-remove { opacity: 0; transition: opacity 0.15s ease; color: #E8738C; cursor: pointer; }
+    tr:hover .row-remove { opacity: 1; }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('srishti_theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      const theme = isDark ? 'dark' : 'light';
+      try { localStorage.setItem('srishti_theme', theme); } catch(e) {}
+      if (typeof syncTheme === 'function') syncTheme(theme);
+    }
+  </script>
+</head>
+<body class="bg-cream min-h-screen">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-rose-100 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-400 to-lavender-200 flex items-center justify-center text-white text-sm font-bold">S</span>
+        <span class="font-display text-lg text-rose-600 hidden sm:block">Med School HQ</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-2 flex-wrap justify-end">
+        <a href="index.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Dashboard</a>
+        <a href="schools.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Cosmo</a>
+        <a href="unc.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Wanda</a>
+        <a href="do-schools.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Mr. Crocker</a>
+        <a href="timmy.html" class="px-3 py-1.5 rounded-full text-sm font-semibold text-rose-500 hover:bg-rose-50 transition-colors">Timmy</a>
+        <a href="planner.html" class="px-3 py-1.5 rounded-full text-sm font-semibold bg-rose-400 text-white">Planner</a>
+        <button onclick="toggleTheme()" class="theme-toggle ml-1" title="Toggle light/dark mode" aria-label="Toggle theme">
+          <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20 pb-16 px-4 sm:px-6 max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <section class="text-center mb-8 fade-enter">
+      <div class="inline-flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-400 to-lavender-300 flex items-center justify-center text-white text-xl">&#128214;</div>
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-gray-800">Your Planner</h1>
+      </div>
+      <p class="text-gray-500">Your stats, your list, your secondaries &mdash; all in one place, synced everywhere.</p>
+    </section>
+
+    <!-- Tabs -->
+    <div class="flex justify-center gap-2 mb-8">
+      <button onclick="showTab('stats')" id="tab-stats" class="tab-btn px-5 py-2 rounded-full text-sm font-bold tab-active transition-colors">My Stats</button>
+      <button onclick="showTab('list')" id="tab-list" class="tab-btn px-5 py-2 rounded-full text-sm font-bold bg-white text-gray-500 border border-rose-100 hover:bg-rose-50 transition-colors">My List</button>
+      <button onclick="showTab('secondaries')" id="tab-secondaries" class="tab-btn px-5 py-2 rounded-full text-sm font-bold bg-white text-gray-500 border border-rose-100 hover:bg-rose-50 transition-colors">Secondaries</button>
+    </div>
+
+    <!-- ============ TAB 1: STATS ============ -->
+    <div id="section-stats" class="fade-enter">
+      <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
+        <p class="text-sm text-gray-500">Edit any value inline. Add or remove rows per category. Add a new category with the button below.</p>
+        <button onclick="addStatColumn()" class="px-4 py-2 rounded-full text-sm font-bold bg-rose-100 text-rose-600 hover:bg-rose-200 transition-colors">+ Add category</button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="stats-grid"></div>
+
+      <!-- Activities -->
+      <div class="mt-8 bg-white rounded-2xl shadow-card border border-rose-100 p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-display text-xl font-bold text-gray-800">Activities</h3>
+          <button onclick="addActivity()" class="text-xs font-bold text-rose-500 hover:text-rose-600">+ add activity</button>
+        </div>
+        <div id="activities-list" class="space-y-2"></div>
+      </div>
+    </div>
+
+    <!-- ============ TAB 2: MY LIST ============ -->
+    <div id="section-list" class="hidden fade-enter">
+      <div class="bg-white rounded-2xl shadow-card border border-rose-100 p-5 mb-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-display text-lg font-bold text-gray-800">School library</h3>
+          <span class="text-xs text-gray-400" id="list-pill-count"></span>
+        </div>
+        <p class="text-xs text-gray-500 mb-4">Tap or drag a school into your list below. Already-added schools are greyed out.</p>
+        <div id="list-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-card border border-rose-100 p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-display text-lg font-bold text-gray-800">My list</h3>
+          <span class="text-xs text-gray-400" id="list-count">0 schools</span>
+        </div>
+        <div id="list-dropzone" class="drop-zone rounded-xl border-2 border-dashed border-rose-100 overflow-x-auto">
+          <table class="list-tbl w-full min-w-[1400px]" id="list-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>School</th>
+                <th>Location</th>
+                <th>Recc letters</th>
+                <th>Reach/target/baseline</th>
+                <th>Acceptance rate</th>
+                <th>Casper / AAMC PREview</th>
+                <th>Median MCAT</th>
+                <th>Median GPA</th>
+                <th>Public/Private</th>
+                <th>Primary app $</th>
+                <th>Grading</th>
+                <th>Rank pediatrics</th>
+                <th>Other deets</th>
+              </tr>
+            </thead>
+            <tbody id="list-tbody"></tbody>
+          </table>
+          <div id="list-empty" class="py-16 text-center text-gray-400 text-sm">Drag schools here, or tap a pill above.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TAB 3: SECONDARIES ============ -->
+    <div id="section-secondaries" class="hidden fade-enter">
+      <div class="bg-white rounded-2xl shadow-card border border-rose-100 p-5 mb-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-display text-lg font-bold text-gray-800">School library</h3>
+          <span class="text-xs text-gray-400" id="sec-pill-count"></span>
+        </div>
+        <p class="text-xs text-gray-500 mb-4">Tap or drag a school into your secondaries tracker. Rows start empty &mdash; fill them in as each secondary comes through.</p>
+        <div id="sec-pills" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-card border border-rose-100 p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-display text-lg font-bold text-gray-800">Secondaries tracker</h3>
+          <span class="text-xs text-gray-400" id="sec-count">0 schools</span>
+        </div>
+        <div id="sec-dropzone" class="drop-zone rounded-xl border-2 border-dashed border-rose-100 overflow-x-auto">
+          <table class="list-tbl w-full min-w-[1500px]" id="sec-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>School</th>
+                <th># of prompts</th>
+                <th>Account</th>
+                <th>Date received</th>
+                <th>2-week deadline</th>
+                <th>Date submitted</th>
+                <th>P/F</th>
+                <th>Cost</th>
+                <th>Portal link</th>
+                <th>Update letter allowed?</th>
+                <th>Letter of interest</th>
+                <th>Feedback?</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="sec-tbody"></tbody>
+          </table>
+          <div id="sec-empty" class="py-16 text-center text-gray-400 text-sm">Drag schools here, or tap a pill above.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="sync.js"></script>
+  <script src="timmy-widget.js"></script>
+  <script>
+  // ==================================================================
+  // MASTER SCHOOL LIBRARY — 27 schools from Srishti's original sheet
+  // Each pill carries pre-fill data so dragging into a list auto-populates.
+  // ==================================================================
+  const MASTER_SCHOOLS = [
+    { id: 'unc',            name: 'UNC',                             location: 'Chapel Hill, NC',       reccLetters: '3',              tier: 'target',                              acceptRate: '4.10%',  casper: 'no',                 medMCAT: '516', medGPA: '3.82', type: 'public',  appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'emory',          name: 'Emory',                           location: '',                      reccLetters: '3',              tier: '#17',                                 acceptRate: '',       casper: '',                   medMCAT: '517', medGPA: '3.84', type: '',        appCost: '', grading: 'P/F, no rank',                     pedsRank: '', other: '' },
+    { id: 'dartmouth',      name: 'Dartmouth',                       location: '',                      reccLetters: '3',              tier: '63',                                  acceptRate: '',       casper: '',                   medMCAT: '516', medGPA: '3.82', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'gw',             name: 'George Washington',               location: 'Washington, DC',        reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: 'preview recc',       medMCAT: '515', medGPA: '3.89', type: 'private', appCost: '', grading: 'P/F preclinical, tiered pass after', pedsRank: '', other: '' },
+    { id: 'tufts',          name: 'Tufts',                           location: 'Boston, MA',            reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '515', medGPA: '3.85', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'vcu',            name: 'Virginia Commonwealth',           location: 'Richmond, VA',          reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: 'casper',             medMCAT: '513', medGPA: '3.88', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'upenn',          name: 'UPenn Perelman',                  location: 'Philadelphia, PA',      reccLetters: '3',              tier: 'T20; reach',                          acceptRate: '',       casper: '',                   medMCAT: '522', medGPA: '3.96', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'stonybrook',     name: 'Stony Brook Renaissance',         location: 'Stony Brook, NY',       reccLetters: '2 from profs min', tier: '',                                  acceptRate: '',       casper: 'casper',             medMCAT: '517', medGPA: '3.89', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'northwestern',   name: 'Northwestern',                    location: '',                      reccLetters: '3',              tier: 'T20',                                 acceptRate: '',       casper: '',                   medMCAT: '521', medGPA: '3.93', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'wayne',          name: 'Wayne State',                     location: 'Detroit, MI',           reccLetters: '3',              tier: 'baseline (high volume of apps)',      acceptRate: '',       casper: '',                   medMCAT: '513', medGPA: '3.86', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'jefferson',      name: 'Sidney Kimmel (Jefferson)',       location: 'Philadelphia, PA',      reccLetters: '',               tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '514', medGPA: '3.86', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: 'interviews only in person' },
+    { id: 'cmu',            name: 'Central Michigan',                location: 'Mt Pleasant, MI',       reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: 'casper optional',    medMCAT: '508', medGPA: '3.84', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'suny',           name: 'SUNY Upstate',                    location: 'Syracuse, NY',          reccLetters: '2',              tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '513', medGPA: '3.82', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'brown',          name: 'Brown (Warren Alpert)',           location: 'Providence, RI',        reccLetters: '3',              tier: 'not many international acceptances',  acceptRate: '',       casper: '',                   medMCAT: '517', medGPA: '3.88', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'tulane',         name: 'Tulane',                          location: 'New Orleans, LA',       reccLetters: '3',              tier: 'target/baseline; HIGH volume of apps',acceptRate: '',       casper: 'casper/duet optional', medMCAT: '512', medGPA: '3.81', type: '',      appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'uconn',          name: 'UConn',                           location: 'Farmington, CT',        reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '515', medGPA: '3.87', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'uic',            name: 'UIC',                             location: 'Chicago, IL',           reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '512', medGPA: '3.80', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'casewestern',    name: 'Case Western',                    location: 'Cleveland, OH',         reccLetters: '3 (2 sci + PI)', tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '518', medGPA: '3.93', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'maryland',       name: 'University of Maryland',          location: 'Baltimore, MD',         reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: '',                   medMCAT: '515', medGPA: '3.90', type: '',        appCost: '', grading: 'not P/F, graded',                  pedsRank: '', other: '' },
+    { id: 'rutgers',        name: 'Rutgers NJ Med School',           location: 'Newark, NJ',            reccLetters: '3 (2 sci, 1 not)', tier: '',                                  acceptRate: '',       casper: 'no',                 medMCAT: '515', medGPA: '3.87', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'nyu-li',         name: 'NYU Long Island',                 location: '',                      reccLetters: '3 (2 sci profs)', tier: '',                                   acceptRate: 'very low, ~24 seats last cycle', casper: 'no', medMCAT: '515', medGPA: '3.92', type: '', appCost: '', grading: '',                    pedsRank: '', other: 'free tuition, 3 year MD, guaranteed residency' },
+    { id: 'msu-chm',        name: 'Michigan State',                  location: '',                      reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: 'casper and duet',    medMCAT: '509', medGPA: '3.84', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'nymc',           name: 'New York Medical College',        location: '',                      reccLetters: '3 (2 sci profs)', tier: '',                                  acceptRate: '',       casper: 'casper',             medMCAT: '517', medGPA: '3.86', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'bu',             name: 'Boston University',               location: '',                      reccLetters: '3',              tier: '',                                    acceptRate: '',       casper: 'casper',             medMCAT: '519', medGPA: '3.91', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'lsu',            name: 'LSU',                             location: 'New Orleans, LA',       reccLetters: '',               tier: 'strong in-state bias',                acceptRate: '',       casper: '',                   medMCAT: '510', medGPA: '3.85', type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'duke',           name: 'Duke',                            location: '',                      reccLetters: '',               tier: 'reach; T20',                          acceptRate: '',       casper: '',                   medMCAT: '',    medGPA: '',     type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    { id: 'nyu-grossman',   name: 'NYU Grossman',                    location: '',                      reccLetters: '',               tier: 'reach; T20',                          acceptRate: '',       casper: '',                   medMCAT: '',    medGPA: '',     type: '',        appCost: '', grading: '',                                 pedsRank: '', other: '' },
+    // DO track — Mr. Crocker
+    { id: 'msucom',         name: 'MSUCOM',                          location: 'East Lansing, MI',      reccLetters: '', tier: 'DO — Crocker #1',  acceptRate: '', casper: '', medMCAT: '507', medGPA: '3.60', type: 'public',  appCost: '', grading: '', pedsRank: '', other: 'Canadian Initiative Program — ~25 reserved seats + scholarship' },
+    { id: 'marian',         name: 'Marian WCOM',                     location: 'Indianapolis, IN',      reccLetters: '', tier: 'DO — Crocker #2',  acceptRate: '', casper: '', medMCAT: '506', medGPA: '3.56', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Franciscan service mission; same standards as domestic' },
+    { id: 'kcu',            name: 'KCU',                             location: 'Kansas City, MO',       reccLetters: '', tier: 'DO — Crocker #3',  acceptRate: '', casper: '', medMCAT: '505', medGPA: '3.62', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Active COMSA chapter; Canadian students confirmed' },
+    { id: 'nsu',            name: 'NSU-KPCOM',                       location: 'Fort Lauderdale, FL',   reccLetters: '', tier: 'DO — Crocker #4',  acceptRate: '', casper: '', medMCAT: '505', medGPA: '3.50', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Strong peds pipeline; F-1 supported' },
+    { id: 'lecom',          name: 'LECOM',                           location: 'Bradenton, FL',         reccLetters: '', tier: 'DO — Crocker #5',  acceptRate: '', casper: '', medMCAT: '~505', medGPA: '~3.50', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Lowest private tuition; verify residency placement' },
+    { id: 'ccom',           name: 'CCOM (Midwestern)',               location: 'Downers Grove, IL',     reccLetters: '', tier: 'DO — Crocker #6',  acceptRate: '', casper: '', medMCAT: '509', medGPA: '~3.60', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Canadian-friendly; core peds + OB/GYN' },
+    { id: 'rvucom',         name: 'RVUCOM',                          location: 'Parker, CO',            reccLetters: '', tier: 'DO — Crocker #7',  acceptRate: '', casper: '', medMCAT: '505', medGPA: '3.60', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Military + rural tracks; small Canadian enrollment' },
+    { id: 'azcom',          name: 'AZCOM (Midwestern)',              location: 'Glendale, AZ',          reccLetters: '', tier: 'DO — Crocker #8',  acceptRate: '', casper: '', medMCAT: '509', medGPA: '~3.60', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Canadian-friendly per COMSA' },
+    { id: 'rowan',          name: 'RowanSOM',                        location: 'Stratford, NJ',         reccLetters: '', tier: 'DO — Crocker #9',  acceptRate: '', casper: '', medMCAT: '508', medGPA: '3.70', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Tensegrity Curriculum — cultural humility focus' },
+    { id: 'mcom',           name: 'MCOM',                            location: 'Billings, MT',          reccLetters: '', tier: 'DO — Crocker #10', acceptRate: '', casper: '', medMCAT: '~504', medGPA: '~3.50', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'New school; rural/frontier medicine; VERIFY Canadian policy' },
+    { id: 'westernu',       name: 'WesternU COMP',                   location: 'Pomona, CA',            reccLetters: '', tier: 'DO — Crocker #11', acceptRate: '', casper: '', medMCAT: '507', medGPA: '3.67', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Pomona campus ONLY (not COMP-Northwest)' },
+    { id: 'wcucom',         name: 'WCUCOM',                          location: 'Hattiesburg, MS',       reccLetters: '', tier: 'DO — Crocker #12', acceptRate: '', casper: '', medMCAT: '504', medGPA: '3.56', type: 'private', appCost: '', grading: '', pedsRank: '', other: '#3 nationally for primary care placement' },
+    { id: 'unecom',         name: 'UNECOM',                          location: 'Biddeford, ME',         reccLetters: '', tier: 'DO — Crocker #13', acceptRate: '', casper: '', medMCAT: '~507', medGPA: '~3.60', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Holistic admissions; global electives 4th yr' },
+    { id: 'lucom',          name: 'LUCOM',                           location: 'Lynchburg, VA',         reccLetters: '', tier: 'DO — Crocker #14', acceptRate: '', casper: '', medMCAT: '504', medGPA: '3.40', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Closest to Charlotte; faith-based; VERIFY Canadian policy' },
+    // MD track — Mr. Crocker (new discoveries outside Cosmo's core 12)
+    { id: 'howard-md',      name: 'Howard COM',                      location: 'Washington, DC',        reccLetters: '', tier: 'MD — Crocker #1',  acceptRate: '', casper: '', medMCAT: '506', medGPA: '3.58', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'HBCU mission; Med Anth + peds fit' },
+    { id: 'sinai-md',       name: 'Mount Sinai Icahn',               location: 'New York, NY',          reccLetters: '', tier: 'MD — Crocker #2',  acceptRate: '', casper: '', medMCAT: '519', medGPA: '3.83', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'InFocus global/community health; F-1 supported' },
+    { id: 'vandy-md',       name: 'Vanderbilt',                      location: 'Nashville, TN',         reccLetters: '', tier: 'MD — Crocker #3',  acceptRate: '', casper: '', medMCAT: '521', medGPA: '3.89', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Curriculum 2.0; need-based aid for internationals' },
+    { id: 'pritzker-md',    name: 'UChicago Pritzker',               location: 'Chicago, IL',           reccLetters: '', tier: 'MD — Crocker #4',  acceptRate: '', casper: '', medMCAT: '520', medGPA: '3.89', type: 'private', appCost: '', grading: '', pedsRank: '', other: 'Small class ~88; peds oncology (Comer)' },
+  ];
+
+  // ==================================================================
+  // DEFAULTS — pre-filled from the original sheet + CLAUDE.md known facts
+  // ==================================================================
+  const DEFAULT_STATS = {
+    columns: [
+      { id: 'gpa',   label: 'GPA',                    rows: [ { label: 'cGPA', value: '3.88' }, { label: 'sGPA', value: '3.80' } ] },
+      { id: 'mcat',  label: 'MCAT',                   rows: [ { label: 'Total',          value: '517' }, { label: 'Chem/Phys',      value: '130' }, { label: 'CARS',           value: '128' }, { label: 'Bio/Biochem',    value: '130' }, { label: 'Psych/Soc',      value: '129' }, { label: 'Percentile',     value: '94th' } ] },
+      { id: 'paid',  label: 'Paid Clinical (MA)',     rows: [ { label: 'Medi-Weightloss Ballantyne', value: '~1000+ hrs' } ] },
+      { id: 'hosp',  label: 'Hospital Volunteering',  rows: [ { label: 'Total estimate',             value: '250 hrs' }, { label: 'Novant ED',                   value: '51.5 hrs' }, { label: 'Novant Child Life',           value: '45 hrs' }, { label: 'UNC Hospital',                value: '135 hrs' } ] },
+      { id: 'rsrch', label: 'Research',               rows: [ { label: 'Total (approx)',             value: '~400 hrs' }, { label: 'First 3 semesters (7hr/wk × 3mo × 3)', value: '252 hrs' }, { label: 'Last semester (9hr/wk × 3mo)', value: '85 hrs' }, { label: 'Marsico Lung Institute (PI: Dr. Schworer)', value: '340 hrs' } ] },
+      { id: 'shad',  label: 'Shadowing',              rows: [ { label: 'Total',                      value: '120 hrs' }, { label: 'Urgent Care',                  value: '45 hrs' }, { label: 'OT / Speech Therapy',         value: '50 hrs' }, { label: 'UNC Pediatrics',              value: '16 hrs' } ] },
+      { id: 'clubs', label: 'Clubs',                  rows: [ { label: 'CPALS (social committee)',   value: '4 yrs' }, { label: 'STEM Sisters',                value: '' } ] },
+      { id: 'wars',  label: 'WARS Score',             rows: [ { label: 'With clinical experience',   value: '86 / 666' }, { label: 'Without clinical experience', value: '71' } ] },
+    ],
+  };
+  const DEFAULT_ACTIVITIES = [
+    'UNC Playroom',
+    'Research (Marsico)',
+    'Shadowing (all specialties)',
+    'Hospital volunteering (everything else)',
+    'CPALS',
+    "Dean's list",
+    'STEM Sisters',
+    'Babysitter / Swim instructor',
+    'Art',
+    'Baking / Swimming',
+    'Medi-Weightloss MA (paid clinical)',
+  ];
+
+  // ==================================================================
+  // STATE — hydrated from localStorage (which syncLoad fills from Supabase)
+  // ==================================================================
+  let stats       = loadJSON('srishti_planner_stats',       DEFAULT_STATS);
+  let activities  = loadJSON('srishti_planner_activities',  DEFAULT_ACTIVITIES);
+  let myList      = loadJSON('srishti_planner_my_list',     []);
+  let secondaries = loadJSON('srishti_planner_secondaries', []);
+
+  function loadJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(fallback));
+    } catch (e) { return JSON.parse(JSON.stringify(fallback)); }
+  }
+  function save(key, val, syncFn) {
+    localStorage.setItem(key, JSON.stringify(val));
+    if (typeof syncFn === 'function') syncFn(val);
+  }
+
+  const saveStats       = () => save('srishti_planner_stats',       stats,       window.syncPlannerStats);
+  const saveActivities  = () => save('srishti_planner_activities',  activities,  window.syncPlannerActivities);
+  const saveList        = () => save('srishti_planner_my_list',     myList,      window.syncPlannerMyList);
+  const saveSecondaries = () => save('srishti_planner_secondaries', secondaries, window.syncPlannerSecondaries);
+
+  // ==================================================================
+  // TAB SWITCHING
+  // ==================================================================
+  function showTab(t) {
+    ['stats','list','secondaries'].forEach(name => {
+      const sec = document.getElementById('section-' + name);
+      const btn = document.getElementById('tab-' + name);
+      if (name === t) {
+        sec.classList.remove('hidden');
+        btn.classList.add('tab-active');
+        btn.classList.remove('bg-white','text-gray-500','border','border-rose-100');
+      } else {
+        sec.classList.add('hidden');
+        btn.classList.remove('tab-active');
+        btn.classList.add('bg-white','text-gray-500','border','border-rose-100');
+      }
+    });
+    try { localStorage.setItem('srishti_planner_tab', t); } catch(e){}
+  }
+  window.showTab = showTab;
+
+  // ==================================================================
+  // STATS TAB
+  // ==================================================================
+  function renderStats() {
+    const grid = document.getElementById('stats-grid');
+    grid.innerHTML = '';
+    stats.columns.forEach((col, ci) => {
+      const card = document.createElement('div');
+      card.className = 'bg-white rounded-2xl shadow-card border border-rose-100 p-5';
+      card.innerHTML = `
+        <div class="flex items-center justify-between mb-3">
+          <input class="stat-input font-display text-lg font-bold text-gray-800"
+                 value="${escapeHtml(col.label)}"
+                 oninput="updateStatLabel(${ci}, this.value)">
+          <button onclick="deleteStatColumn(${ci})" class="text-xs text-gray-300 hover:text-red-400 transition-colors" title="Delete category">&#10005;</button>
+        </div>
+        <div class="space-y-1">
+          ${col.rows.map((r, ri) => `
+            <div class="stat-row flex items-center gap-2 py-1 border-b border-rose-50">
+              <input class="stat-input text-sm text-gray-600 flex-1"
+                     placeholder="label"
+                     value="${escapeHtml(r.label)}"
+                     oninput="updateStatRow(${ci}, ${ri}, 'label', this.value)">
+              <input class="stat-input text-sm font-semibold text-gray-800 flex-1 text-right"
+                     placeholder="value"
+                     value="${escapeHtml(r.value)}"
+                     oninput="updateStatRow(${ci}, ${ri}, 'value', this.value)">
+              <button class="row-del text-xs text-gray-300 hover:text-red-400"
+                      onclick="deleteStatRow(${ci}, ${ri})" title="Remove row">&#10005;</button>
+            </div>
+          `).join('')}
+        </div>
+        <button onclick="addStatRow(${ci})" class="mt-3 text-xs font-bold text-rose-500 hover:text-rose-600 transition-colors">+ add row</button>
+      `;
+      grid.appendChild(card);
+    });
+    renderActivities();
+  }
+  function updateStatLabel(ci, v)  { stats.columns[ci].label = v; saveStats(); }
+  function updateStatRow(ci, ri, field, v) { stats.columns[ci].rows[ri][field] = v; saveStats(); }
+  function addStatRow(ci)          { stats.columns[ci].rows.push({ label: '', value: '' }); saveStats(); renderStats(); }
+  function deleteStatRow(ci, ri)   { stats.columns[ci].rows.splice(ri, 1); saveStats(); renderStats(); }
+  function addStatColumn() {
+    stats.columns.push({ id: 'col_' + Date.now(), label: 'New category', rows: [{ label: '', value: '' }] });
+    saveStats(); renderStats();
+  }
+  function deleteStatColumn(ci) {
+    if (!confirm('Delete this entire category?')) return;
+    stats.columns.splice(ci, 1); saveStats(); renderStats();
+  }
+  Object.assign(window, { updateStatLabel, updateStatRow, addStatRow, deleteStatRow, addStatColumn, deleteStatColumn });
+
+  function renderActivities() {
+    const list = document.getElementById('activities-list');
+    list.innerHTML = '';
+    activities.forEach((a, i) => {
+      const row = document.createElement('div');
+      row.className = 'stat-row flex items-center gap-2 py-1 border-b border-rose-50';
+      row.innerHTML = `
+        <span class="text-rose-300">&#10022;</span>
+        <input class="stat-input text-sm text-gray-700 flex-1"
+               value="${escapeHtml(a)}"
+               oninput="updateActivity(${i}, this.value)">
+        <button class="row-del text-xs text-gray-300 hover:text-red-400"
+                onclick="deleteActivity(${i})" title="Remove">&#10005;</button>
+      `;
+      list.appendChild(row);
+    });
+  }
+  function updateActivity(i, v) { activities[i] = v; saveActivities(); }
+  function deleteActivity(i)    { activities.splice(i, 1); saveActivities(); renderActivities(); }
+  function addActivity()        { activities.push(''); saveActivities(); renderActivities(); }
+  Object.assign(window, { updateActivity, deleteActivity, addActivity });
+
+  // ==================================================================
+  // PILL LIBRARY — shared builder for both list + secondaries
+  // ==================================================================
+  function buildPills(containerId, usedIds, onPick) {
+    const el = document.getElementById(containerId);
+    el.innerHTML = '';
+    MASTER_SCHOOLS.forEach(s => {
+      const used = usedIds.has(s.id);
+      const pill = document.createElement('div');
+      pill.className = 'pill inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-lavender-50 border border-lavender-200 text-sm font-semibold text-rose-600' + (used ? ' used' : '');
+      pill.draggable = !used;
+      pill.dataset.schoolId = s.id;
+      pill.innerHTML = `<span class="text-rose-400">&#9679;</span>${escapeHtml(s.name)}`;
+      pill.addEventListener('click', () => { if (!used) onPick(s); });
+      pill.addEventListener('dragstart', e => {
+        pill.classList.add('dragging');
+        e.dataTransfer.setData('text/school-id', s.id);
+        e.dataTransfer.effectAllowed = 'copy';
+      });
+      pill.addEventListener('dragend', () => pill.classList.remove('dragging'));
+      el.appendChild(pill);
+    });
+  }
+
+  // ==================================================================
+  // MY LIST TAB
+  // ==================================================================
+  const LIST_FIELDS = ['name','location','reccLetters','tier','acceptRate','casper','medMCAT','medGPA','type','appCost','grading','pedsRank','other'];
+  function renderMyList() {
+    const usedIds = new Set(myList.map(x => x.id));
+    buildPills('list-pills', usedIds, s => addToList(s));
+    document.getElementById('list-pill-count').textContent = `${MASTER_SCHOOLS.length - usedIds.size} available`;
+    document.getElementById('list-count').textContent = `${myList.length} school${myList.length===1?'':'s'}`;
+
+    const tbody = document.getElementById('list-tbody');
+    const empty = document.getElementById('list-empty');
+    tbody.innerHTML = '';
+    if (myList.length === 0) {
+      empty.classList.remove('hidden');
+      document.getElementById('list-table').classList.add('hidden');
+    } else {
+      empty.classList.add('hidden');
+      document.getElementById('list-table').classList.remove('hidden');
+      myList.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><button class="row-remove" onclick="removeFromList(${idx})" title="Remove">&#10005;</button></td>
+          ${LIST_FIELDS.map(f => `
+            <td><input class="cell-input" value="${escapeHtml(row[f] || '')}"
+                 oninput="updateListCell(${idx}, '${f}', this.value)"></td>
+          `).join('')}
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  }
+  function addToList(s) {
+    if (myList.some(x => x.id === s.id)) return;
+    myList.push({ ...s });
+    saveList(); renderMyList();
+  }
+  function removeFromList(idx)               { myList.splice(idx, 1); saveList(); renderMyList(); }
+  function updateListCell(idx, field, value) { myList[idx][field] = value; saveList(); }
+  Object.assign(window, { addToList, removeFromList, updateListCell });
+
+  // ==================================================================
+  // SECONDARIES TAB
+  // ==================================================================
+  const SEC_FIELDS = ['school','prompts','account','received','deadline','submitted','pf','cost','link','updateAllowed','letterOfInterest','feedback','notes'];
+  function renderSecondaries() {
+    const usedIds = new Set(secondaries.map(x => x.id));
+    buildPills('sec-pills', usedIds, s => addToSec(s));
+    document.getElementById('sec-pill-count').textContent = `${MASTER_SCHOOLS.length - usedIds.size} available`;
+    document.getElementById('sec-count').textContent = `${secondaries.length} school${secondaries.length===1?'':'s'}`;
+
+    const tbody = document.getElementById('sec-tbody');
+    const empty = document.getElementById('sec-empty');
+    tbody.innerHTML = '';
+    if (secondaries.length === 0) {
+      empty.classList.remove('hidden');
+      document.getElementById('sec-table').classList.add('hidden');
+    } else {
+      empty.classList.add('hidden');
+      document.getElementById('sec-table').classList.remove('hidden');
+      secondaries.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><button class="row-remove" onclick="removeFromSec(${idx})" title="Remove">&#10005;</button></td>
+          ${SEC_FIELDS.map(f => `
+            <td><input class="cell-input" value="${escapeHtml(row[f] || '')}"
+                 oninput="updateSecCell(${idx}, '${f}', this.value)"></td>
+          `).join('')}
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  }
+  function addToSec(s) {
+    if (secondaries.some(x => x.id === s.id)) return;
+    secondaries.push({ id: s.id, school: s.name });
+    saveSecondaries(); renderSecondaries();
+  }
+  function removeFromSec(idx)               { secondaries.splice(idx, 1); saveSecondaries(); renderSecondaries(); }
+  function updateSecCell(idx, field, value) { secondaries[idx][field] = value; saveSecondaries(); }
+  Object.assign(window, { addToSec, removeFromSec, updateSecCell });
+
+  // ==================================================================
+  // DRAG-DROP wiring for both drop zones
+  // ==================================================================
+  function wireDropZone(zoneId, getState, onDrop) {
+    const zone = document.getElementById(zoneId);
+    zone.addEventListener('dragover', e => {
+      if (!e.dataTransfer.types.includes('text/school-id')) return;
+      e.preventDefault(); e.dataTransfer.dropEffect = 'copy';
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', e => {
+      if (e.target === zone) zone.classList.remove('drag-over');
+    });
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const id = e.dataTransfer.getData('text/school-id');
+      const school = MASTER_SCHOOLS.find(s => s.id === id);
+      if (school) onDrop(school);
+    });
+  }
+
+  // ==================================================================
+  // UTIL
+  // ==================================================================
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  // ==================================================================
+  // INIT
+  // ==================================================================
+  function initAll() {
+    renderStats();
+    renderMyList();
+    renderSecondaries();
+    wireDropZone('list-dropzone',  () => myList,       addToList);
+    wireDropZone('sec-dropzone',   () => secondaries,  addToSec);
+    const lastTab = localStorage.getItem('srishti_planner_tab') || 'stats';
+    showTab(lastTab);
+  }
+  initAll();
+
+  // Re-render after Supabase finishes hydrating (syncLoad in sync.js runs async)
+  setTimeout(() => {
+    stats       = loadJSON('srishti_planner_stats',       DEFAULT_STATS);
+    activities  = loadJSON('srishti_planner_activities',  DEFAULT_ACTIVITIES);
+    myList      = loadJSON('srishti_planner_my_list',     []);
+    secondaries = loadJSON('srishti_planner_secondaries', []);
+    renderStats(); renderMyList(); renderSecondaries();
+  }, 1500);
+  </script>
+
+</body>
+</html>

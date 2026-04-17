@@ -43,6 +43,22 @@ async function syncLoad() {
         if (Array.isArray(row.value) && row.value.length > 0) {
           localStorage.setItem('srishti_timmy_chat', JSON.stringify(row.value));
         }
+      } else if (row.key === 'planner_stats') {
+        if (row.value && typeof row.value === 'object') {
+          localStorage.setItem('srishti_planner_stats', JSON.stringify(row.value));
+        }
+      } else if (row.key === 'planner_activities') {
+        if (Array.isArray(row.value)) {
+          localStorage.setItem('srishti_planner_activities', JSON.stringify(row.value));
+        }
+      } else if (row.key === 'planner_my_list') {
+        if (Array.isArray(row.value)) {
+          localStorage.setItem('srishti_planner_my_list', JSON.stringify(row.value));
+        }
+      } else if (row.key === 'planner_secondaries') {
+        if (Array.isArray(row.value)) {
+          localStorage.setItem('srishti_planner_secondaries', JSON.stringify(row.value));
+        }
       } else if (row.key === 'theme') {
         if (typeof row.value === 'string' && (row.value === 'light' || row.value === 'dark')) {
           localStorage.setItem('srishti_theme', row.value);
@@ -178,6 +194,70 @@ function syncTimmyChat(history) {
     } catch (e) {
       console.log('Timmy chat sync failed (offline mode):', e.message);
     }
+  }, 1000);
+}
+
+// Planner — stats (debounced)
+let _plannerStatsTimer;
+function syncPlannerStats(stats) {
+  localStorage.setItem('srishti_planner_stats', JSON.stringify(stats));
+  clearTimeout(_plannerStatsTimer);
+  _plannerStatsTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'planner_stats', value: stats, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Planner stats sync failed:', e.message); }
+  }, 1000);
+}
+
+// Planner — activities (debounced)
+let _plannerActTimer;
+function syncPlannerActivities(list) {
+  localStorage.setItem('srishti_planner_activities', JSON.stringify(list));
+  clearTimeout(_plannerActTimer);
+  _plannerActTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'planner_activities', value: list, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Planner activities sync failed:', e.message); }
+  }, 1000);
+}
+
+// Planner — my list (debounced)
+let _plannerListTimer;
+function syncPlannerMyList(list) {
+  localStorage.setItem('srishti_planner_my_list', JSON.stringify(list));
+  clearTimeout(_plannerListTimer);
+  _plannerListTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'planner_my_list', value: list, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Planner my_list sync failed:', e.message); }
+  }, 1000);
+}
+
+// Planner — secondaries (debounced)
+let _plannerSecTimer;
+function syncPlannerSecondaries(list) {
+  localStorage.setItem('srishti_planner_secondaries', JSON.stringify(list));
+  clearTimeout(_plannerSecTimer);
+  _plannerSecTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'planner_secondaries', value: list, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Planner secondaries sync failed:', e.message); }
   }, 1000);
 }
 

@@ -35,6 +35,7 @@ Srishti Med School /
     ├── schools.html             ← Cosmo's page (MD school audit — reapply vs cut)
     ├── unc.html                 ← Wanda's page (deep dives + research queue)
     ├── do-schools.html          ← Mr. Crocker's page (DO schools + AACOMAS guide)
+    ├── planner.html             ← Srishti's personal planner (Stats / My List / Secondaries tabs)
     ├── sync.js                  ← Supabase sync layer (localStorage ↔ cloud)
     └── serve.mjs                ← Static file server (port 3006)
 ```
@@ -205,6 +206,10 @@ When creating any new feature that stores data:
 | `srishti_notes_*`, `srishti_do_notes*`, `srishti_school_notes_*` | `notes` | `syncNote(noteKey, value)` |
 | `srishti_school_tasks` | `school_tasks` | `syncSchoolTasks(allTasks)` |
 | `srishti_wanda_queue` | `wanda_queue` | `syncWandaQueue(queue)` |
+| `srishti_planner_stats` | `planner_stats` | `syncPlannerStats(stats)` |
+| `srishti_planner_activities` | `planner_activities` | `syncPlannerActivities(list)` |
+| `srishti_planner_my_list` | `planner_my_list` | `syncPlannerMyList(list)` |
+| `srishti_planner_secondaries` | `planner_secondaries` | `syncPlannerSecondaries(list)` |
 
 **If you add a new localStorage key without a Supabase sync function, it WILL be lost when Srishti uses a different device. Don't do this.**
 
