@@ -169,5 +169,5 @@ export async function buildSystemPrompt() {
   return `${PLAYBOOK}\n\n---\n\n# SRISHTI CONTEXT BUNDLE (ground truth — read before every answer)\n\n${contextBundle}`;
 }
 
-export const MODEL = 'gemini-2.5-flash';
+export const MODEL = 'gemini-flash-latest';
 export const MAX_TOKENS = 1500;
