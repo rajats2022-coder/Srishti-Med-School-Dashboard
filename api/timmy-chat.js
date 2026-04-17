@@ -1,5 +1,5 @@
 // Vercel serverless function: POST /api/timmy-chat
-// Proxies chat messages to the Anthropic API so the key never hits the client.
+// Proxies chat messages to the Gemini API so the key never hits the client.
 
 import { buildSystemPrompt, MODEL, MAX_TOKENS } from './timmy-prompt.js';
 
@@ -8,9 +8,9 @@ export default async function handler(req, res) {
     res.status(405).json({ error: 'Method not allowed' });
     return;
   }
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' });
+    res.status(500).json({ error: 'GEMINI_API_KEY not configured' });
     return;
   }
   try {
@@ -20,27 +20,27 @@ export default async function handler(req, res) {
       return;
     }
     const system = await buildSystemPrompt();
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const contents = messages.map(m => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }));
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
+    const r = await fetch(url, {
       method: 'POST',
-      headers: {
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json'
-      },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
-        model: MODEL,
-        max_tokens: MAX_TOKENS,
-        system,
-        messages
+        systemInstruction: { parts: [{ text: system }] },
+        contents,
+        generationConfig: { maxOutputTokens: MAX_TOKENS }
       })
     });
     const data = await r.json();
     if (!r.ok) {
-      res.status(r.status).json({ error: data.error?.message || 'Anthropic API error', detail: data });
+      res.status(r.status).json({ error: data.error?.message || 'Gemini API error', detail: data });
       return;
     }
-    const reply = data.content?.[0]?.text || '';
-    res.status(200).json({ reply, usage: data.usage });
+    const reply = data.candidates?.[0]?.content?.parts?.map(p => p.text).join('') || '';
+    res.status(200).json({ reply, usage: data.usageMetadata });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

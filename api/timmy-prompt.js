@@ -166,11 +166,8 @@ export async function buildSystemPrompt() {
   } catch {
     contextBundle = '[timmy-context.md not found — answer using the playbook above only and note this limitation.]';
   }
-  return [
-    { type: 'text', text: PLAYBOOK, cache_control: { type: 'ephemeral' } },
-    { type: 'text', text: `\n\n---\n\n# SRISHTI CONTEXT BUNDLE (ground truth — read before every answer)\n\n${contextBundle}`, cache_control: { type: 'ephemeral' } }
-  ];
+  return `${PLAYBOOK}\n\n---\n\n# SRISHTI CONTEXT BUNDLE (ground truth — read before every answer)\n\n${contextBundle}`;
 }
 
-export const MODEL = 'claude-sonnet-4-6';
+export const MODEL = 'gemini-2.5-pro';
 export const MAX_TOKENS = 1500;
