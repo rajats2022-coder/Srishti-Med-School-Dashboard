@@ -162,9 +162,8 @@ Do NOT rewrite whole essays unless explicitly asked. Default is critique + targe
 export async function buildSystemPrompt() {
   let contextBundle = '';
   try {
-    const path = join(__dirname, '..', 'timmy-context.md');
-    contextBundle = await readFile(path, 'utf8');
-  } catch (e) {
+    contextBundle = await readFile(join(__dirname, 'timmy-context.md'), 'utf8');
+  } catch {
     contextBundle = '[timmy-context.md not found — answer using the playbook above only and note this limitation.]';
   }
   return [

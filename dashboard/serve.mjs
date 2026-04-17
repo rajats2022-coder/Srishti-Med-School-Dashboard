@@ -2,7 +2,7 @@ import { createServer } from 'http';
 import { readFile } from 'fs/promises';
 import { join, extname, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import timmyChat from './api/timmy-chat.js';
+import timmyChat from '../api/timmy-chat.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const PROJECT_ROOT = dirname(__dirname); // parent of dashboard/
