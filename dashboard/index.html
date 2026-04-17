@@ -65,6 +65,12 @@
     @keyframes pulse-soft { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,105,180,0.3); } 50% { box-shadow: 0 0 0 8px rgba(255,105,180,0); } }
     .pulse-ring { animation: pulse-soft 2s ease-in-out infinite; }
     .task-check:checked + label { text-decoration: line-through; color: #ccc; }
+    .task-row { transition: background-color 0.15s ease, opacity 0.15s ease; }
+    .task-row.dragging { opacity: 0.35; }
+    .task-row.drop-before { box-shadow: 0 -2px 0 0 #FF69B4 inset; }
+    .task-row.drop-after { box-shadow: 0 2px 0 0 #FF69B4 inset; }
+    .drag-handle { cursor: grab; user-select: none; touch-action: none; }
+    .drag-handle:active { cursor: grabbing; }
   </style>
   <link rel="stylesheet" href="theme.css">
   <script>
@@ -172,36 +178,12 @@
           <span class="text-xl">&#9989;</span>
           <h2 class="font-display text-xl font-bold text-gray-800">Today's Tasks</h2>
         </div>
-        <div class="space-y-3" id="tasks-container">
-          <!-- General tasks (hardcoded) -->
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-0" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-0">
-            <label for="task-0" class="text-sm text-gray-700 leading-snug cursor-pointer">Email <strong>Dr. Stephen Schworer</strong> — PI reconnection at Marsico Lung Institute</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-1" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-1">
-            <label for="task-1" class="text-sm text-gray-700 leading-snug cursor-pointer">Identify <strong>PA/NP at Medi-Weightloss</strong> for clinical LOR</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-2" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-2">
-            <label for="task-2" class="text-sm text-gray-700 leading-snug cursor-pointer">Register for <strong>AAMC PREview</strong> exam</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-3" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-3">
-            <label for="task-3" class="text-sm text-gray-700 leading-snug cursor-pointer">Start attending <strong>UNC virtual office hours</strong> (Fridays 11 AM)</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-4" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-4">
-            <label for="task-4" class="text-sm text-gray-700 leading-snug cursor-pointer">Find a <strong>DO physician</strong> to shadow</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-5" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-5">
-            <label for="task-5" class="text-sm text-gray-700 leading-snug cursor-pointer">Email <strong>Medical Anthropology professor</strong> — confirm LOR</label>
-          </div>
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="task-6" class="task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-key="task-6">
-            <label for="task-6" class="text-sm text-gray-700 leading-snug cursor-pointer">Cold-reach <strong>Dr. C</strong> for physician LOR</label>
-          </div>
+        <div class="flex gap-2 mb-3">
+          <input id="new-task-input" type="text" placeholder="Add a task..." maxlength="200" class="flex-1 text-sm px-3 py-2 rounded-xl border border-rose-100 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100 bg-white text-gray-700 placeholder-gray-400">
+          <button id="add-task-btn" class="text-sm font-semibold px-3 py-2 rounded-xl bg-rose-400 text-white hover:bg-rose-500 transition-colors" title="Add task">+</button>
+        </div>
+        <div class="space-y-1" id="tasks-container">
+          <div id="home-tasks-list"></div>
           <!-- School-specific tasks injected here by JS -->
           <div id="school-tasks-inject"></div>
         </div>
@@ -350,16 +332,133 @@
   <script src="sync.js"></script>
   <script src="timmy-widget.js"></script>
   <script>
-    // === TASK PERSISTENCE (synced to Supabase) ===
-    const tasks = document.querySelectorAll('.task-check');
-    tasks.forEach(cb => {
-      const key = 'srishti_' + cb.dataset.key;
-      cb.checked = localStorage.getItem(key) === 'true';
-      cb.addEventListener('change', () => {
-        syncTask(cb.dataset.key, cb.checked);
-        updateProgress();
+    // === HOME TASKS (user-added, drag-to-rank, synced to Supabase) ===
+    const DEFAULT_HOME_TASKS = [
+      { id: 'seed-schworer',   text: 'Email Dr. Stephen Schworer — PI reconnection at Marsico Lung Institute', done: false },
+      { id: 'seed-panp',       text: 'Identify PA/NP at Medi-Weightloss for clinical LOR',                       done: false },
+      { id: 'seed-preview',    text: 'Register for AAMC PREview exam',                                           done: false },
+      { id: 'seed-unc-oh',     text: 'Start attending UNC virtual office hours (Fridays 11 AM)',                 done: false },
+      { id: 'seed-do-shadow',  text: 'Find a DO physician to shadow',                                            done: false },
+      { id: 'seed-medanth-lor',text: 'Email Medical Anthropology professor — confirm LOR',                       done: false },
+      { id: 'seed-drc',        text: 'Cold-reach Dr. C for physician LOR',                                       done: false },
+    ];
+    let homeTasks = [];
+
+    function initHomeTasks() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('srishti_home_tasks') || 'null');
+        if (Array.isArray(stored) && stored.length > 0) { homeTasks = stored; return; }
+      } catch(e) {}
+      // Seed + migrate any existing srishti_task-N checkbox states
+      homeTasks = DEFAULT_HOME_TASKS.map((t, i) => ({
+        ...t,
+        done: localStorage.getItem('srishti_task-' + i) === 'true'
+      }));
+    }
+
+    function persistHomeTasks() {
+      localStorage.setItem('srishti_home_tasks', JSON.stringify(homeTasks));
+      if (typeof syncHomeTasks === 'function') syncHomeTasks(homeTasks);
+    }
+
+    function renderHomeTasks() {
+      const list = document.getElementById('home-tasks-list');
+      list.innerHTML = homeTasks.map((t, idx) => `
+        <div class="task-row group flex items-start gap-2 py-1.5 px-1 -mx-1 rounded-lg hover:bg-rose-50/60" draggable="true" data-index="${idx}" data-id="${t.id}">
+          <span class="drag-handle text-rose-200 group-hover:text-rose-400 pt-0.5 text-xs" title="Drag to reorder">&#9776;</span>
+          <input type="checkbox" id="htask-${t.id}" class="task-check home-task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-id="${t.id}" ${t.done ? 'checked' : ''}>
+          <label for="htask-${t.id}" class="flex-1 text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
+          <button type="button" class="home-task-delete opacity-0 group-hover:opacity-100 text-rose-300 hover:text-rose-500 text-xs transition-opacity shrink-0 pt-0.5" data-id="${t.id}" title="Delete task">&#10005;</button>
+        </div>
+      `).join('');
+      attachHomeTaskListeners();
+      updateProgress();
+    }
+
+    let dragFromIdx = null;
+    function attachHomeTaskListeners() {
+      const rows = document.querySelectorAll('#home-tasks-list .task-row');
+      rows.forEach(row => {
+        row.addEventListener('dragstart', e => {
+          dragFromIdx = parseInt(row.dataset.index, 10);
+          row.classList.add('dragging');
+          e.dataTransfer.effectAllowed = 'move';
+          try { e.dataTransfer.setData('text/plain', row.dataset.id); } catch(err) {}
+        });
+        row.addEventListener('dragend', () => {
+          row.classList.remove('dragging');
+          document.querySelectorAll('#home-tasks-list .task-row').forEach(r => r.classList.remove('drop-before','drop-after'));
+          dragFromIdx = null;
+        });
+        row.addEventListener('dragover', e => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+          const rect = row.getBoundingClientRect();
+          const before = (e.clientY - rect.top) < rect.height / 2;
+          document.querySelectorAll('#home-tasks-list .task-row').forEach(r => r.classList.remove('drop-before','drop-after'));
+          row.classList.add(before ? 'drop-before' : 'drop-after');
+        });
+        row.addEventListener('drop', e => {
+          e.preventDefault();
+          if (dragFromIdx === null) return;
+          const rect = row.getBoundingClientRect();
+          const before = (e.clientY - rect.top) < rect.height / 2;
+          let toIdx = parseInt(row.dataset.index, 10);
+          if (!before) toIdx += 1;
+          const [moved] = homeTasks.splice(dragFromIdx, 1);
+          if (dragFromIdx < toIdx) toIdx -= 1;
+          homeTasks.splice(toIdx, 0, moved);
+          persistHomeTasks();
+          renderHomeTasks();
+        });
       });
+      document.querySelectorAll('#home-tasks-list .home-task-check').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const t = homeTasks.find(x => x.id === cb.dataset.id);
+          if (t) { t.done = cb.checked; persistHomeTasks(); updateProgress(); }
+        });
+      });
+      document.querySelectorAll('#home-tasks-list .home-task-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+          homeTasks = homeTasks.filter(t => t.id !== btn.dataset.id);
+          persistHomeTasks();
+          renderHomeTasks();
+        });
+      });
+    }
+
+    function addHomeTask() {
+      const input = document.getElementById('new-task-input');
+      const text = input.value.trim();
+      if (!text) return;
+      homeTasks.push({ id: 'ht-' + Date.now().toString(36), text, done: false });
+      input.value = '';
+      persistHomeTasks();
+      renderHomeTasks();
+    }
+    document.getElementById('add-task-btn').addEventListener('click', addHomeTask);
+    document.getElementById('new-task-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); addHomeTask(); }
     });
+
+    async function hydrateHomeTasksFromCloud() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/srishti_dashboard?key=eq.home_tasks&select=value`, { headers: HEADERS });
+        if (!res.ok) return;
+        const rows = await res.json();
+        const cloud = rows[0]?.value;
+        if (Array.isArray(cloud) && cloud.length > 0) {
+          homeTasks = cloud;
+          localStorage.setItem('srishti_home_tasks', JSON.stringify(homeTasks));
+          renderHomeTasks();
+        }
+      } catch(e) {}
+    }
+
+    initHomeTasks();
+    renderHomeTasks();
+    hydrateHomeTasksFromCloud();
+
     function updateProgress() {
       const allChecks = document.querySelectorAll('.task-check');
       const total = allChecks.length;

@@ -35,6 +35,10 @@ async function syncLoad() {
         for (const [k, v] of Object.entries(row.value)) {
           if (v) localStorage.setItem(k, v);
         }
+      } else if (row.key === 'home_tasks') {
+        if (Array.isArray(row.value) && row.value.length > 0) {
+          localStorage.setItem('srishti_home_tasks', JSON.stringify(row.value));
+        }
       } else if (row.key === 'timmy_chat') {
         if (Array.isArray(row.value) && row.value.length > 0) {
           localStorage.setItem('srishti_timmy_chat', JSON.stringify(row.value));
@@ -139,6 +143,24 @@ async function syncWandaQueue(queue) {
   } catch (e) {
     console.log('Wanda queue sync failed (offline mode):', e.message);
   }
+}
+
+// Save home tasks (user-added + drag-ranked) — debounced
+let _homeTasksTimer;
+function syncHomeTasks(tasks) {
+  localStorage.setItem('srishti_home_tasks', JSON.stringify(tasks));
+  clearTimeout(_homeTasksTimer);
+  _homeTasksTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'home_tasks', value: tasks, updated_at: new Date().toISOString() })
+      });
+    } catch (e) {
+      console.log('Home tasks sync failed (offline mode):', e.message);
+    }
+  }, 1000);
 }
 
 // Save Timmy chat history (debounced)
