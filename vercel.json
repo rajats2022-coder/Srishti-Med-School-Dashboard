@@ -2,6 +2,11 @@
   "buildCommand": "",
   "outputDirectory": "dashboard",
   "framework": null,
+  "functions": {
+    "api/timmy-chat.js": {
+      "includeFiles": "api/timmy-context.md"
+    }
+  },
   "rewrites": [
     { "source": "/schools", "destination": "/schools.html" },
     { "source": "/do-schools", "destination": "/do-schools.html" },
