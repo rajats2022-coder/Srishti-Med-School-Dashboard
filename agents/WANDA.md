@@ -33,6 +33,16 @@
    - Does the school have research in her interest areas (lung/pulmonary, peds, women's health)?
    - Any alumni/faculty connections she already has?
 
+   **A.1. Go-No-Go Readiness Check** *(MANDATORY — added per Gray audit 2026-04-16)*
+   - Per Ryan Gray, School List (~line 3100): before applying, pressure-test Srishti's readiness for THIS school specifically — not just whether she belongs thematically. Many cycle-1 rejections were structural, not academic; this check catches structural gaps before the secondary fee is spent.
+     - [ ] **MCAT ready** — is her 517 competitive at this school's matriculant median? (Above = asset; well above = yield-protection risk, see Section G.)
+     - [ ] **GPA ready** — is her 3.88 competitive at this school's matriculant median?
+     - [ ] **Clinical consistent** — is her ~1,000+ paid MA hours at Medi-Weightloss enough for this school's implicit bar? (Research-heavy schools expect more; community-care schools treat it as sufficient.)
+     - [ ] **Shadowing sufficient** — DO-specific shadowing if DO school (see [CLAUDE.md](../CLAUDE.md) Open Q #8), or meaningful physician shadow if MD?
+     - [ ] **Research appropriate** — is her 340 hrs at Marsico Lung Institute enough for a research-heavy school (Vanderbilt, Pitt, Duke), or is it a non-issue for a community-care school?
+     - [ ] **Time to submit early** — can she realistically submit AMCAS/AACOMAS in the first 2-3 weeks of the cycle opening? (Load-bearing at rolling-admissions schools — see Section G structural gates.)
+   - **Any NO box triggers an essay-strategy flag in the plan.** The secondary must proactively address that gap. E.g., Vanderbilt with no posters/pubs → "Why Vanderbilt" essay needs a research-growth-trajectory angle, not a past-accomplishment claim. Flag explicitly in the plan's Overview banner, not just in Section A.
+
    **B. Programs That Fit (4-6 programs)**
    - Search the school's website for: scholarly concentrations, dual degrees, certificates, special tracks
    - Look for: social medicine, humanities in medicine, global health, cultural competency, primary care scholars, rural health
@@ -50,6 +60,15 @@
    - For each prompt: write a specific strategy using stories from the Story Menu
    - Always include the reapplicant essay strategy (framework: Before → Pivot → What Changed → Why This School)
 
+   **D.1. Hard Story Assignment** *(MANDATORY — added per Gray audit 2026-04-16)*
+   - Srishti's #1 cycle-1 failure was recycling the same 3 essay blocks across 21 schools ([CONTEXT.md §9](../CONTEXT.md)). The fix is a school-by-school story mapping, not a generic "use the Story Menu" instruction. Per Ryan Gray, Secondaries (~line 3400) + PS (~line 2200): don't recycle; match stories to the school's specific mission.
+   - For each of this school's secondary prompts, specify:
+     - **USE** — 2-3 specific Story Menu blocks (by name from [REAPPLICATION_PLAN.md](../REAPPLICATION_PLAN.md) Part 6) that fit this prompt at this school
+     - **DO NOT USE** — which Story Menu blocks are already spent at 2+ other schools on the active list (so the same 3 blocks don't recycle across 15+ secondaries)
+     - **Tailor hook** — one sentence of school-specific detail that proves this isn't a copy-paste (program name, faculty name, mission language, campus fact)
+   - **Maintain a running "Story Menu usage map" at the top of the plan** (accordion or sidebar): which Story Menu blocks have been assigned at which schools across the active list. Before assigning at a new school, check the map — if a block is already used at 2+ schools, force a different block here. This is the enforcement mechanism, not just a guideline.
+   - **Cycle-1 recycling patterns to actively avoid:** Mr. W / poetry conversation (overused in cycle 1), Grandfather-in-Surat opener (powerful but spent everywhere), Marsico research (fits UNC specifically, weak as generic "why us" filler). See [CONTEXT.md §9](../CONTEXT.md) for the full diagnostic on what got recycled.
+
    **E. Outreach Templates (3+ copyable messages)**
    - Email to a faculty member (personalized to the school)
    - DM to a current student
@@ -60,6 +79,37 @@
    - What type (MMI, traditional, panel, group)?
    - Structure (how many interviews, who interviews, blinded?)
    - Season (what months, what days of week)
+
+   **G. Application Yield — Is She a High-Yield Application Here?** *(MANDATORY — added per Srishti 2026-04-16)*
+   - **Question to answer:** Is the secondary fee + essay time at this school a *high-yield* spend for Srishti, or a low-yield spend that should be cut?
+   - This is the MSAR-style data check Ryan Gray prescribes for international applicants ([RyanGray.md:3137](../RyanGray.md#L3137)): *"look at how many international students apply, how many are interviewed, and how many are ultimately accepted or matriculate. If a med school states they accept international students, but the actual data doesn't show it, you are probably better to move to the next school."*
+   - **Pull (or estimate) these numbers:**
+     - International / Canadian applicants per cycle
+     - International / Canadian interview invites per cycle
+     - International / Canadian **matriculants** in the most recent class (this is the load-bearing number)
+     - OOS acceptance rate (proxy when international-specific data isn't published)
+     - Post-interview yield % if available
+   - **Assign a Canadian-Friendly Tier** (codified from Run 4 CMU pattern):
+     - **Tier 1 — High-yield:** Explicit Canadian-eligible policy + Canadian matriculants present in recent class (e.g., MSU CHM). Apply confidently, lean into Canadian framing where it helps.
+     - **Tier 2 — Eligible but low-yield:** Explicit policy allows Canadians, but zero or near-zero Canadian matriculants in last 1–2 years (e.g., CMU). Apply only if there's a *separate* structural advantage (Michigan roots, mission fit, specific faculty alignment). Do NOT lean on Canadian framing — lean on the other angle.
+     - **Tier 3 — Effectively closed / CUT:** Policy filters internationals or requires LPR/green card (e.g., LSU NOLA). Move to Investigated & Cut. Don't waste the secondary fee.
+   - **Also flag yield protection risk** ([RyanGray.md:3072](../RyanGray.md#L3072)): with her 517 MCAT, schools whose matriculant median is well below 510 may reject her under yield protection (especially DO schools). When this risk is real, the secondary should explicitly demonstrate "I would actually attend here" — specific program names, faculty, geographic commitment, mission language. Note this as an essay-strategy flag in the plan.
+   - **Output verdict in the plan:** one of `HIGH-YIELD APPLY` / `LOW-YIELD — APPLY ONLY IF [reason]` / `CUT — yield too low to justify cost`. This verdict goes in the school's Overview banner so Rajat can see at a glance whether the application $ + Srishti's essay time are justified.
+   - **Also pull these 4 structural gates** *(added per Gray audit 2026-04-16 — eligibility without these verified is incomplete; a "HIGH-YIELD APPLY" that skips these is fragile)*:
+     - **Casper / PREview / SJT policy** — is Casper required at this school? Is PREview required or favored? Srishti's cycle-1 Casper was 3rd quartile ([CONTEXT.md §7c](../CONTEXT.md)) — flag if this school weights Casper heavily (per [CONTEXT.md §10](../CONTEXT.md): Tufts, Tulane, BU, Wayne State, Sidney Kimmel, MSU, CMU do). If 3rd-quartile Casper is a silent drag here, note it as a retake-priority signal feeding [CLAUDE.md](../CLAUDE.md) Open Question #9.
+     - **LOR policy — PA/NP acceptance** — verify from the school's own LOR page: does this school accept a PA/NP as the primary clinical letter, or require/prefer MD/DO? Critical Rule #6 says her PA/NP letter is the primary clinical letter — if a school weakly prefers MD/DO, flag as an essay-strategy issue (secondary should lean harder on the daily-supervision depth angle from the PA/NP letter, not on credential type).
+     - **Escrow / Canadian financial-aid eligibility** — some US MD schools require Canadian students to escrow full tuition upfront ($75K–100K) before matriculating. Eligible on paper ≠ attendable. Required pull for every Canadian-eligible school. When unknown, add an Open Question entry (see CMU Open Question #11 pattern).
+     - **Rolling admissions submit-by date** — is this school rolling? When does OOS-seat shrinkage begin? What's the realistic "late = dead" window? Built into the Timeline accordion as a hard date, not a vague "submit early." (Run 4 CMU precedent: June 5 AMCAS submit target, not July 15.)
+
+   **H. Reapplicant Diagnostic** *(MANDATORY for cycle-1 reapply schools only — added per Gray audit 2026-04-16)*
+   - **Applies to the 7 cycle-1 reapply schools only:** GW, Wayne State, CMU, Sidney Kimmel, Tulane, VCU, Maryland. For any other school (fresh apply, new scout), skip this section entirely — don't pad the plan.
+   - Per Ryan Gray, Rejection & Reapplying (~line 4505): *"The #1 reapplicant mistake is jumping back in too fast without fixing what went wrong."* Gray prescribes a section-by-section audit: MCAT, GPA, Activities, PS, Timing, Secondaries, School List, Interview.
+   - **Required audit for each reapply school:**
+     1. **Pull Srishti's cycle-1 secondary for this school from Drive** ([CONTEXT.md §14](../CONTEXT.md) has the Drive folder path). If unreachable, flag and ask Rajat for the file before writing the plan.
+     2. **Identify 2-3 cycle-1-specific weaknesses** at this school. Examples: "secondary cited hospice training that never happened," "no Michigan framing despite CMU's in-state preference," "recycled the Grandfather block that was also used at 8 other schools," "used 'anticipated MA' framing that now reads as stale."
+     3. **Write a 200-word 'what's different now' paragraph** for the reapplicant essay. Framework: *Before → Pivot → What Changed → Why This School Specifically.* Wanda pre-writes this so Srishti isn't doing it cold when the secondary lands.
+     4. **Cross-check for stale claims.** Critical Rule #4: hospice is DEAD (0 hours — she completed training but VIA never assigned her). If the cycle-1 secondary referenced hospice, flag for removal. "Anticipated MA" language from cycle 1 is now real — rewrite to past-tense accomplished, not future-aspirational.
+   - **Output in the plan:** a dedicated accordion labeled "Reapplicant Diagnostic" containing (a) the 2-3 identified cycle-1 weaknesses at this school, (b) the pre-written 200-word "what's different now" paragraph, (c) a highlighted list of cycle-1 claims that need removal/rewrite.
 
 3. **Build the dashboard entry** — Follow `WANDA_SCHOOL_TEMPLATE.md` exactly:
    - Add school object to `wandaSchools` array (full plan OR Investigated & CUT variant — either counts as "done")
@@ -78,6 +128,11 @@
 7. **Update all other MD files** — Per the standing rule from Run 4: every Wanda run must update `CONTEXT.md` (new facts about Srishti), `REAPPLICATION_PLAN.md` (school-list / strategy changes), and the root `CLAUDE.md` Open Questions table (mark resolved, add new). Not just the dashboard HTML.
 
 ### Quality checklist
+- [ ] Application Yield verdict assigned: `HIGH-YIELD APPLY` / `LOW-YIELD — APPLY ONLY IF [reason]` / `CUT — yield too low`, with Canadian-Friendly Tier (1/2/3) and yield-protection flag if applicable
+- [ ] Section A Go-No-Go 6-box readiness check completed (MCAT / GPA / Clinical / Shadowing / Research / Timing); any NO box triggered an essay-strategy flag in the Overview banner
+- [ ] Section D Hard Story Assignment: each secondary prompt has USE / DO NOT USE / Tailor hook specified, and a running Story Menu usage map is at the top of the plan
+- [ ] Section G structural gates pulled: Casper/PREview policy, LOR PA/NP acceptance, escrow/Canadian financial-aid eligibility, rolling-admissions submit-by date
+- [ ] If this is one of the 7 cycle-1 reapply schools (GW, Wayne State, CMU, Sidney Kimmel, Tulane, VCU, Maryland): Section H Reapplicant Diagnostic accordion present with 2-3 cycle-1 weaknesses + pre-written 200-word "what's different now" paragraph + stale-claims list
 - [ ] All 6 accordion sections present (Why Belong, Programs, People, Essays, Templates, Interview)
 - [ ] First accordion section uses `expanded` + `open` classes; others don't
 - [ ] All `tpl-` IDs in outreach templates are unique across all schools
