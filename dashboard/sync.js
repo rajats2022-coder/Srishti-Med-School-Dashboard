@@ -35,6 +35,10 @@ async function syncLoad() {
         for (const [k, v] of Object.entries(row.value)) {
           if (v) localStorage.setItem(k, v);
         }
+      } else if (row.key === 'timmy_chat') {
+        if (Array.isArray(row.value) && row.value.length > 0) {
+          localStorage.setItem('srishti_timmy_chat', JSON.stringify(row.value));
+        }
       } else if (row.key === 'theme') {
         if (typeof row.value === 'string' && (row.value === 'light' || row.value === 'dark')) {
           localStorage.setItem('srishti_theme', row.value);
@@ -135,6 +139,24 @@ async function syncWandaQueue(queue) {
   } catch (e) {
     console.log('Wanda queue sync failed (offline mode):', e.message);
   }
+}
+
+// Save Timmy chat history (debounced)
+let _timmyChatTimer;
+function syncTimmyChat(history) {
+  localStorage.setItem('srishti_timmy_chat', JSON.stringify(history));
+  clearTimeout(_timmyChatTimer);
+  _timmyChatTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'timmy_chat', value: history, updated_at: new Date().toISOString() })
+      });
+    } catch (e) {
+      console.log('Timmy chat sync failed (offline mode):', e.message);
+    }
+  }, 1000);
 }
 
 // Save theme preference (light/dark) — cross-device
