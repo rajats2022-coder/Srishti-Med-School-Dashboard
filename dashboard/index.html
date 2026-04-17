@@ -282,6 +282,57 @@
       </div>
     </div>
 
+    <!-- Reward System -->
+    <section class="mb-10 fade-enter" style="animation-delay: 0.32s">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <span class="text-2xl">&#127873;</span>
+        <h2 class="font-display text-2xl font-bold text-gray-800">Reward System</h2>
+      </div>
+      <p class="text-center text-sm text-gray-500 mb-6">Pick her tasks &middot; Attach a reward &middot; Celebrate when she crushes it</p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Col 1: Her Tasks (pool) -->
+        <div class="bg-white rounded-3xl p-5 shadow-card border border-rose-50">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">&#128203;</span>
+              <h3 class="font-display text-lg font-bold text-gray-800">Her Tasks</h3>
+            </div>
+            <span class="text-xs text-gray-400" id="rw-pool-count">0 open</span>
+          </div>
+          <div id="rewards-pool" class="space-y-1 max-h-[420px] overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Col 2: Tasks for Reward (tray) -->
+        <div class="bg-gradient-to-br from-rose-50 to-lavender-50 rounded-3xl p-5 shadow-card border border-rose-100">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">&#10024;</span>
+              <h3 class="font-display text-lg font-bold text-gray-800">Tasks for Reward</h3>
+            </div>
+            <span class="text-xs text-gray-400" id="rw-tray-count">0 queued</span>
+          </div>
+          <div id="rewards-tray" class="space-y-2 min-h-[120px]"></div>
+        </div>
+
+        <!-- Col 3: Reward Bank -->
+        <div class="bg-white rounded-3xl p-5 shadow-card border border-rose-50">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">&#127872;</span>
+              <h3 class="font-display text-lg font-bold text-gray-800">Reward Bank</h3>
+            </div>
+            <span class="text-xs text-gray-400" id="rw-bank-count">0 rewards</span>
+          </div>
+          <div class="flex gap-2 mb-3">
+            <input id="new-reward-input" type="text" maxlength="120" placeholder="Dinner date, massage, movie night..." class="flex-1 text-sm px-3 py-2 rounded-xl border border-rose-100 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100 bg-white text-gray-700 placeholder-gray-400">
+            <button id="add-reward-btn" class="text-sm font-semibold px-3 py-2 rounded-xl bg-rose-400 text-white hover:bg-rose-500 transition-colors" title="Add reward">+</button>
+          </div>
+          <div id="rewards-bank" class="space-y-1 max-h-[320px] overflow-y-auto pr-1"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Agent Cards -->
     <section class="mb-10 fade-enter" style="animation-delay: 0.35s">
       <h2 class="font-display text-2xl font-bold text-gray-800 mb-6 text-center">Your Agents</h2>
@@ -387,6 +438,7 @@
       `).join('');
       attachHomeTaskListeners();
       updateProgress();
+      if (typeof renderRewardsAll === 'function') renderRewardsAll();
     }
 
     let dragFromIdx = null;
@@ -429,7 +481,7 @@
       document.querySelectorAll('#home-tasks-list .home-task-check').forEach(cb => {
         cb.addEventListener('change', () => {
           const t = homeTasks.find(x => x.id === cb.dataset.id);
-          if (t) { t.done = cb.checked; persistHomeTasks(); updateProgress(); }
+          if (t) { t.done = cb.checked; persistHomeTasks(); updateProgress(); if (typeof renderRewardsAll === 'function') renderRewardsAll(); }
         });
       });
       document.querySelectorAll('#home-tasks-list .home-task-delete').forEach(btn => {
@@ -519,6 +571,7 @@
       }
       inject.innerHTML = html;
       updateProgress();
+      if (typeof renderRewardsAll === 'function') renderRewardsAll();
     }
 
     function escapeHtml(text) {
@@ -624,6 +677,230 @@
     }
     renderSpotlight();
     resetTimer();
+
+    // === REWARD SYSTEM (Rajat's tracker) ===
+    var rewardsBank, rewardsSelected, rewardsPool;
+    var rewardsReady = false;
+
+    function initRewards() {
+      try { rewardsBank = JSON.parse(localStorage.getItem('srishti_rewards_bank') || '[]'); } catch(e) {}
+      try { rewardsSelected = JSON.parse(localStorage.getItem('srishti_rewards_selected') || '[]'); } catch(e) {}
+      if (!Array.isArray(rewardsBank)) rewardsBank = [];
+      if (!Array.isArray(rewardsSelected)) rewardsSelected = [];
+      rewardsPool = [];
+      rewardsReady = true;
+    }
+
+    function persistBank() {
+      localStorage.setItem('srishti_rewards_bank', JSON.stringify(rewardsBank));
+      if (typeof syncRewardsBank === 'function') syncRewardsBank(rewardsBank);
+    }
+    function persistSelected() {
+      localStorage.setItem('srishti_rewards_selected', JSON.stringify(rewardsSelected));
+      if (typeof syncRewardsSelected === 'function') syncRewardsSelected(rewardsSelected);
+    }
+
+    function getOpenTasksForPool() {
+      const home = (homeTasks || []).filter(t => !t.done).map(t => ({
+        source: 'home', taskId: t.id, text: t.text
+      }));
+      let st = {};
+      try { st = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+      const school = [];
+      for (const [schoolId, tasks] of Object.entries(st)) {
+        for (const t of (tasks || [])) {
+          if (!t.done) school.push({ source: 'school', taskId: t.id, text: t.text, schoolId });
+        }
+      }
+      return [...home, ...school];
+    }
+
+    function isPicked(source, taskId) {
+      return rewardsSelected.some(s => s.source === source && s.taskId === taskId);
+    }
+
+    function getTaskState(source, taskId) {
+      if (source === 'home') {
+        const t = (homeTasks || []).find(x => x.id === taskId);
+        return t ? { done: !!t.done, exists: true } : { done: false, exists: false };
+      }
+      if (source === 'school') {
+        let st = {};
+        try { st = JSON.parse(localStorage.getItem('srishti_school_tasks') || '{}'); } catch(e) {}
+        for (const tasks of Object.values(st)) {
+          const t = (tasks || []).find(x => x.id === taskId);
+          if (t) return { done: !!t.done, exists: true };
+        }
+      }
+      return { done: false, exists: false };
+    }
+
+    function renderPool() {
+      rewardsPool = getOpenTasksForPool();
+      const el = document.getElementById('rewards-pool');
+      document.getElementById('rw-pool-count').textContent = `${rewardsPool.length} open`;
+      if (rewardsPool.length === 0) {
+        el.innerHTML = `<p class="text-xs text-gray-400 italic py-4 text-center">No open tasks. She's crushing it &#128150;</p>`;
+        return;
+      }
+      el.innerHTML = rewardsPool.map((t, i) => {
+        const picked = isPicked(t.source, t.taskId);
+        const badgeClass = t.source === 'home' ? 'text-rose-400' : 'text-lavender-300';
+        const badgeLabel = t.source === 'home' ? 'home' : 'school';
+        return `
+          <div class="flex items-start gap-2 py-1.5 px-2 rounded-lg hover:bg-rose-50/60 transition-colors">
+            <span class="text-[10px] font-bold uppercase tracking-wider ${badgeClass} mt-0.5 shrink-0 w-10">${badgeLabel}</span>
+            <span class="flex-1 text-sm text-gray-700 leading-snug break-words">${escapeHtml(t.text)}</span>
+            ${picked
+              ? `<span class="text-xs text-gray-300 shrink-0 pt-0.5">picked</span>`
+              : `<button type="button" class="rw-pick-btn shrink-0 text-xs font-semibold px-2 py-1 rounded-lg bg-rose-400 text-white hover:bg-rose-500 transition-colors" data-idx="${i}" title="Add to reward tray">+</button>`}
+          </div>
+        `;
+      }).join('');
+      el.querySelectorAll('.rw-pick-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = rewardsPool[parseInt(btn.dataset.idx, 10)];
+          if (!t || isPicked(t.source, t.taskId)) return;
+          rewardsSelected.push({
+            id: 'rs-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+            source: t.source, taskId: t.taskId, text: t.text, rewardId: null
+          });
+          persistSelected();
+          renderPool();
+          renderTray();
+        });
+      });
+    }
+
+    function renderTray() {
+      const el = document.getElementById('rewards-tray');
+      document.getElementById('rw-tray-count').textContent = `${rewardsSelected.length} queued`;
+      if (rewardsSelected.length === 0) {
+        el.innerHTML = `<p class="text-xs text-gray-400 italic py-6 text-center">Pick a task from the left &rarr;</p>`;
+        return;
+      }
+      el.innerHTML = rewardsSelected.map(s => {
+        const state = getTaskState(s.source, s.taskId);
+        const reward = rewardsBank.find(r => r.id === s.rewardId);
+        const done = state.done;
+        const options = rewardsBank.map(r => `<option value="${r.id}" ${r.id === s.rewardId ? 'selected' : ''}>${escapeHtml(r.text)}</option>`).join('');
+        return `
+          <div class="bg-white rounded-2xl p-3 border ${done ? 'border-green-300 bg-gradient-to-br from-green-50 to-white' : 'border-rose-100'} transition-all">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div class="flex items-start gap-2 flex-1 min-w-0">
+                <span class="${done ? 'text-green-500' : 'text-gray-300'} text-base leading-none pt-0.5">${done ? '&#10003;' : '&#9675;'}</span>
+                <span class="text-sm ${done ? 'text-gray-500 line-through' : 'text-gray-700'} leading-snug break-words">${escapeHtml(s.text)}</span>
+              </div>
+              <button type="button" class="rw-tray-remove shrink-0 text-rose-300 hover:text-rose-500 text-xs transition-colors" data-id="${s.id}" title="Remove">&#10005;</button>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              ${rewardsBank.length === 0
+                ? `<span class="text-xs text-gray-400 italic">Add a reward to the bank &rarr;</span>`
+                : `<span class="text-[10px] font-bold text-rose-400 uppercase tracking-wider shrink-0">Reward</span>
+                   <select class="rw-tray-select flex-1 min-w-0 text-xs px-2 py-1 rounded-lg border border-rose-100 focus:border-rose-300 focus:outline-none bg-white text-gray-700" data-id="${s.id}">
+                     <option value="">&mdash; pick one &mdash;</option>
+                     ${options}
+                   </select>`
+              }
+              ${reward && done ? `<span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">&#10024; Earned: ${escapeHtml(reward.text)}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+      el.querySelectorAll('.rw-tray-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          rewardsSelected = rewardsSelected.filter(s => s.id !== btn.dataset.id);
+          persistSelected();
+          renderPool();
+          renderTray();
+        });
+      });
+      el.querySelectorAll('.rw-tray-select').forEach(sel => {
+        sel.addEventListener('change', () => {
+          const item = rewardsSelected.find(s => s.id === sel.dataset.id);
+          if (item) { item.rewardId = sel.value || null; persistSelected(); renderTray(); }
+        });
+      });
+    }
+
+    function renderBank() {
+      const el = document.getElementById('rewards-bank');
+      document.getElementById('rw-bank-count').textContent = `${rewardsBank.length} reward${rewardsBank.length === 1 ? '' : 's'}`;
+      if (rewardsBank.length === 0) {
+        el.innerHTML = `<p class="text-xs text-gray-400 italic py-4 text-center">Add rewards above to get started.</p>`;
+        return;
+      }
+      el.innerHTML = rewardsBank.map(r => `
+        <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-rose-50/60 transition-colors group">
+          <span class="text-sm">&#127872;</span>
+          <span class="flex-1 text-sm text-gray-700 leading-snug break-words">${escapeHtml(r.text)}</span>
+          <button type="button" class="rw-bank-delete opacity-0 group-hover:opacity-100 text-rose-300 hover:text-rose-500 text-xs transition-opacity shrink-0" data-id="${r.id}" title="Delete reward">&#10005;</button>
+        </div>
+      `).join('');
+      el.querySelectorAll('.rw-bank-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          rewardsBank = rewardsBank.filter(r => r.id !== id);
+          rewardsSelected.forEach(s => { if (s.rewardId === id) s.rewardId = null; });
+          persistBank();
+          persistSelected();
+          renderBank();
+          renderTray();
+        });
+      });
+    }
+
+    function addReward() {
+      const input = document.getElementById('new-reward-input');
+      const text = input.value.trim();
+      if (!text) return;
+      rewardsBank.push({ id: 'rw-' + Date.now().toString(36), text });
+      input.value = '';
+      persistBank();
+      renderBank();
+      renderTray();
+    }
+    document.getElementById('add-reward-btn').addEventListener('click', addReward);
+    document.getElementById('new-reward-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); addReward(); }
+    });
+
+    function renderRewardsAll() {
+      if (!rewardsReady) return;
+      renderPool();
+      renderTray();
+      renderBank();
+    }
+
+    async function hydrateRewardsFromCloud() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/srishti_dashboard?key=in.(rewards_bank,rewards_selected)&select=key,value`, { headers: HEADERS });
+        if (!res.ok) return;
+        const rows = await res.json();
+        for (const row of rows) {
+          if (row.key === 'rewards_bank' && Array.isArray(row.value)) {
+            rewardsBank = row.value;
+            localStorage.setItem('srishti_rewards_bank', JSON.stringify(rewardsBank));
+          } else if (row.key === 'rewards_selected' && Array.isArray(row.value)) {
+            rewardsSelected = row.value;
+            localStorage.setItem('srishti_rewards_selected', JSON.stringify(rewardsSelected));
+          }
+        }
+        renderRewardsAll();
+      } catch(e) {}
+    }
+
+    initRewards();
+    renderRewardsAll();
+    hydrateRewardsFromCloud();
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'srishti_home_tasks' || e.key === 'srishti_school_tasks' || e.key === 'srishti_rewards_bank' || e.key === 'srishti_rewards_selected') {
+        if (e.key === 'srishti_rewards_bank') { try { rewardsBank = JSON.parse(e.newValue || '[]') || []; } catch(_) {} }
+        if (e.key === 'srishti_rewards_selected') { try { rewardsSelected = JSON.parse(e.newValue || '[]') || []; } catch(_) {} }
+        renderRewardsAll();
+      }
+    });
   </script>
 </body>
 </html>

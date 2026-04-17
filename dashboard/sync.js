@@ -59,6 +59,14 @@ async function syncLoad() {
         if (Array.isArray(row.value)) {
           localStorage.setItem('srishti_planner_secondaries', JSON.stringify(row.value));
         }
+      } else if (row.key === 'rewards_bank') {
+        if (Array.isArray(row.value)) {
+          localStorage.setItem('srishti_rewards_bank', JSON.stringify(row.value));
+        }
+      } else if (row.key === 'rewards_selected') {
+        if (Array.isArray(row.value)) {
+          localStorage.setItem('srishti_rewards_selected', JSON.stringify(row.value));
+        }
       } else if (row.key === 'theme') {
         if (typeof row.value === 'string' && (row.value === 'light' || row.value === 'dark')) {
           localStorage.setItem('srishti_theme', row.value);
@@ -258,6 +266,38 @@ function syncPlannerSecondaries(list) {
         body: JSON.stringify({ key: 'planner_secondaries', value: list, updated_at: new Date().toISOString() })
       });
     } catch (e) { console.log('Planner secondaries sync failed:', e.message); }
+  }, 1000);
+}
+
+// Rewards — bank of rewards Rajat can assign (debounced)
+let _rewardsBankTimer;
+function syncRewardsBank(list) {
+  localStorage.setItem('srishti_rewards_bank', JSON.stringify(list));
+  clearTimeout(_rewardsBankTimer);
+  _rewardsBankTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'rewards_bank', value: list, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Rewards bank sync failed:', e.message); }
+  }, 1000);
+}
+
+// Rewards — selected tasks paired with rewards (debounced)
+let _rewardsSelTimer;
+function syncRewardsSelected(list) {
+  localStorage.setItem('srishti_rewards_selected', JSON.stringify(list));
+  clearTimeout(_rewardsSelTimer);
+  _rewardsSelTimer = setTimeout(async () => {
+    try {
+      await fetch(API, {
+        method: 'POST',
+        headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+        body: JSON.stringify({ key: 'rewards_selected', value: list, updated_at: new Date().toISOString() })
+      });
+    } catch (e) { console.log('Rewards selected sync failed:', e.message); }
   }, 1000);
 }
 
