@@ -75,6 +75,10 @@ async function syncLoad() {
           const isDark = document.documentElement.classList.contains('dark');
           if (wantsDark !== isDark) document.documentElement.classList.toggle('dark', wantsDark);
         }
+      } else if (row.key === 'completed_collapsed') {
+        if (typeof row.value === 'boolean') {
+          localStorage.setItem('srishti_completed_collapsed', String(row.value));
+        }
       }
     }
   } catch (e) {
@@ -312,6 +316,20 @@ async function syncTheme(theme) {
     });
   } catch (e) {
     console.log('Theme sync failed (offline mode):', e.message);
+  }
+}
+
+// Save Completed-zone collapsed state for Today's Tasks widget — cross-device
+async function syncCompletedCollapsed(collapsed) {
+  localStorage.setItem('srishti_completed_collapsed', String(collapsed));
+  try {
+    await fetch(API, {
+      method: 'POST',
+      headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify({ key: 'completed_collapsed', value: !!collapsed, updated_at: new Date().toISOString() })
+    });
+  } catch (e) {
+    console.log('Completed-collapsed sync failed (offline mode):', e.message);
   }
 }
 

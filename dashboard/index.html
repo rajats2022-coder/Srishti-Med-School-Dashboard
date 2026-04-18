@@ -183,10 +183,21 @@
           <input id="new-task-input" type="text" placeholder="Add a task..." maxlength="200" class="flex-1 text-sm px-3 py-2 rounded-xl border border-rose-100 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100 bg-white text-gray-700 placeholder-gray-400">
           <button id="add-task-btn" class="text-sm font-semibold px-3 py-2 rounded-xl bg-rose-400 text-white hover:bg-rose-500 transition-colors" title="Add task">+</button>
         </div>
-        <div class="space-y-1" id="tasks-container">
-          <div id="home-tasks-list"></div>
-          <!-- School-specific tasks injected here by JS -->
-          <div id="school-tasks-inject"></div>
+        <div id="tasks-container">
+          <div id="active-tasks-zone" class="space-y-1 max-h-[280px] overflow-y-auto pr-1">
+            <div id="home-tasks-list"></div>
+            <!-- School-specific tasks injected here by JS (incomplete only) -->
+            <div id="school-tasks-inject"></div>
+          </div>
+          <button id="completed-toggle" type="button" class="w-full flex items-center justify-between mt-3 pt-3 border-t border-rose-50 text-xs font-bold text-gray-400 hover:text-rose-400 transition-colors">
+            <span id="completed-label">Completed (0)</span>
+            <span id="completed-chevron" class="transition-transform">&#9662;</span>
+          </button>
+          <div id="completed-tasks-zone" class="space-y-1 mt-2 hidden">
+            <div id="home-tasks-completed-list"></div>
+            <!-- School-specific completed tasks injected here by JS -->
+            <div id="school-tasks-completed-inject"></div>
+          </div>
         </div>
         <div class="mt-4 pt-4 border-t border-rose-50">
           <div class="flex items-center justify-between text-sm">
@@ -408,17 +419,27 @@
       { id: 'seed-drc',        text: 'Cold-reach Dr. C for physician LOR',                                       done: false },
     ];
     let homeTasks = [];
+    let completedCollapsed = true;
 
     function initHomeTasks() {
       try {
         const stored = JSON.parse(localStorage.getItem('srishti_home_tasks') || 'null');
-        if (Array.isArray(stored) && stored.length > 0) { homeTasks = stored; return; }
-      } catch(e) {}
-      // Seed + migrate any existing srishti_task-N checkbox states
-      homeTasks = DEFAULT_HOME_TASKS.map((t, i) => ({
-        ...t,
-        done: localStorage.getItem('srishti_task-' + i) === 'true'
-      }));
+        if (Array.isArray(stored) && stored.length > 0) { homeTasks = stored; }
+        else {
+          // Seed + migrate any existing srishti_task-N checkbox states
+          homeTasks = DEFAULT_HOME_TASKS.map((t, i) => ({
+            ...t,
+            done: localStorage.getItem('srishti_task-' + i) === 'true'
+          }));
+        }
+      } catch(e) {
+        homeTasks = DEFAULT_HOME_TASKS.map((t, i) => ({
+          ...t,
+          done: localStorage.getItem('srishti_task-' + i) === 'true'
+        }));
+      }
+      const cc = localStorage.getItem('srishti_completed_collapsed');
+      completedCollapsed = (cc === 'false') ? false : true;
     }
 
     function persistHomeTasks() {
@@ -426,27 +447,60 @@
       if (typeof syncHomeTasks === 'function') syncHomeTasks(homeTasks);
     }
 
-    function renderHomeTasks() {
-      const list = document.getElementById('home-tasks-list');
-      list.innerHTML = homeTasks.map((t, idx) => `
-        <div class="task-row group flex items-start gap-2 py-1.5 px-1 -mx-1 rounded-lg hover:bg-rose-50/60" draggable="true" data-index="${idx}" data-id="${t.id}">
-          <span class="drag-handle text-rose-200 group-hover:text-rose-400 pt-0.5 text-xs" title="Drag to reorder">&#9776;</span>
+    function homeTaskRowHtml(t, activeIdx, isCompletedRow) {
+      const dragAttrs = isCompletedRow ? '' : ' draggable="true"';
+      const handle = isCompletedRow
+        ? `<span class="text-transparent pt-0.5 text-xs select-none" aria-hidden="true">&#9776;</span>`
+        : `<span class="drag-handle text-rose-200 group-hover:text-rose-400 pt-0.5 text-xs" title="Drag to reorder">&#9776;</span>`;
+      return `
+        <div class="task-row group flex items-start gap-2 py-1.5 px-1 -mx-1 rounded-lg hover:bg-rose-50/60"${dragAttrs} data-index="${activeIdx}" data-id="${t.id}">
+          ${handle}
           <input type="checkbox" id="htask-${t.id}" class="task-check home-task-check mt-1 w-4 h-4 rounded accent-rose-400 shrink-0" data-id="${t.id}" ${t.done ? 'checked' : ''}>
           <label for="htask-${t.id}" class="flex-1 text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
           <button type="button" class="home-task-delete opacity-0 group-hover:opacity-100 text-rose-300 hover:text-rose-500 text-xs transition-opacity shrink-0 pt-0.5" data-id="${t.id}" title="Delete task">&#10005;</button>
         </div>
-      `).join('');
+      `;
+    }
+
+    function renderHomeTasks() {
+      const activeList = document.getElementById('home-tasks-list');
+      const completedList = document.getElementById('home-tasks-completed-list');
+      const active = homeTasks.filter(t => !t.done);
+      const completed = homeTasks
+        .filter(t => t.done)
+        .sort((a, b) => (b.completedAt || '').localeCompare(a.completedAt || ''));
+      activeList.innerHTML = active.map((t, idx) => homeTaskRowHtml(t, idx, false)).join('');
+      completedList.innerHTML = completed.map((t, idx) => homeTaskRowHtml(t, idx, true)).join('');
       attachHomeTaskListeners();
       updateProgress();
+      updateCompletedZoneUI();
       if (typeof renderRewardsAll === 'function') renderRewardsAll();
     }
 
-    let dragFromIdx = null;
+    function updateCompletedZoneUI() {
+      const allChecks = document.querySelectorAll('.task-check');
+      const completedCount = [...allChecks].filter(c => c.checked).length;
+      const labelEl = document.getElementById('completed-label');
+      const chevEl = document.getElementById('completed-chevron');
+      const zone = document.getElementById('completed-tasks-zone');
+      if (labelEl) labelEl.textContent = `Completed (${completedCount})`;
+      if (chevEl) chevEl.textContent = completedCollapsed ? '\u25BE' : '\u25B4';
+      if (zone) zone.classList.toggle('hidden', completedCollapsed);
+    }
+
+    function toggleCompletedZone() {
+      completedCollapsed = !completedCollapsed;
+      localStorage.setItem('srishti_completed_collapsed', String(completedCollapsed));
+      if (typeof syncCompletedCollapsed === 'function') syncCompletedCollapsed(completedCollapsed);
+      updateCompletedZoneUI();
+    }
+
+    let dragFromId = null;
     function attachHomeTaskListeners() {
       const rows = document.querySelectorAll('#home-tasks-list .task-row');
       rows.forEach(row => {
         row.addEventListener('dragstart', e => {
-          dragFromIdx = parseInt(row.dataset.index, 10);
+          dragFromId = row.dataset.id;
           row.classList.add('dragging');
           e.dataTransfer.effectAllowed = 'move';
           try { e.dataTransfer.setData('text/plain', row.dataset.id); } catch(err) {}
@@ -454,7 +508,7 @@
         row.addEventListener('dragend', () => {
           row.classList.remove('dragging');
           document.querySelectorAll('#home-tasks-list .task-row').forEach(r => r.classList.remove('drop-before','drop-after'));
-          dragFromIdx = null;
+          dragFromId = null;
         });
         row.addEventListener('dragover', e => {
           e.preventDefault();
@@ -466,25 +520,36 @@
         });
         row.addEventListener('drop', e => {
           e.preventDefault();
-          if (dragFromIdx === null) return;
+          if (dragFromId === null) return;
+          const targetId = row.dataset.id;
+          if (targetId === dragFromId) return;
           const rect = row.getBoundingClientRect();
           const before = (e.clientY - rect.top) < rect.height / 2;
-          let toIdx = parseInt(row.dataset.index, 10);
+          const fromIdx = homeTasks.findIndex(x => x.id === dragFromId);
+          if (fromIdx === -1) return;
+          const [moved] = homeTasks.splice(fromIdx, 1);
+          let toIdx = homeTasks.findIndex(x => x.id === targetId);
+          if (toIdx === -1) { homeTasks.splice(fromIdx, 0, moved); return; }
           if (!before) toIdx += 1;
-          const [moved] = homeTasks.splice(dragFromIdx, 1);
-          if (dragFromIdx < toIdx) toIdx -= 1;
           homeTasks.splice(toIdx, 0, moved);
           persistHomeTasks();
           renderHomeTasks();
         });
       });
-      document.querySelectorAll('#home-tasks-list .home-task-check').forEach(cb => {
+      // Checkbox change — works in both Active and Completed lists
+      document.querySelectorAll('#home-tasks-list .home-task-check, #home-tasks-completed-list .home-task-check').forEach(cb => {
         cb.addEventListener('change', () => {
           const t = homeTasks.find(x => x.id === cb.dataset.id);
-          if (t) { t.done = cb.checked; persistHomeTasks(); updateProgress(); if (typeof renderRewardsAll === 'function') renderRewardsAll(); }
+          if (!t) return;
+          t.done = cb.checked;
+          if (t.done) t.completedAt = new Date().toISOString();
+          else delete t.completedAt;
+          persistHomeTasks();
+          renderHomeTasks();
         });
       });
-      document.querySelectorAll('#home-tasks-list .home-task-delete').forEach(btn => {
+      // Delete — works in both lists
+      document.querySelectorAll('#home-tasks-list .home-task-delete, #home-tasks-completed-list .home-task-delete').forEach(btn => {
         btn.addEventListener('click', () => {
           homeTasks = homeTasks.filter(t => t.id !== btn.dataset.id);
           persistHomeTasks();
@@ -506,6 +571,7 @@
     document.getElementById('new-task-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') { e.preventDefault(); addHomeTask(); }
     });
+    document.getElementById('completed-toggle').addEventListener('click', toggleCompletedZone);
 
     async function hydrateHomeTasksFromCloud() {
       try {
@@ -516,9 +582,12 @@
         if (Array.isArray(cloud) && cloud.length > 0) {
           homeTasks = cloud;
           localStorage.setItem('srishti_home_tasks', JSON.stringify(homeTasks));
-          renderHomeTasks();
         }
       } catch(e) {}
+      // Re-apply collapsed state from a fresh read so syncLoad-loaded value is honored
+      const cc = localStorage.getItem('srishti_completed_collapsed');
+      completedCollapsed = (cc === 'false') ? false : true;
+      renderHomeTasks();
     }
 
     initHomeTasks();
@@ -553,24 +622,42 @@
       } catch(e) {}
 
       const inject = document.getElementById('school-tasks-inject');
-      let html = '';
+      const completedInject = document.getElementById('school-tasks-completed-inject');
+      let activeHtml = '';
+      let completedHtml = '';
       for (const [schoolId, tasks] of Object.entries(schoolTasks)) {
         const incomplete = tasks.filter(t => !t.done);
-        if (incomplete.length === 0) continue;
-
+        const completed = tasks
+          .filter(t => t.done)
+          .sort((a, b) => (b.completedAt || '').localeCompare(a.completedAt || ''));
         const label = schoolNames[schoolId] || schoolId.toUpperCase();
-        html += `<div class="pt-2 mt-2 border-t border-rose-50"><div class="text-[10px] font-bold text-lavender-300 uppercase tracking-wider mb-2">From ${label} (Wanda)</div></div>`;
-        for (const t of incomplete) {
-          const checkKey = 'school_task_' + t.id;
-          html += `
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="${checkKey}" class="task-check mt-1 w-4 h-4 rounded accent-lavender-300 shrink-0" data-school="${schoolId}" data-taskid="${t.id}" onchange="toggleSchoolTask(this)">
-              <label for="${checkKey}" class="text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
-            </div>`;
+        if (incomplete.length > 0) {
+          activeHtml += `<div class="pt-2 mt-2 border-t border-rose-50"><div class="text-[10px] font-bold text-lavender-300 uppercase tracking-wider mb-2">From ${label} (Wanda)</div></div>`;
+          for (const t of incomplete) {
+            const checkKey = 'school_task_' + t.id;
+            activeHtml += `
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="${checkKey}" class="task-check mt-1 w-4 h-4 rounded accent-lavender-300 shrink-0" data-school="${schoolId}" data-taskid="${t.id}" onchange="toggleSchoolTask(this)">
+                <label for="${checkKey}" class="text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
+              </div>`;
+          }
+        }
+        if (completed.length > 0) {
+          completedHtml += `<div class="pt-2 mt-2 border-t border-rose-50"><div class="text-[10px] font-bold text-lavender-300 uppercase tracking-wider mb-2">From ${label} (Wanda)</div></div>`;
+          for (const t of completed) {
+            const checkKey = 'school_task_done_' + t.id;
+            completedHtml += `
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="${checkKey}" class="task-check mt-1 w-4 h-4 rounded accent-lavender-300 shrink-0" checked data-school="${schoolId}" data-taskid="${t.id}" onchange="toggleSchoolTask(this)">
+                <label for="${checkKey}" class="text-sm text-gray-700 leading-snug cursor-pointer">${escapeHtml(t.text)}</label>
+              </div>`;
+          }
         }
       }
-      inject.innerHTML = html;
+      inject.innerHTML = activeHtml;
+      completedInject.innerHTML = completedHtml;
       updateProgress();
+      updateCompletedZoneUI();
       if (typeof renderRewardsAll === 'function') renderRewardsAll();
     }
 
@@ -589,9 +676,11 @@
       const task = tasks.find(t => t.id === taskId);
       if (task) {
         task.done = el.checked;
+        if (task.done) task.completedAt = new Date().toISOString();
+        else delete task.completedAt;
         localStorage.setItem('srishti_school_tasks', JSON.stringify(schoolTasks));
         syncSchoolTasks(schoolTasks);
-        // Re-render to remove completed tasks from view
+        // Re-render so the row hops between Active and Completed zones
         setTimeout(() => loadSchoolTasks(), 300);
       }
       updateProgress();
