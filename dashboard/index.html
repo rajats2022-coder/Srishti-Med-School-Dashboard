@@ -323,7 +323,17 @@
             </div>
             <span class="text-xs text-gray-400" id="rw-tray-count">0 queued</span>
           </div>
-          <div id="rewards-tray" class="space-y-2 min-h-[120px]"></div>
+          <!-- Active zone — pending tray cards, no scroll cap, grows naturally -->
+          <div id="active-rewards-zone" class="space-y-2 min-h-[120px]">
+            <div id="rewards-tray" class="space-y-2"></div>
+          </div>
+          <!-- Earned divider toggle -->
+          <button id="earned-toggle" type="button" class="w-full flex items-center justify-between mt-3 pt-3 border-t border-rose-100 text-xs font-bold text-gray-400 hover:text-rose-400 transition-colors">
+            <span id="earned-label">Earned &#10024; (0)</span>
+            <span id="earned-chevron" class="transition-transform">&#9662;</span>
+          </button>
+          <!-- Earned zone — earned cards, collapsed by default -->
+          <div id="rewards-tray-earned" class="space-y-2 mt-2 hidden"></div>
         </div>
 
         <!-- Col 3: Reward Bank -->
@@ -770,14 +780,34 @@
     // === REWARD SYSTEM (Rajat's tracker) ===
     var rewardsBank, rewardsSelected, rewardsPool;
     var rewardsReady = false;
+    var earnedCollapsed = true;
 
     function initRewards() {
       try { rewardsBank = JSON.parse(localStorage.getItem('srishti_rewards_bank') || '[]'); } catch(e) {}
       try { rewardsSelected = JSON.parse(localStorage.getItem('srishti_rewards_selected') || '[]'); } catch(e) {}
       if (!Array.isArray(rewardsBank)) rewardsBank = [];
       if (!Array.isArray(rewardsSelected)) rewardsSelected = [];
+      // Strip any leftover in-memory _celebrating flag from persisted data
+      rewardsSelected.forEach(function(s) { delete s._celebrating; });
       rewardsPool = [];
+      try { earnedCollapsed = localStorage.getItem('srishti_earned_collapsed') !== 'false'; } catch(e) { earnedCollapsed = true; }
       rewardsReady = true;
+    }
+
+    function updateEarnedZoneUI(earnedCount) {
+      var label = document.getElementById('earned-label');
+      var chev = document.getElementById('earned-chevron');
+      var zone = document.getElementById('rewards-tray-earned');
+      if (label) label.innerHTML = 'Earned &#10024; (' + earnedCount + ')';
+      if (chev) chev.textContent = earnedCollapsed ? '\u25BE' : '\u25B4';
+      if (zone) zone.classList.toggle('hidden', earnedCollapsed);
+    }
+
+    function toggleEarnedZone() {
+      earnedCollapsed = !earnedCollapsed;
+      try { localStorage.setItem('srishti_earned_collapsed', String(earnedCollapsed)); } catch(e) {}
+      if (typeof syncEarnedCollapsed === 'function') syncEarnedCollapsed(earnedCollapsed);
+      renderTray();
     }
 
     function persistBank() {
@@ -785,8 +815,14 @@
       if (typeof syncRewardsBank === 'function') syncRewardsBank(rewardsBank);
     }
     function persistSelected() {
-      localStorage.setItem('srishti_rewards_selected', JSON.stringify(rewardsSelected));
-      if (typeof syncRewardsSelected === 'function') syncRewardsSelected(rewardsSelected);
+      // Strip in-memory _celebrating flag so it never reaches localStorage or Supabase.
+      const cleaned = rewardsSelected.map(function(s) {
+        const c = Object.assign({}, s);
+        delete c._celebrating;
+        return c;
+      });
+      localStorage.setItem('srishti_rewards_selected', JSON.stringify(cleaned));
+      if (typeof syncRewardsSelected === 'function') syncRewardsSelected(cleaned);
     }
 
     function getOpenTasksForPool() {
@@ -862,13 +898,58 @@
     }
 
     function renderTray() {
-      const el = document.getElementById('rewards-tray');
+      const trayEl = document.getElementById('rewards-tray');
+      const earnedEl = document.getElementById('rewards-tray-earned');
       document.getElementById('rw-tray-count').textContent = `${rewardsSelected.length} queued`;
+
       if (rewardsSelected.length === 0) {
-        el.innerHTML = `<p class="text-xs text-gray-400 italic py-6 text-center">Pick a task from the left &rarr;</p>`;
+        trayEl.innerHTML = `<p class="text-xs text-gray-400 italic py-6 text-center">Pick a task from the left &rarr;</p>`;
+        earnedEl.innerHTML = '';
+        updateEarnedZoneUI(0);
         return;
       }
-      el.innerHTML = rewardsSelected.map(s => {
+
+      // Walk all selected items: detect undone→done transitions, set/clear earnedAt, kick off celebration delay.
+      let earnedAtChanged = false;
+      for (let i = 0; i < rewardsSelected.length; i++) {
+        const s = rewardsSelected[i];
+        const done = getTaskState(s.source, s.taskId).done;
+        if (done && !s.earnedAt) {
+          s.earnedAt = new Date().toISOString();
+          s._celebrating = true; // in-memory only — NEVER written to localStorage/Supabase
+          earnedAtChanged = true;
+          (function(id) {
+            setTimeout(function() {
+              const item = rewardsSelected.find(function(x) { return x.id === id; });
+              if (item) delete item._celebrating;
+              renderTray();
+            }, 2000);
+          })(s.id);
+        } else if (!done && s.earnedAt) {
+          delete s.earnedAt;
+          delete s._celebrating;
+          earnedAtChanged = true;
+        }
+      }
+      if (earnedAtChanged) persistSelected();
+
+      // Split: active = pending or currently celebrating; earned = done and not celebrating.
+      const active = [];
+      const earned = [];
+      for (let j = 0; j < rewardsSelected.length; j++) {
+        const item = rewardsSelected[j];
+        const isDone = getTaskState(item.source, item.taskId).done;
+        if (!isDone || item._celebrating) {
+          active.push(item);
+        } else {
+          earned.push(item);
+        }
+      }
+
+      // Sort earned: most recently earned first.
+      earned.sort(function(a, b) { return (b.earnedAt || '').localeCompare(a.earnedAt || ''); });
+
+      function cardHtml(s) {
         const state = getTaskState(s.source, s.taskId);
         const reward = rewardsBank.find(r => r.id === s.rewardId);
         const done = state.done;
@@ -895,8 +976,14 @@
             </div>
           </div>
         `;
-      }).join('');
-      el.querySelectorAll('.rw-tray-remove').forEach(btn => {
+      }
+
+      trayEl.innerHTML = active.map(cardHtml).join('');
+      earnedEl.innerHTML = earned.map(cardHtml).join('');
+      updateEarnedZoneUI(earned.length);
+
+      const allRemoves = document.querySelectorAll('#rewards-tray .rw-tray-remove, #rewards-tray-earned .rw-tray-remove');
+      allRemoves.forEach(btn => {
         btn.addEventListener('click', () => {
           rewardsSelected = rewardsSelected.filter(s => s.id !== btn.dataset.id);
           persistSelected();
@@ -904,7 +991,8 @@
           renderTray();
         });
       });
-      el.querySelectorAll('.rw-tray-select').forEach(sel => {
+      const allSelects = document.querySelectorAll('#rewards-tray .rw-tray-select, #rewards-tray-earned .rw-tray-select');
+      allSelects.forEach(sel => {
         sel.addEventListener('change', () => {
           const item = rewardsSelected.find(s => s.id === sel.dataset.id);
           if (item) { item.rewardId = sel.value || null; persistSelected(); renderTray(); }
@@ -953,6 +1041,8 @@
     document.getElementById('new-reward-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') { e.preventDefault(); addReward(); }
     });
+    var earnedToggleBtn = document.getElementById('earned-toggle');
+    if (earnedToggleBtn) earnedToggleBtn.addEventListener('click', toggleEarnedZone);
 
     function renderRewardsAll() {
       if (!rewardsReady) return;
@@ -975,6 +1065,7 @@
             localStorage.setItem('srishti_rewards_selected', JSON.stringify(rewardsSelected));
           }
         }
+        try { earnedCollapsed = localStorage.getItem('srishti_earned_collapsed') !== 'false'; } catch(e) {}
         renderRewardsAll();
       } catch(e) {}
     }

@@ -18,7 +18,9 @@ SECTION 1 — WHO SRISHTI IS (calibration facts)
   minor (Hmong + Azande healing systems — her unique academic differentiator).
 - Stats: cGPA 3.88, sGPA 3.80, MCAT 517 (94th %ile). CASPer cycle-1 = 3rd quartile.
 - Research: 340 hrs Marsico Lung Institute, UNC SOM. PI Dr. Stephen Schworer.
-- Clinical: ~1,000+ hrs paid MA at Medi-Weightloss Ballantyne (Charlotte).
+- Clinical: ~750 hrs paid MA at Medi-Weightloss Ballantyne (Charlotte) as of
+  April 2026. Started Aug 2025 (part-time → full-time). Projected ~1,000+ by
+  June 2026 AMCAS submission, ~2,000+ by Aug 2027 matriculation.
   This is the central transformation between cycle 1 and cycle 2.
 - Narrative seed: grandfather was a physician in Surat, Gujarat; aamras memory.
   This seeds her PS and aligns naturally with osteopathic philosophy.

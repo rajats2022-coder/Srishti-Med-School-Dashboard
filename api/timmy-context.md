@@ -20,7 +20,7 @@ Rajat Singh's operational system for managing his girlfriend Srishti Gadbail's M
 - Grandfather was a physician in Surat, Gujarat — the seed of her med school narrative and perfect DO philosophy alignment
 - Medical Anthropology minor from UNC — her unique academic differentiator
 - 340 hours research at UNC's Marsico Lung Institute (PI: Dr. Stephen Schworer)
-- ~1,000+ hours paid MA at Medi-Weightloss Ballantyne (Charlotte) — the central transformation since cycle 1
+- ~750 paid MA hours at Medi-Weightloss Ballantyne (Charlotte) as of April 2026; projected ~1,000+ by June 2026 AMCAS submission and ~2,000+ by Aug 2027 matriculation — the central transformation since cycle 1
 - Cycle 1 weakness: zero paid clinical hours + zero clinical LOR at submission
 - Cycle 2 fix: year of paid MA work + PA/NP clinical letter + rebuilt school list + tailored essays
 
@@ -332,7 +332,7 @@ For context: most successful MD applicants at the schools she targeted have **15
 
 ### What she has NOW (cycle 2 picture, as of 2026-04-15)
 
-- **Medical Assistant — Medi-Weightloss Ballantyne** — started **August 2025**, **almost 1 full year** of MA work as of now. **Started part-time, currently full-time.** This is the single biggest fixable change between cycle 1 and cycle 2. Estimated ~1,000+ paid clinical hours by next AMCAS submission.
+- **Medical Assistant — Medi-Weightloss Ballantyne** — started **August 2025**, **almost 1 full year** of MA work as of now. **Started part-time, currently full-time.** This is the single biggest fixable change between cycle 1 and cycle 2. ~750 paid clinical hours logged as of April 2026; projected ~1,000+ by June 2026 AMCAS submission.
   - **⚠️ Important workplace fact:** Medi-Weightloss Ballantyne **does not employ any physicians** that she works directly under. **All providers at the clinic are PAs and NPs.** Her direct manager is an **RMA (Registered Medical Assistant)** — i.e., a senior MA, not a clinician with prescriptive authority. This significantly constrains the LOR strategy (see §7b).
   - **🆕 CCMA plan (told to Rajat 2026-04-15):** After hitting 1 year at Medi-Weightloss (~August 2026), Srishti plans to **take the CCMA exam** (Certified Clinical Medical Assistant — NHA credential). Once credentialed, she plans to **look for a better MA job** — likely a hospital system, pediatric clinic, or specialty practice. This is a *very smart* move and has major strategic implications for the application timeline (see §17 — this is the new top strategic question).
 - **Hospice volunteer with VIA Health Partners** — ⚠️ **DID NOT HAPPEN.** She completed training in spring 2025 and listed it as "anticipated 100 hours" on her cycle-1 AMCAS, but **never received an assignment and never logged a single hour.** As of April 2026 this is a dead activity. **It must be removed entirely from her cycle-2 W&A** — there is no version of "anticipated" that works twice. We also need a story for any interviewer who asks "what happened with the hospice plan?" (Likely answer: VIA never matched her, she pivoted into the MA role full-time.)
@@ -594,7 +594,7 @@ Key discoveries that belong in any future strategy conversation about CMU:
 
 ## 11. What's Genuinely Strong (Build On These)
 
-- 🏆 **~12 months of paid, full-time MA work at Medi-Weightloss by submission — the central transformation between cycle 1 and cycle 2.** Cycle 1 had zero paid clinical hours; cycle 2 will have ~1,000+. She took the only job her work authorization allowed, in a specialty that wasn't her dream (weight loss, not peds), and showed up full-time for a year. That's grit, and it's a story adcoms reward. A PA or NP who has supervised her daily will write her primary clinical letter — that's the clinical voice her cycle-1 file was missing, now in place.
+- 🏆 **~12 months of paid, full-time MA work at Medi-Weightloss by submission — the central transformation between cycle 1 and cycle 2.** Cycle 1 had zero paid clinical hours; cycle 2 currently has ~750 (April 2026) and will have ~1,000+ by June 2026 submission. She took the only job her work authorization allowed, in a specialty that wasn't her dream (weight loss, not peds), and showed up full-time for a year. That's grit, and it's a story adcoms reward. A PA or NP who has supervised her daily will write her primary clinical letter — that's the clinical voice her cycle-1 file was missing, now in place.
 - **cGPA 3.88 / sGPA 3.80** with an **ascending year-by-year trend ending in a perfect 4.00 senior year** — this is exactly the academic story adcoms reward
 - **MCAT 517** — well above the median for nearly every school she's targeting; not a barrier
 - **Highest Distinction graduation, Dean's List every semester** at UNC — academic discipline is not in question
@@ -797,7 +797,7 @@ FILE: REAPPLICATION_PLAN.md (school lists + essay strategy + timeline + story me
 
 > **Created:** 2026-04-15 | **Target submission:** June 2026 (AMCAS + AACOMAS) | **Matriculation:** Fall 2027
 >
-> **The bottom line:** Srishti's stats (3.88/3.80/517) were never the problem. The problem was structural: international status filtering, zero paid clinical hours at submission, no clinical LOR, recycled essays, and a school list that included too many international-hostile programs. Cycle 2 fixes all of this. She now has ~1,000+ hours of paid clinical work, a clinical letter coming, and this plan rebuilds her school list from scratch around programs that actually want Canadian applicants.
+> **The bottom line:** Srishti's stats (3.88/3.80/517) were never the problem. The problem was structural: international status filtering, zero paid clinical hours at submission, no clinical LOR, recycled essays, and a school list that included too many international-hostile programs. Cycle 2 fixes all of this. She now has ~750 hrs of paid clinical work (growing toward ~1,000+ by June 2026 submission), a clinical letter coming, and this plan rebuilds her school list from scratch around programs that actually want Canadian applicants.
 
 ---
 
@@ -1027,7 +1027,7 @@ vs. Cycle 1: 21 schools, ~half were international-hostile, 0 DO schools. Night a
 **Framework:**
 - **Before (cycle 1):** Strong academics and research, but limited direct patient care experience due to visa restrictions on employment
 - **The pivot:** Started full-time MA work at Medi-Weightloss Ballantyne in August 2025 — her first paid clinical role, made possible by OPT authorization after graduation
-- **What she gained:** 1,000+ hours of direct patient care. Taking vitals, patient intake, working alongside PAs and NPs daily. Learning what it means to show up for patients every day, not just in volunteer shifts
+- **What she gained:** ~750 hours of direct patient care and growing (projected ~1,000+ by submission). Taking vitals, patient intake, working alongside PAs and NPs daily. Learning what it means to show up for patients every day, not just in volunteer shifts
 - **The deeper lesson:** Working in weight management (not her dream specialty of peds) taught her that every patient deserves the same quality of care regardless of the setting — connect this to her cultural humility framework
 - **Why UNC specifically:** She wants to return to the institution where she grew, where she researched lung disease at Marsico, where she studied the social dimensions of medicine through Medical Anthropology — now with the clinical foundation she was missing
 

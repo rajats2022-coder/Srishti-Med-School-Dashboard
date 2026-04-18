@@ -79,6 +79,10 @@ async function syncLoad() {
         if (typeof row.value === 'boolean') {
           localStorage.setItem('srishti_completed_collapsed', String(row.value));
         }
+      } else if (row.key === 'earned_collapsed') {
+        if (typeof row.value === 'boolean') {
+          localStorage.setItem('srishti_earned_collapsed', String(row.value));
+        }
       }
     }
   } catch (e) {
@@ -330,6 +334,20 @@ async function syncCompletedCollapsed(collapsed) {
     });
   } catch (e) {
     console.log('Completed-collapsed sync failed (offline mode):', e.message);
+  }
+}
+
+// Save Earned-zone collapsed state for Reward Tray — cross-device
+async function syncEarnedCollapsed(collapsed) {
+  localStorage.setItem('srishti_earned_collapsed', String(collapsed));
+  try {
+    await fetch(API, {
+      method: 'POST',
+      headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify({ key: 'earned_collapsed', value: !!collapsed, updated_at: new Date().toISOString() })
+    });
+  } catch (e) {
+    console.log('Earned-collapsed sync failed (offline mode):', e.message);
   }
 }
 
